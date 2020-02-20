@@ -1,0 +1,8 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.tree.indent": 5,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.formatOnSave": true
+}

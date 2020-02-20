@@ -1,0 +1,434 @@
+[
+ {
+  "type": "veneer",
+  "id": "0",
+  "distribution": "Natural",
+  "name": "Acajou",
+  "image": "natural/acajou.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "1",
+  "distribution": "Natural",
+  "name": "Amazakue",
+  "image": "natural/amazakue.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "2",
+  "distribution": "Natural",
+  "name": "Anegre",
+  "image": "natural/anegre.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "3",
+  "distribution": "Natural",
+  "name": "Badi",
+  "image": "natural/badi.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "4",
+  "distribution": "Natural",
+  "name": "Bambus - ciemny",
+  "image": "natural/bambus_ciemny.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "5",
+  "distribution": "Natural",
+  "name": "Bambus - jasny",
+  "image": "natural/bambus_jasny.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "6",
+  "distribution": "Natural",
+  "name": "Brzoza",
+  "image": "natural/brzoza-skand.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "7",
+  "distribution": "Natural",
+  "name": "Bubinga",
+  "image": "natural/bubinga.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "8",
+  "distribution": "Natural",
+  "name": "Buk",
+  "image": "natural/buk.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "9",
+  "distribution": "Natural",
+  "name": "Ceiba",
+  "image": "natural/ceiba.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "10",
+  "distribution": "Natural",
+  "name": "Cocobolo",
+  "image": "natural/cocobolo.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "11",
+  "distribution": "Natural",
+  "name": "Czereśnia amerykańska",
+  "image": "natural/czeresnia-ameryk.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "12",
+  "distribution": "Natural",
+  "name": "Dąb",
+  "image": "natural/dab.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "13",
+  "distribution": "Natural",
+  "name": "Dąb czarny",
+  "image": "natural/dab_czarny.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "14",
+  "distribution": "Natural",
+  "name": "Dąb - czeczot",
+  "image": "natural/dab_czeczot.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "15",
+  "distribution": "Natural",
+  "name": "Drzewo kasztanowe",
+  "image": "natural/drzewo_kasztanowe.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "16",
+  "distribution": "Natural",
+  "name": "Drzewo różane",
+  "image": "natural/drzewo_rozane.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "17",
+  "distribution": "Natural",
+  "name": "Drzewo tygrysie",
+  "image": "natural/drzewo_tygrysie.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "18",
+  "distribution": "Natural",
+  "name": "Eldorado",
+  "image": "natural/eldorado.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "19",
+  "distribution": "Natural",
+  "name": "Frake czarne",
+  "image": "natural/frake_czarne.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "20",
+  "distribution": "Natural",
+  "name": "Frejo",
+  "image": "natural/frejo.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "21",
+  "distribution": "Natural",
+  "name": "Grusza",
+  "image": "natural/grusza.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "22",
+  "distribution": "Natural",
+  "name": "Heban",
+  "image": "natural/heban.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "23",
+  "distribution": "Natural",
+  "name": "Iroko",
+  "image": "natural/iroko.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "24",
+  "distribution": "Natural",
+  "name": "Jabłoń indyjska",
+  "image": "natural/jablon_indyjska.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "25",
+  "distribution": "Natural",
+  "name": "Jatoba",
+  "image": "natural/jatoba.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "26",
+  "distribution": "Natural",
+  "name": "Jesion",
+  "image": "natural/jesion.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "27",
+  "distribution": "Natural",
+  "name": "Klon",
+  "image": "natural/klon.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "28",
+  "distribution": "Natural",
+  "name": "Koto",
+  "image": "natural/koto.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "29",
+  "distribution": "Natural",
+  "name": "Limba",
+  "image": "natural/limba.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "30",
+  "distribution": "Natural",
+  "name": "Makore",
+  "image": "natural/makore.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "31",
+  "distribution": "Natural",
+  "name": "Meranti",
+  "image": "natural/meranti.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "32",
+  "distribution": "Natural",
+  "name": "Merbau",
+  "image": "natural/merbau.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "33",
+  "distribution": "Natural",
+  "name": "Okume",
+  "image": "natural/okume.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "34",
+  "distribution": "Natural",
+  "name": "Olcha",
+  "image": "natural/olcha.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "35",
+  "distribution": "Natural",
+  "name": "Oliwka",
+  "image": "natural/oliwka.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "36",
+  "distribution": "Natural",
+  "name": "Orzech - boliwia",
+  "image": "natural/orzech_boliwia.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "37",
+  "distribution": "Natural",
+  "name": "Orzech - czeczota",
+  "image": "natural/orzech_czeczota.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "38",
+  "distribution": "Natural",
+  "name": "Orzech włoski",
+  "image": "natural/orzech_wloski.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "39",
+  "distribution": "Natural",
+  "name": "Orzech amerykański",
+  "image": "natural/orzech-ameryk.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "40",
+  "distribution": "Natural",
+  "name": "Palisander indyjski",
+  "image": "natural/palisander_indyjski.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "41",
+  "distribution": "Natural",
+  "name": "Palisander - madagaskar",
+  "image": "natural/palisander_madagaskar.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "42",
+  "distribution": "Natural",
+  "name": "Palisander - rio",
+  "image": "natural/palisander_rio.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "43",
+  "distribution": "Natural",
+  "name": "Palisander - santos",
+  "image": "natural/palisander-santos.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "44",
+  "distribution": "Natural",
+  "name": "Różowe łuski",
+  "image": "natural/rozowe_luski.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "45",
+  "distribution": "Natural",
+  "name": "Sapeli - flader",
+  "image": "natural/sapeli-flader.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "46",
+  "distribution": "Natural",
+  "name": "Sapeli - pasiak",
+  "image": "natural/sapeli-pasiak.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "47",
+  "distribution": "Natural",
+  "name": "Sosna",
+  "image": "natural/sosna.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "48",
+  "distribution": "Natural",
+  "name": "Teak",
+  "image": "natural/teak.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "49",
+  "distribution": "Natural",
+  "name": "Tipo - cocobolo",
+  "image": "natural/tipo_cocobolo.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "50",
+  "distribution": "Natural",
+  "name": "Tulipanowiec",
+  "image": "natural/tulipanowiec.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "51",
+  "distribution": "Natural",
+  "name": "Wenge",
+  "image": "natural/wenge.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "52",
+  "distribution": "Natural",
+  "name": "Zebrano",
+  "image": "natural/zebrano.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "53",
+  "distribution": "Natural",
+  "name": "Ziricote",
+  "image": "natural/ziricote.jpg",
+  "text": "opis elementu"
+ }
+]

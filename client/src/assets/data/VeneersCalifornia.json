@@ -1,0 +1,524 @@
+[
+ {
+  "type": "veneer",
+  "id": "0",
+  "symbol": "BNCW",
+  "distribution": "California",
+  "name": "Bambus carmel-natural - wąski",
+  "image": "californiaTrading/Bambus-carmel-natural-BNCW-.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "1",
+  "symbol": "BCSZ",
+  "distribution": "California",
+  "name": "Bambus carmel - szeroki",
+  "image": "californiaTrading/Bambus-carmel-szeroki-BCSZ-.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "2",
+  "symbol": "BCW-45P",
+  "distribution": "California",
+  "name": "Bambus carmel - wąski",
+  "image": "californiaTrading/Bambus-carmel-waski-BCW-45P.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "3",
+  "symbol": "BNSZ",
+  "distribution": "California",
+  "name": "Bambus natural - szeroki",
+  "image": "californiaTrading/Bambus-natural-szeroki-BNSZ.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "4",
+  "symbol": "BNW-35",
+  "distribution": "California",
+  "name": "Bambus natural - wąski",
+  "image": "californiaTrading/Bambus-natural-waski-BNW-35.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "5",
+  "symbol": "BU-0102TW",
+  "distribution": "California",
+  "name": "Buk",
+  "image": "californiaTrading/Buk-BU-0102TW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "6",
+  "symbol": "CC-OKO-07",
+  "distribution": "California",
+  "name": "Czeczotka california - 07",
+  "image": "californiaTrading/Czeczotka-california-CC-OKO-07.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "7",
+  "symbol": "CC-OKO-08",
+  "distribution": "California",
+  "name": "Czeczotka california - 08",
+  "image": "californiaTrading/Czeczotka-california-CC-OKO-08.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "8",
+  "distribution": "California",
+  "name": "Czereśnia",
+  "symbol": "CZ-0119F1",
+  "image": "californiaTrading/Czeresnia-CZ-0119F1.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "9",
+  "symbol": "DB-0001PS",
+  "distribution": "California",
+  "name": "Dąb bielony",
+  "image": "californiaTrading/Dab-bielony-DB-0001PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "10",
+  "symbol": "DBS-105",
+  "distribution": "California",
+  "name": "Dąb brązowo-srebrny",
+  "image": "californiaTrading/Dab-brazowo-srebrny-DBS-105.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "11",
+  "symbol": "DCZ-1058",
+  "distribution": "California",
+  "name": "Dąb czarno-srebrny",
+  "image": "californiaTrading/Dab-czarno-srebrny-DCZ-1058.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "12",
+  "symbol": "DA-0003PP",
+  "distribution": "California",
+  "name": "Dąb - 01",
+  "image": "californiaTrading/Dab-DA-0003PP.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "13",
+  "symbol": "DA-0004PS",
+  "distribution": "California",
+  "name": "Dąb - 02",
+  "image": "californiaTrading/Dab-DA-0004PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "14",
+  "symbol": "DA-0006PS",
+  "distribution": "California",
+  "name": "Dąb - 03",
+  "image": "californiaTrading/Dab-DA-0006PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "15",
+  "symbol": "DA-0052F3",
+  "distribution": "California",
+  "name": "Dąb - 04",
+  "image": "californiaTrading/Dab-DA-0052F3.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "16",
+  "symbol": "DA-0101PS",
+  "distribution": "California",
+  "name": "Dąb - 05",
+  "image": "californiaTrading/Dab-DA-0101PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "17",
+  "symbol": "DA0609PS",
+  "distribution": "California",
+  "name": "Dąb - 06",
+  "image": "californiaTrading/Dab-DA-0609PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "18",
+  "symbol": "DP-1903PS",
+  "distribution": "California",
+  "name": "Dąb pastelowy",
+  "image": "californiaTrading/Dab-pastelowy-DP-1903PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "19",
+  "symbol": "DS-0005PS",
+  "distribution": "California",
+  "name": "Dąb siwy",
+  "image": "californiaTrading/Dab-siwy-DS-0005PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "20",
+  "symbol": "DSZ-0007F",
+  "distribution": "California",
+  "name": "Dąb szary",
+  "image": "californiaTrading/Dab-szary-DSZ-0007F.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "21",
+  "symbol": "DL-030",
+  "distribution": "California",
+  "name": "Drzewo lodowe - bianco",
+  "image": "californiaTrading/Drzewo-lodowe-bianco-DL-030.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "22",
+  "symbol": "DL-0301",
+  "distribution": "California",
+  "name": "Drzewo lodowe - negro",
+  "image": "californiaTrading/Drzewo-lodowe-negro-DL-0301.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "23",
+  "symbol": "DS-0008PS",
+  "distribution": "California",
+  "name": "Drzewo sandałowe",
+  "image": "californiaTrading/Drzewo-sandalowe-DS-0008PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "24",
+  "symbol": "GI-2307-3D",
+  "distribution": "California",
+  "name": "Grusza indyjska",
+  "image": "californiaTrading/Grusza-indyjska-GI-2307-3D.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "25",
+  "symbol": "HE-0004PP",
+  "distribution": "California",
+  "name": "Heban - 01",
+  "image": "californiaTrading/Heban-HE-0004PP.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "26",
+  "symbol": "HE-0102PI",
+  "distribution": "California",
+  "name": "Heban - 02",
+  "image": "californiaTrading/Heban-HE-0102PI.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "27",
+  "symbol": "HE-2102-3D",
+  "distribution": "California",
+  "name": "Heban - 03",
+  "image": "californiaTrading/Heban-HE-2102-3D.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "28",
+  "symbol": "HE-7001PS",
+  "distribution": "California",
+  "name": "Heban - 04",
+  "image": "californiaTrading/Heban-HE-7001PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "29",
+  "symbol": "HE-7064PS",
+  "distribution": "California",
+  "name": "Heban - 05",
+  "image": "californiaTrading/Heban-HE-7064PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "30",
+  "symbol": "HE-7069PS",
+  "distribution": "California",
+  "name": "Heban - 06",
+  "image": "californiaTrading/Heban-HE-7069PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "31",
+  "symbol": "KA-0004PW",
+  "distribution": "California",
+  "name": "Kamelia",
+  "image": "californiaTrading/Kamelia-KA-0004PW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "32",
+  "symbol": "KL-0234F3",
+  "distribution": "California",
+  "name": "Klon",
+  "image": "californiaTrading/Klon-KL-0234F3.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "33",
+  "symbol": "MA-0151PA",
+  "distribution": "California",
+  "name": "Machoń - 01",
+  "image": "californiaTrading/Mahon-MA-0151PA.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "34",
+  "symbol": "MA-1101PA",
+  "distribution": "California",
+  "name": "Machoń - 02",
+  "image": "californiaTrading/Mahon-MA-1101PA.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "35",
+  "symbol": "OR-0017CT",
+  "distribution": "California",
+  "name": "Orzech - 01",
+  "image": "californiaTrading/Orzech-OR-0017CT.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "36",
+  "symbol": "OR-0518F1",
+  "distribution": "California",
+  "name": "Orzech - 02",
+  "image": "californiaTrading/Orzech-OR-0518F1.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "37",
+  "symbol": "OR-1001PS",
+  "distribution": "California",
+  "name": "Orzech - 03",
+  "image": "californiaTrading/Orzech-OR-1001PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "38",
+  "symbol": "PA-0002F1",
+  "distribution": "California",
+  "name": "Palisander - 01",
+  "image": "californiaTrading/Palisander-PA-0002F1.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "39",
+  "symbol": "PA-1102PS",
+  "distribution": "California",
+  "name": "Palisander - 02",
+  "image": "californiaTrading/Palisander-PA-1102PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "40",
+  "symbol": "PA-1103F",
+  "distribution": "California",
+  "name": "Palisander - 03",
+  "image": "californiaTrading/Palisander-PA-1103F.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "41",
+  "symbol": "PV-1104PS",
+  "distribution": "California",
+  "name": "Palisander - violet",
+  "image": "californiaTrading/Palisander-violet-PV-1104PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "42",
+  "symbol": "RO-0011PS",
+  "distribution": "California",
+  "name": "Róża",
+  "image": "californiaTrading/Rose-RO-0011PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "43",
+  "symbol": "RH-0703-3D",
+  "distribution": "California",
+  "name": "Róża hiszpańska",
+  "image": "californiaTrading/Roza-hiszpanskaRH-0703-3D.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "44",
+  "symbol": "SO-0201PW",
+  "distribution": "California",
+  "name": "Sosna",
+  "image": "californiaTrading/Sosna-SO-0201PW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "45",
+  "symbol": "TC-0804-3",
+  "distribution": "California",
+  "name": "Teak - 01",
+  "image": "californiaTrading/Tik-californijski-TC-0804-3.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "46",
+  "symbol": "TI-0001PS",
+  "distribution": "California",
+  "name": "Teak - 02",
+  "image": "californiaTrading/Tik-TI-0001PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "47",
+  "symbol": "TI-0002PS",
+  "distribution": "California",
+  "name": "Teak - 03",
+  "image": "californiaTrading/Tik-TI-0002PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "48",
+  "symbol": "TI-0018PS",
+  "distribution": "California",
+  "name": "Teak - 04",
+  "image": "californiaTrading/Tik-TI-0018PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "49",
+  "symbol": "TI-3001PW",
+  "distribution": "California",
+  "name": "Teak - 05",
+  "image": "californiaTrading/Tik-TI-3001PW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "50",
+  "symbol": "WE-5001PW",
+  "distribution": "California",
+  "name": "Wenge - 01",
+  "image": "californiaTrading/WE-5001PW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "51",
+  "symbol": "WE-0002PI",
+  "distribution": "California",
+  "name": "Wenge - 02",
+  "image": "californiaTrading/Wenge-WE-0002PI.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "52",
+  "symbol": "WE-0003PP",
+  "distribution": "California",
+  "name": "Wenge - 03",
+  "image": "californiaTrading/Wenge-WE-0003PP.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "53",
+  "symbol": "WE-2010PI",
+  "distribution": "California",
+  "name": "Wenge - 04",
+  "image": "californiaTrading/Wenge-WE-2010PI.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "54",
+  "symbol": "WE-5006PW",
+  "distribution": "California",
+  "name": "Wenge - 05",
+  "image": "californiaTrading/Wenge-WE-5006PW.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "55",
+  "symbol": "WI-0012PS",
+  "distribution": "California",
+  "name": "Wiąz",
+  "image": "californiaTrading/Wiaz-WI-0012PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "56",
+  "symbol": "ZE-0001PS",
+  "distribution": "California",
+  "name": "Zebrano - 01",
+  "image": "californiaTrading/Zebrano-ZE-0001PS.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "veneer",
+  "id": "57",
+  "symbol": "ZE-0087PS",
+  "distribution": "California",
+  "name": "Zebrano - 02",
+  "image": "californiaTrading/Zebrano-ZE-0087PS.jpg",
+  "text": "opis elementu"
+ }
+]

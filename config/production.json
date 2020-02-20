@@ -1,0 +1,8 @@
+{
+ "mongoURI": "mongodb+srv://Damian:sidewinder123@testdb-vujpl.mongodb.net/test?retryWrites=true",
+ "jwtSecret": "YffOW:!LViDAg<=se<eAAT(%kH{^;{3SJ.`p|{`}RGK'p,'o)(WSET3(MFii6C"
+}
+
+// mongodb+srv://Damian:sidewinder123@testdb-vujpl.mongodb.net/test?retryWrites=true
+
+// mongodb://blow-mongo-user:bcTpF7N9uDXyfh@localhost:27017/blow

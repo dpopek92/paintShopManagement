@@ -1,0 +1,38 @@
+[
+ {
+  "type": "color",
+  "id": "0",
+  "paintType": "bejca",
+  "code": "Niebieski",
+  "name": "BPA-D211/16",
+  "image": "green/niebieski_bpa_d211_16.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "color",
+  "id": "1",
+  "paintType": "bejca",
+  "code": "Oliw",
+  "name": "27-50",
+  "image": "green/oliw_27_50.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "color",
+  "id": "2",
+  "paintType": "bejca",
+  "code": "Zieleń",
+  "name": "27-26",
+  "image": "green/zielen_27_26.jpg",
+  "text": "opis elementu"
+ },
+ {
+  "type": "color",
+  "id": "3",
+  "paintType": "bejca",
+  "code": "Granat",
+  "name": "28-60.01",
+  "image": "green/granat_28_60_01.jpg",
+  "text": "opis elementu"
+ }
+]
