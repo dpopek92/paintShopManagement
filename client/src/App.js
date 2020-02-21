@@ -21,7 +21,7 @@ import Timetable from 'views/Timetable/Timetable';
 import TimetableDay from 'views/Timetable/TimetableDay';
 
 // Users
-import Customers from 'views/Customers/Customers';
+import Customers from 'scenes/UsersLists/Customers';
 import Customer from 'views/Customer/Customer';
 import Employees from 'views/Employees/Employees';
 import Employee from 'views/Employee/Employee';
@@ -39,13 +39,13 @@ import PaintsOrder from 'views/Paints/PaintsOrder';
 import HomePage from 'views/Home/Container';
 
 // Catalog
-import Colors from 'views/Catalog/Colors';
-import Veneers from 'views/Catalog/Veneers';
-import Handles from 'views/Catalog/Handles';
-import Millings from 'views/Catalog/Millings';
-import GlassCases from 'views/Catalog/GlassCases';
-import Customs from 'views/Catalog/Customs';
-import Element from 'views/Catalog/Element';
+import Colors from 'scenes/Catalog/Colors';
+import Veneers from 'scenes/Catalog/Veneers';
+import Handles from 'scenes/Catalog/Handles';
+import Millings from 'scenes/Catalog/Millings';
+import GlassCases from 'scenes/Catalog/GlassCases';
+import Customs from 'scenes/Catalog/Customs';
+import Element from 'scenes/Catalog/ElementDetails';
 
 // Other
 import Regulations from 'views/Regulations/Regulations';

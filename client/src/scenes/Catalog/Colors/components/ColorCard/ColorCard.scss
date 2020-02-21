@@ -1,0 +1,31 @@
+//Wyjątkowo te wartości są w pliku css, a nie ostylowane przes styled-components, ze względu na wydajność. W wersji produkcyjnej być może będzie inaczej. will see.
+
+.catalogCard {
+ position: relative;
+ width: 200px;
+ margin: 10px;
+ border-radius: 3px;
+ border: 1px solid lightgray;
+ transition: transform 0.2s;
+ cursor: pointer;
+ &:hover {
+  z-index: 100;
+  transform: scale(1.1);
+ }
+ &.imageCard {
+  height: 300px;
+ }
+ &.colorCard {
+  height: 100px;
+ }
+ .cardCaption {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  max-width: 97%;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 3px;
+  letter-spacing: 2px;
+ }
+}

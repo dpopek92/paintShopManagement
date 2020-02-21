@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from "prop-types";
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthTemplate from 'templates/FullWidthPageTemplate';
 import Row from 'templates/FlexRowTemplate';
 import { StyledH1 as Heading } from 'components/atoms/heading/Headings';

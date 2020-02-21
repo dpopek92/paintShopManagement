@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import "components/molecules/catalog/Card.scss";
-import withContext from "hoc/withContext";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import 'components/molecules/catalog/Card.scss';
+import withContext from 'hoc/withContext';
 
 // const StyledCard = styled.div`
 //  position: relative;
@@ -38,12 +38,12 @@ const ImageCard = ({ name, image, type, onclick, permissionContext }) => {
   <div
    className="catalogCard imageCard"
    onClick={() =>
-    permissionContext !== "employee" ? onclick(name, type) : null
+    permissionContext !== 'employee' ? onclick(name, type) : null
    }
    type={type}
    image={imgPath}
    style={{
-    backgroundImage: `url(${require(`assets/images/${type}/${image}`)})`
+    backgroundImage: `url(${require(`assets/images/${type}/${image}`)})`,
    }}
   >
    <div className="cardCaption">{name}</div>
@@ -55,7 +55,7 @@ ImageCard.propTypes = {
  name: PropTypes.string,
  color: PropTypes.string,
  permissionContext: PropTypes.string,
- onClick: PropTypes.func
+ onClick: PropTypes.func,
 };
 
 export default withContext(ImageCard);

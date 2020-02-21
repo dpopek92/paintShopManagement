@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PageTemplate from "templates/PageTemplate";
-import FullWidthPageTemplate from "templates/FullWidthPageTemplate";
-import FlexTemplate from "templates/FlexTemplate";
-import { StyledH1 as Heading } from "components/atoms/heading/Headings";
-import DetailsCards from "components/molecules/catalog/DetailsCard";
-import HANDLES from "assets/data/Handles.json";
-import { addHandle } from "actions/newOrder";
-import { setComponentInModal } from "actions/view";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PageTemplate from 'templates/AuthPageTemplate';
+import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
+import FlexTemplate from 'templates/FlexTemplate';
+import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
+import DetailsCards from 'components/molecules/catalog/DetailsCard';
+import HANDLES from 'assets/data/Handles.json';
+import { addHandle } from 'actions/newOrder';
+import { setComponentInModal } from 'actions/view';
 
 const Handles = ({}) => {
  const dispatch = useDispatch();
@@ -16,9 +16,9 @@ const Handles = ({}) => {
  const [handles, setHandles] = useState(HANDLES);
 
  useEffect(() => {
-  if (veneer || color.toLowerCase().includes("bejca")) {
+  if (veneer || color.toLowerCase().includes('bejca')) {
    const newHandles = handles.filter(
-    item => item.name !== "uk" && item.name !== "up" && item.name !== "uc"
+    item => item.name !== 'uk' && item.name !== 'up' && item.name !== 'uc',
    );
 
    console.log(newHandles);

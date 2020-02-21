@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from 'components/atoms/spinner/SpinnerSmall';
 import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
 import Row from 'templates/FlexRowTemplate';
 import Buttons from 'components/molecules/production/Buttons';

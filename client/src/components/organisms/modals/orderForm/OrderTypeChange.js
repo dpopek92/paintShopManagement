@@ -55,10 +55,10 @@ const OrderTypeChange = ({ closeModal }) => {
  };
  const handleOrder = e => setOrderNumber(e.target.value);
 
- const handleSetData = () => {
+ const handleSetData = async () => {
   // GET ORDER BASIC DATA
   if (types.includes(orderType)) {
-   const order = orders.find(item => item.number === orderNumber);
+   const order = await orders.find(item => item.number === orderNumber);
 
    dispatch(
     setOrderAsData(

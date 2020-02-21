@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
 import Row from 'templates/FlexRowTemplate';
 import OrdersList from 'components/molecules/ordersList/static/List';

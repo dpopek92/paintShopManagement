@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Tabs, Tab, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import PageTemplate from "templates/PageTemplate";
-import FullWidthPageTemplate from "templates/FullWidthPageTemplate";
-import { StyledH1 as Heading } from "components/atoms/heading/Headings";
-import Cards from "components/organisms/catalog/Cards";
-import ImageCards from "components/organisms/catalog/ImageCards";
-import Input from "components/atoms/inputs/InputWithButton";
-import FAST from "assets/data/ColorsFast.json";
-import RAL from "assets/data/ColorsRal.json";
-import NCS from "assets/data/ColorsNcs.json";
-import mordantBrown from "assets/data/mordantBrown.json";
-import mordantYellow from "assets/data/mordantYellow.json";
-import mordantWhite from "assets/data/mordantWhite.json";
-import mordantGreen from "assets/data/mordantGreen.json";
-import { addColor } from "actions/newOrder";
-import { setComponentInModal } from "actions/view";
+import React, { useState, useEffect } from 'react';
+import { Tabs, Tab, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import PageTemplate from 'templates/AuthPageTemplate';
+import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
+import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
+import Cards from 'components/organisms/catalog/Cards';
+import ImageCards from 'components/organisms/catalog/ImageCards';
+import Input from 'components/atoms/inputs/InputWithButton';
+import FAST from 'assets/data/ColorsFast.json';
+import RAL from 'assets/data/ColorsRal.json';
+import NCS from 'assets/data/ColorsNcs.json';
+import mordantBrown from 'assets/data/mordantBrown.json';
+import mordantYellow from 'assets/data/mordantYellow.json';
+import mordantWhite from 'assets/data/mordantWhite.json';
+import mordantGreen from 'assets/data/mordantGreen.json';
+import { addColor } from 'actions/newOrder';
+import { setComponentInModal } from 'actions/view';
 
 const StyledWrapper = styled.div`
  margin-top: 5px;
@@ -36,9 +36,9 @@ const StyledFlex = styled.div`
 
 const Colors = () => {
  const dispatch = useDispatch();
- const [key, setKey] = useState("FAST");
- const [mordant, setMordant] = useState("");
- const [search, setSearch] = useState("");
+ const [key, setKey] = useState('FAST');
+ const [mordant, setMordant] = useState('');
+ const [search, setSearch] = useState('');
  const [newMordant, setNewMordant] = useState(null);
  const [newColors, setNewColors] = useState(null);
  const MORDANT = mordantWhite.concat(mordantBrown, mordantYellow, mordantGreen);
@@ -50,27 +50,27 @@ const Colors = () => {
     item =>
      item.name
       .toLowerCase()
-      .replace(/[\s-]/g, "")
-      .indexOf(search.toLowerCase().replace(/[/\s-]/g, "")) !== -1
+      .replace(/[\s-]/g, '')
+      .indexOf(search.toLowerCase().replace(/[/\s-]/g, '')) !== -1,
    );
   let newColors = RAL.concat(NCS).filter(
    item =>
     item.name
      .toLowerCase()
-     .replace(/[\s-]/g, "")
-     .indexOf(search.toLowerCase().replace(/[/\s-]/g, "")) !== -1
+     .replace(/[\s-]/g, '')
+     .indexOf(search.toLowerCase().replace(/[/\s-]/g, '')) !== -1,
   );
   setNewColors(newColors);
   setNewMordant(newMordant);
  }, [search]);
 
  const handleClick = (name, type) => {
-  if (type === "mordant") dispatch(addColor("bejca " + name));
+  if (type === 'mordant') dispatch(addColor('bejca ' + name));
   else dispatch(addColor(name));
   dispatch(setComponentInModal(null));
  };
  const addCustomMordant = () => {
-  dispatch(addColor("bejca " + mordant));
+  dispatch(addColor('bejca ' + mordant));
   dispatch(setComponentInModal(null));
  };
  const handleChange = e => setMordant(e.target.value);
@@ -97,17 +97,17 @@ const Colors = () => {
         activeKey={key}
         onSelect={key => setKey(key)}
        >
-        <Tab eventKey={"FAST"} title={"Szybki wybór"}>
-         {key === "FAST" && <Cards items={FAST} onclick={handleClick} />}
+        <Tab eventKey={'FAST'} title={'Szybki wybór'}>
+         {key === 'FAST' && <Cards items={FAST} onclick={handleClick} />}
         </Tab>
-        <Tab eventKey={"RAL"} title={"RAL"}>
-         {key === "RAL" && <Cards items={RAL} onclick={handleClick} />}
+        <Tab eventKey={'RAL'} title={'RAL'}>
+         {key === 'RAL' && <Cards items={RAL} onclick={handleClick} />}
         </Tab>
-        <Tab eventKey={"NCS"} title={"NCS"}>
-         {key === "NCS" && <Cards items={NCS} onclick={handleClick} />}
+        <Tab eventKey={'NCS'} title={'NCS'}>
+         {key === 'NCS' && <Cards items={NCS} onclick={handleClick} />}
         </Tab>
-        <Tab eventKey={"MORDANT"} title={"BEJCA"}>
-         {key === "MORDANT" && (
+        <Tab eventKey={'MORDANT'} title={'BEJCA'}>
+         {key === 'MORDANT' && (
           <>
            <StyledWrapper>
             <Input
@@ -117,7 +117,7 @@ const Colors = () => {
              placeholder="Numer bejcy"
             />
             <small>
-             Pełny wzornik bejc na stronie:{" "}
+             Pełny wzornik bejc na stronie:{' '}
              <a href="https://www.sopur.com.pl/pl/katalog-kolorow">
               sopur.com.pl
              </a>

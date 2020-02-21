@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
-import { Nav, NavDropdown, Button } from "react-bootstrap";
-import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import { Nav, NavDropdown, Button } from 'react-bootstrap';
+import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserNav = ({ handleNewOrder, handleLogOut }) => {
  return (
@@ -39,9 +39,9 @@ const UserNav = ({ handleNewOrder, handleLogOut }) => {
      Forniry
     </NavLink>
 
-    <NavLink to="/catalog/customs" exact className="dropdown-link nav-link">
+    {/* <NavLink to="/catalog/customs" exact className="dropdown-link nav-link">
      Elementy niestandardowe
-    </NavLink>
+    </NavLink> */}
    </NavDropdown>
    <Nav.Item>
     <NavLink to="/prices" exact className="dropdown-link nav-link">
@@ -73,7 +73,7 @@ const UserNav = ({ handleNewOrder, handleLogOut }) => {
 
 UserNav.propTypes = {
  handleNewOrder: PropTypes.func,
- handleLogOut: PropTypes.func
+ handleLogOut: PropTypes.func,
 };
 
 export default UserNav;

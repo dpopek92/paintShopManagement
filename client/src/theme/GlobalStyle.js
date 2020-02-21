@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Montserrat:300,600');
@@ -30,11 +30,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   table{
-    th, td{
+    /* th, td{
       vertical-align: middle !important;
       text-align: center;
       padding: 2px !important;
-    }
+    } */
   }
   .elementNotIncludedToPrice{
      background-color: rgba(177, 207, 241, 0.8);

@@ -43,9 +43,9 @@ const EmployeeNav = ({ handleLogOut }) => {
      Forniry
     </NavLink>
 
-    <NavLink to="/catalog/customs" exact className="dropdown-link nav-link">
+    {/* <NavLink to="/catalog/customs" exact className="dropdown-link nav-link">
      Elementy niestandardowe
-    </NavLink>
+    </NavLink> */}
    </NavDropdown>
 
    <Nav.Item>

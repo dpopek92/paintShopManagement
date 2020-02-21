@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Axios from 'axios';
 import OrderTemplate from 'templates/OrderTemplate';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import Buttons from 'components/molecules/order/TopButtons';
 import OrderRemove from 'components/organisms/modals/order/OrderRemove';
 import SetLostElements from 'components/organisms/modals/order/SetLostElements';

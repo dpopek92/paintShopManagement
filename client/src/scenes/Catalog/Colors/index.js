@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, Tab, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import PageTemplate from 'templates/PageTemplate';
+import { PageHeader, Input, Tabs, notification } from 'antd';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
-import Cards from 'components/organisms/catalog/Cards';
-import ImageCards from 'components/organisms/catalog/ImageCards';
-import Input from 'components/atoms/inputs/InputWithButton';
-import FAST from 'assets/data/ColorsFast.json';
+import FlexTemplate from 'templates/FlexTemplate';
 import RAL from 'assets/data/ColorsRal.json';
 import NCS from 'assets/data/ColorsNcs.json';
 import mordantBrown from 'assets/data/mordantBrown.json';
@@ -17,6 +14,12 @@ import mordantWhite from 'assets/data/mordantWhite.json';
 import mordantGreen from 'assets/data/mordantGreen.json';
 import { addColor } from 'actions/newOrder';
 import { setComponentInModal } from 'actions/view';
+import ColorCard from './components/ColorCard';
+import ImageCard from '../components/ImageCard';
+import { validateSearch } from '../utils';
+
+const { Search: CustomMordantInput } = Input;
+const { TabPane } = Tabs;
 
 const StyledWrapper = styled.div`
  margin-top: 5px;
@@ -26,96 +29,117 @@ const StyledWrapper = styled.div`
   width: 100%;
  }
 `;
-const StyledFlex = styled.div`
- display: flex;
- justify-content: space-between;
- @media (max-width: 600px) {
-  flex-direction: column;
- }
-`;
 
-const Colors = () => {
+const openNotification = color => {
+ notification.success({
+  message: 'Kolory',
+  description: `Wybrałeś kolor: ${color.toUpperCase()}`,
+ });
+};
+
+const Colors = ({ permissionContext }) => {
+ const history = useHistory();
  const dispatch = useDispatch();
- const [key, setKey] = useState('FAST');
- const [mordant, setMordant] = useState('');
+ const [key, setKey] = useState('RAL');
+ const [customMordant, setCustomMordant] = useState('');
  const [search, setSearch] = useState('');
  const [newMordant, setNewMordant] = useState(null);
  const [newColors, setNewColors] = useState(null);
- const MORDANT = mordantWhite.concat(mordantBrown, mordantYellow, mordantGreen);
 
  useEffect(() => {
   const mordant = mordantBrown
    .concat(mordantGreen, mordantWhite, mordantYellow)
-   .filter(
-    item =>
-     item.name
-      .toLowerCase()
-      .replace(/[\s-]/g, '')
-      .indexOf(search.toLowerCase().replace(/[/\s-]/g, '')) !== -1,
-   );
-  const colors = RAL.concat(NCS).filter(
-   item =>
-    item.name
-     .toLowerCase()
-     .replace(/[\s-]/g, '')
-     .indexOf(search.toLowerCase().replace(/[/\s-]/g, '')) !== -1,
+   .filter(item => validateSearch(search, item.name));
+  const colors = RAL.concat(NCS).filter(item =>
+   validateSearch(search, item.name),
   );
   setNewColors(colors);
   setNewMordant(mordant);
  }, [search]);
 
- const handleClick = (name, type) => {
-  if (type === 'mordant') dispatch(addColor(`bejca ${name}`));
-  else dispatch(addColor(name));
-  dispatch(setComponentInModal(null));
+ const handleCustomMordant = e => setCustomMordant(e.target.value);
+ const handleSearch = e => setSearch(e.target.value);
+ const handleTab = tab => setKey(tab);
+
+ const handleColor = (name, type) => {
+  if (permissionContext !== 'employee') {
+   if (type === 'mordant') {
+    dispatch(addColor(`bejca ${name}`));
+    openNotification(`bejca ${name}`);
+   } else {
+    dispatch(addColor(name));
+    openNotification(name);
+   }
+   dispatch(setComponentInModal(null));
+  }
  };
  const addCustomMordant = () => {
-  dispatch(addColor(`bejca ${mordant}`));
+  dispatch(addColor(`bejca ${customMordant}`));
+  openNotification(`bejca ${customMordant}`);
   dispatch(setComponentInModal(null));
  };
- const handleChange = e => setMordant(e.target.value);
- const handleSearch = e => setSearch(e.target.value);
+
  return (
   <div>
    <PageTemplate>
     <FullWidthPageTemplate>
      <>
-      <StyledFlex>
-       <Heading>Kolory</Heading>
-       <StyledWrapper>
-        <Form.Control
-         type="text"
+      <PageHeader
+       ghost={false}
+       onBack={() => history.goBack()}
+       title="Kolory"
+       extra={[
+        <Input
+         key="1"
+         placeholder="Znajdź kolor/bejcę"
          value={search}
+         size="large"
          onChange={handleSearch}
-         placeholder="Wyszukaj"
-        />
-       </StyledWrapper>
-      </StyledFlex>
+         style={{ width: 300 }}
+        />,
+       ]}
+      />
       {!search ? (
-       <Tabs
-        id="controlled-tab-example"
-        activeKey={key}
-        onSelect={key => setKey(key)}
-       >
-        <Tab eventKey="FAST" title="Szybki wybór">
-         {key === 'FAST' && <Cards items={FAST} onclick={handleClick} />}
-        </Tab>
-        <Tab eventKey="RAL" title="RAL">
-         {key === 'RAL' && <Cards items={RAL} onclick={handleClick} />}
-        </Tab>
-        <Tab eventKey="NCS" title="NCS">
-         {key === 'NCS' && <Cards items={NCS} onclick={handleClick} />}
-        </Tab>
-        <Tab eventKey="MORDANT" title="BEJCA">
-         {key === 'MORDANT' && (
-          <>
-           <StyledWrapper>
-            <Input
-             value={mordant}
-             onchange={handleChange}
-             onclick={addCustomMordant}
-             placeholder="Numer bejcy"
+       <Tabs defaultActiveKey={key} size="large" onChange={handleTab}>
+        <TabPane tab="RAL" key="RAL">
+         <FlexTemplate>
+          {key === 'RAL' &&
+           RAL.map(color => (
+            <ColorCard
+             key={color.name}
+             colorName={color.name}
+             colorValue={color.hexValue}
+             onclick={handleColor}
             />
+           ))}
+         </FlexTemplate>
+        </TabPane>
+        <TabPane tab="NCS" key="NCS">
+         <FlexTemplate>
+          {key === 'NCS' &&
+           NCS.map(color => (
+            <ColorCard
+             key={color.name}
+             colorName={color.name}
+             colorValue={color.hexValue}
+             onclick={handleColor}
+            />
+           ))}
+         </FlexTemplate>
+        </TabPane>
+        <TabPane tab="Bejca" key="MORDANT">
+         <>
+          {permissionContext !== 'employee' && (
+           <StyledWrapper>
+            <CustomMordantInput
+             value={customMordant}
+             onChange={handleCustomMordant}
+             placeholder="Inny numer bejcy"
+             enterButton="Dodaj"
+             size="large"
+             onSearch={addCustomMordant}
+            />
+
             <small>
              Pełny wzornik bejc na stronie:{' '}
              <a href="https://www.sopur.com.pl/pl/katalog-kolorow">
@@ -124,20 +148,46 @@ const Colors = () => {
              .
             </small>
            </StyledWrapper>
-           <hr />
-           <ImageCards
-            items={newMordant}
-            type="mordant"
-            onclick={handleClick}
-           />
-          </>
-         )}
-        </Tab>
+          )}
+          <FlexTemplate>
+           {key === 'MORDANT' &&
+            newMordant.map(mordant => (
+             <ImageCard
+              key={mordant.name}
+              itemName={mordant.name}
+              itemImage={mordant.image}
+              type="mordant"
+              onclick={handleColor}
+             />
+            ))}
+          </FlexTemplate>
+         </>
+        </TabPane>
        </Tabs>
       ) : (
        <>
-        <Cards items={newColors} onclick={handleClick} />
-        <ImageCards items={MORDANT} type="mordant" onclick={handleClick} />
+        <FlexTemplate>
+         {newColors.map(color => (
+          <ColorCard
+           key={color.name}
+           colorName={color.name}
+           colorValue={color.hexValue}
+           onclick={addColor}
+          />
+         ))}
+        </FlexTemplate>
+        <FlexTemplate>
+         {' '}
+         {newMordant.map(mordant => (
+          <ImageCard
+           key={mordant.name}
+           itemName={mordant.name}
+           itemImage={mordant.image}
+           type="mordant"
+           onclick={addColor}
+          />
+         ))}
+        </FlexTemplate>
        </>
       )}
      </>

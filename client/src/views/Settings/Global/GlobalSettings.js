@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 // import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { StyledH1 as Heading } from "components/atoms/heading/Headings";
-import PageTemplate from "templates/PageTemplate";
-import FullWidthTemplate from "templates/FullWidthPageTemplate";
-import Prices from "components/organisms/settings/global/Prices";
-import PaintMakers from "components/organisms/settings/global/PaintMakers";
-import Terms from "components/organisms/settings/global/Terms";
-import { setSpinner } from "actions/view";
-import { loadPrices } from "actions/prices";
-import { loadGlobalSettings } from "actions/settings";
-import { signal } from "const/";
+import { useDispatch, useSelector } from 'react-redux';
+import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
+import PageTemplate from 'templates/AuthPageTemplate';
+import FullWidthTemplate from 'templates/FullWidthPageTemplate';
+import Prices from 'components/organisms/settings/global/Prices';
+import PaintMakers from 'components/organisms/settings/global/PaintMakers';
+import Terms from 'components/organisms/settings/global/Terms';
+import { setSpinner } from 'actions/view';
+import { loadPrices } from 'actions/prices';
+import { loadGlobalSettings } from 'actions/settings';
+import { signal } from 'const/';
 
 const GlobalSettings = () => {
  const dispatch = useDispatch();

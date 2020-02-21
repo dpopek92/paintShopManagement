@@ -4,6 +4,7 @@ import * as Sentry from '@sentry/browser';
 import ReactDOM from 'react-dom';
 import './style/index.scss';
 import 'bootstrap/scss/bootstrap.scss';
+import 'antd/dist/antd.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';

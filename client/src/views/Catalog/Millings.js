@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
 import FlexTemplate from 'templates/FlexTemplate';
 import Row from 'templates/FlexRowTemplate';

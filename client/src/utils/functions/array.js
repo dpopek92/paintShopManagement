@@ -12,5 +12,15 @@ export const removeDuplicatesInOrdersArray = array => {
   return unique;
  }, []);
 };
+export const containsOneOf = (array, pattern) => {
+ if (Array.isArray(pattern)) {
+  let state = 0;
+  pattern.forEach(item => {
+   state += array.includes(item);
+  });
+  console.log(state);
+  return state === 1;
+ }
+};
 
 // (unique.includes(item) ? unique : [...unique, item])

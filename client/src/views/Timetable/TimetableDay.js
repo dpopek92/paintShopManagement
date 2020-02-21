@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
-import PageTemplate from 'templates/PageTemplate';
+import PageTemplate from 'templates/AuthPageTemplate';
 import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
 import Row from 'templates/FlexRowTemplate';
 import PositionCheckbox from 'components/organisms/timetable/PositionCheckbox';
