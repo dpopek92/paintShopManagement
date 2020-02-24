@@ -1,3 +1,7 @@
+const websiteAddress = "https://---adres---.pl/";
+const companyName = "FIRMA";
+const adminEmailAddress = "d.popek92@gmail.com";
+
 const productionStates = [
   "Surówka",
   "Podkład",
@@ -177,5 +181,8 @@ module.exports = {
   columnsForEmployeesReport,
   months,
   positionsForTimetables,
-  weekDays
+  weekDays,
+  websiteAddress,
+  companyName,
+  adminEmailAddress
 };

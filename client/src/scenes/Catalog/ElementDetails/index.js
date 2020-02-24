@@ -4,11 +4,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PageHeader, Card, Icon, Modal } from 'antd';
-import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import FlexTemplate from 'templates/FlexTemplate';
-import { StyledH1 as Heading } from 'components/atoms/heading/Headings';
-import CardAction from '../components/CardAction';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import FlexTemplate from 'components/templates/flexTemplate';
 import { useHistory } from 'react-router';
+import CardAction from '../components/CardAction';
 
 const StyledImage = styled.img`
  width: 200px;
@@ -74,6 +73,7 @@ const Element = ({ location }) => {
            />
           );
          }
+         return null;
         })}
        </FlexTemplate>
       </div>
@@ -108,6 +108,8 @@ const Element = ({ location }) => {
  );
 };
 
-Element.propTypes = {};
+Element.propTypes = {
+ location: PropTypes.instanceOf(Object),
+};
 
 export default Element;

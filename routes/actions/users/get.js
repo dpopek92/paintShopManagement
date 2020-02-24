@@ -39,8 +39,6 @@ const getAllUsers = async () => {
 const checkIfUserExist = async email => {
   let user;
   user = await User.findOne({ email });
-  if (!user) user = await Employee.findOne({ email });
-  if (!user) user = await Display.findOne({ email });
   return user;
 };
 

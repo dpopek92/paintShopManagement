@@ -21,22 +21,22 @@ const GlobalStyle = createGlobalStyle`
    color: #fa3e54;
    font-size: 12px;
   }
-  .nav-tabs{
+  /* .nav-tabs{
     .nav-item{
     color: #73a52e;
     font-weight: 400;
     letter-spacing:3px;
     padding: 10px 40px;
     }
-  }
-  table{
+  } */
+  /* table{ */
     /* th, td{
       vertical-align: middle !important;
       text-align: center;
       padding: 2px !important;
     } */
-  }
-  .elementNotIncludedToPrice{
+  /* } */
+  /* .elementNotIncludedToPrice{
      background-color: rgba(177, 207, 241, 0.8);
   }
   .elementToLong{
@@ -103,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
     
     background-color: #e165b9
    }
-  }
+  } */
 `;
 
 export default GlobalStyle;

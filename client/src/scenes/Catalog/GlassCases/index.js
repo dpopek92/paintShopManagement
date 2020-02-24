@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import withContext from 'hoc/withContext';
 import { PageHeader, Card, notification } from 'antd';
-import PageTemplate from 'templates/AuthPageTemplate';
-import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import FlexTemplate from 'templates/FlexTemplate';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import FlexTemplate from 'components/templates/flexTemplate';
 import GLASSCASES from 'assets/data/GlassCases.json';
-import { addGlassCase } from 'actions/newOrder';
-import { setComponentInModal } from 'actions/view';
+// import { addGlassCase } from 'actions/newOrder';
+// import { setComponentInModal } from 'actions/view';
 import CardAction from '../components/CardAction';
 
 const openNotification = glassCase => {
@@ -39,52 +38,50 @@ const Veneers = ({ permissionContext }) => {
  const handleClick = name => {
   if (permissionContext !== 'employee') {
    openNotification(name);
-   dispatch(addGlassCase(name));
-   dispatch(setComponentInModal(null));
+   //    dispatch(addGlassCase(name));
+   //    dispatch(setComponentInModal(null));
   }
  };
  return (
   <div>
-   <PageTemplate>
-    <FullWidthPageTemplate>
-     <>
-      <PageHeader
-       ghost={false}
-       onBack={() => history.goBack()}
-       title="Witryny"
-      />
-      <FlexTemplate>
-       {glassCases.map(item => (
-        <Card
-         key={item.name}
-         style={{ width: 300, margin: 5 }}
-         bodyStyle={{ padding: 0 }}
-         cover={
-          <img
-           alt={`Front ${item.name}`}
-           src={require(`assets/images/glassCases/${item.name}/${item.image}`)}
-          />
-         }
-         actions={[
-          <CardAction onclick={() => handleClick(item.name)}>
-           <>
-            Wybierz <strong>{item.name.toUpperCase()}</strong>
-           </>
-          </CardAction>,
-          <CardAction
-           onclick={() =>
-            history.push(`/catalog/element/${item.name}`, { ...item })
-           }
-          >
-           <>Szczegóły</>
-          </CardAction>,
-         ]}
-        />
-       ))}
-      </FlexTemplate>
-     </>
-    </FullWidthPageTemplate>
-   </PageTemplate>
+   <FullWidthPageTemplate>
+    <>
+     <PageHeader
+      ghost={false}
+      onBack={() => history.goBack()}
+      title="Witryny"
+     />
+     <FlexTemplate>
+      {glassCases.map(item => (
+       <Card
+        key={item.name}
+        style={{ width: 300, margin: 5 }}
+        bodyStyle={{ padding: 0 }}
+        cover={
+         <img
+          alt={`Front ${item.name}`}
+          src={require(`assets/images/glassCases/${item.name}/${item.image}`)}
+         />
+        }
+        actions={[
+         <CardAction onclick={() => handleClick(item.name)}>
+          <>
+           Wybierz <strong>{item.name.toUpperCase()}</strong>
+          </>
+         </CardAction>,
+         <CardAction
+          onclick={() =>
+           history.push(`/catalog/element/${item.name}`, { ...item })
+          }
+         >
+          <>Szczegóły</>
+         </CardAction>,
+        ]}
+       />
+      ))}
+     </FlexTemplate>
+    </>
+   </FullWidthPageTemplate>
   </div>
  );
 };

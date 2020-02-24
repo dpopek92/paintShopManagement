@@ -1,26 +1,15 @@
 const bcrypt = require("bcryptjs");
 const { checkIfUserExist, getUserByEmail } = require("../../actions/users/get");
 const sendEmail = require("../../actions/email/sendEmailTemplate");
+const { websiteAddress, adminEmailAddress } = require("../../utils/const");
 
 const post = {
   createNewUser: async (req, res) => {
-    const {
-      firstname,
-      surname,
-      company,
-      email,
-      password,
-      permission,
-      isAccepted,
-      isTrusted,
-      discount,
-      ordersNumber,
-      currentFreeOrderId
-    } = req.body;
+    const { firstname, surname, company, email, password } = req.body;
     try {
       let user = await checkIfUserExist(email);
       if (user) {
-        return res.status(400).json({ msg: "email" });
+        return res.status(400).json({ email: "Podany email jest już zajęty" });
       }
 
       // Create new user
@@ -29,13 +18,7 @@ const post = {
         surname,
         company,
         email,
-        password,
-        permission,
-        isAccepted,
-        isTrusted,
-        discount,
-        ordersNumber,
-        currentFreeOrderId
+        password
       });
 
       // Encrypt password
@@ -46,13 +29,15 @@ const post = {
       await user.save();
 
       // Sent activate email
-      const subject = "BLOW meble - nowe konto oczekuje na akceptację";
+      const subject = "nowe konto oczekuje na akceptację";
 
       const msg = `<h3>Utworzono nowe konto</h3></br>
       <strong>Użytkownik:</strong></br><p>Imię: ${user.firstname}</br>Nazwisko: ${user.surname}</br>email: ${user.email}</p>
-      <p>Aby zaakceptować kliknij w <a href='https://zamowfronty.pl/api/verify/${user.id}'>LINK</a>.</p>`;
+      <p>Aby zaakceptować kliknij w <a href='
+      ${websiteAddress}api/verify/${user._id}
+      '>LINK</a>.</p>`;
 
-      await sendEmail("biuro@mebleblow.pl", subject, msg);
+      await sendEmail(adminEmailAddress, subject, msg);
 
       console.log(`We have a new user: ${user.email}`);
 
@@ -71,9 +56,9 @@ const post = {
       const user = await getUserByEmail(email);
 
       // Send email
-      const subject = "BLOW meble - odzyskiwanie konta";
+      const subject = "odzyskiwanie konta";
 
-      const msg = `<h3>Odzyskiwanie konta</h3></br><p>Po kliknięciu w <a href='https://zamowfronty.pl/recover/${user._id}'>LINK</a>, będziesz mógł ustawić nowe hasło do swojego konta.</p>`;
+      const msg = `<h3>Odzyskiwanie konta</h3></br><p>Po kliknięciu w <a href='${websiteAddress}recover/${user._id}'>LINK</a>, będziesz mógł ustawić nowe hasło do swojego konta.</p>`;
 
       await sendEmail(email, subject, msg);
 

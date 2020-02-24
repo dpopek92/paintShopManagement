@@ -3,40 +3,40 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ScrollUpButton from 'react-scroll-up-button';
 import PrivateRoute from 'hoc/PrivateRoute';
-import Spinner from 'components/atoms/spinner/Spinner';
+// import Spinner from 'components/atoms/spinner/Spinner';
 import ErrorBoundary from 'ErrorBoundary';
 
 // Layout
-import MainTemplate from 'templates/MainTemplate';
-import Navigation from 'components/organisms/navigation/Navigation';
-import Footer from 'components/molecules/footer/Footer';
+import MainTemplate from 'components/templates/mainTemplate';
+import Navigation from 'components/navigation';
+// import Footer from 'components/molecules/footer/Footer';
 
 // Stats
-import ProductionStatistics from 'views/Statistics/Production';
-import EmployeesStatistics from 'views/Statistics/Employees';
-import CustomersStatistics from 'views/Statistics/Customers';
+// import ProductionStatistics from 'views/Statistics/Production';
+// import EmployeesStatistics from 'views/Statistics/Employees';
+// import CustomersStatistics from 'views/Statistics/Customers';
 
 // Timetable
-import Timetable from 'views/Timetable/Timetable';
-import TimetableDay from 'views/Timetable/TimetableDay';
+// import Timetable from 'views/Timetable/Timetable';
+// import TimetableDay from 'views/Timetable/TimetableDay';
 
 // Users
 import Customers from 'scenes/UsersLists/Customers';
-import Customer from 'views/Customer/Customer';
-import Employees from 'views/Employees/Employees';
-import Employee from 'views/Employee/Employee';
-import AccountSettings from 'views/Settings/Account/AccountSettins';
-import GlobalSettings from 'views/Settings/Global/GlobalSettings';
-import Prices from 'views/UserPriceList/UserPriceList';
+// import Customer from 'views/Customer/Customer';
+// import Employees from 'views/Employees/Employees';
+// import Employee from 'views/Employee/Employee';
+// import AccountSettings from 'views/Settings/Account/AccountSettins';
+// import GlobalSettings from 'views/Settings/Global/GlobalSettings';
+// import Prices from 'views/UserPriceList/UserPriceList';
 
 // Orders
-import Order from 'views/Order/Order';
-import OrderForm from 'views/OrderForm/NewOrderForm';
-import EditOrderForm from 'views/OrderForm/EditOrderForm';
-import OrderSummary from 'views/OrderForm/OrderSummary';
-import Production from 'views/Production/Production';
-import PaintsOrder from 'views/Paints/PaintsOrder';
-import HomePage from 'views/Home/Container';
+// import Order from 'views/Order/Order';
+// import OrderForm from 'views/OrderForm/NewOrderForm';
+// import EditOrderForm from 'views/OrderForm/EditOrderForm';
+// import OrderSummary from 'views/OrderForm/OrderSummary';
+// import Production from 'views/Production/Production';
+// import PaintsOrder from 'views/Paints/PaintsOrder';
+// import HomePage from 'views/Home/Container';
 
 // Catalog
 import Colors from 'scenes/Catalog/Colors';
@@ -48,20 +48,20 @@ import Customs from 'scenes/Catalog/Customs';
 import Element from 'scenes/Catalog/ElementDetails';
 
 // Other
-import Regulations from 'views/Regulations/Regulations';
-import RegisterPage from 'views/Register/Register';
-import LoginPage from 'views/Login/Login';
-import PasswordRemind from 'views/PasswordRemind/PasswordRemind';
-import AccountRecover from 'views/PasswordRemind/AccountRecover';
-import ErrorPage from 'views/Error/Error';
-import Contact from 'views/Contact/Contact';
+// import Regulations from 'views/Regulations/Regulations';
+import RegisterPage from 'scenes/Sign/Register';
+import LoginPage from 'scenes/Sign/Login';
+// import PasswordRemind from 'views/PasswordRemind/PasswordRemind';
+// import AccountRecover from 'views/PasswordRemind/AccountRecover';
+// import ErrorPage from 'views/Error/Error';
+// import Contact from 'views/Contact/Contact';
 
-import UserNotAccepted from 'components/modals/UserNotAccepted';
-import AccountActive from 'components/auth/AccountActive';
-import Manual from 'components/manual/Manual';
+// import UserNotAccepted from 'components/modals/UserNotAccepted';
+// import AccountActive from 'components/auth/AccountActive';
+// import Manual from 'components/manual/Manual';
 
-import setAuthToken from 'helpers/setAuthToken';
-import { loadUser, logOutUser } from 'actions/auth';
+import setAuthToken from 'services/utils/setAuthToken';
+// import { loadUser, logOutUser } from 'actions/auth';
 
 // IF IS TOKEN, SET TO HEADERS IN AXIOS REQUESTS
 if (localStorage.token) {
@@ -71,22 +71,22 @@ if (localStorage.token) {
 // LOAD USER DATA
 const App = () => {
  const dispatch = useDispatch();
- const isSpinner = useSelector(state => state.view.isSpinner);
- const user = useSelector(state => state.auth.user);
- const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+ //  const isSpinner = useSelector(state => state.view.isSpinner);
+ //  const user = useSelector(state => state.auth.user);
+ //  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
  //  GET USER
  useEffect(() => {
-  dispatch(loadUser());
+  //   dispatch(loadUser());
  }, []);
 
  return (
   <div>
    <ErrorBoundary>
-    {isAuthenticated && user.isAccepted === false && (
+    {/* {isAuthenticated && user.isAccepted === false && (
      <UserNotAccepted id={user._id} logOut={() => dispatch(logOutUser())} />
-    )}
-    {isSpinner && <Spinner />}
+    )} */}
+    {/* {isSpinner && <Spinner />} */}
     <ScrollUpButton />
     <Router>
      <MainTemplate>
@@ -96,7 +96,7 @@ const App = () => {
        <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/passwordremind" component={PasswordRemind} />
+        {/* <Route path="/passwordremind" component={PasswordRemind} />
         <Route path="/recover/:userId" component={AccountRecover} />
         <Route path="/regulations" component={Regulations} />
         <Route path="/activated" component={AccountActive} />
@@ -156,14 +156,14 @@ const App = () => {
          permissions={['admin']}
          path="/statistics/customers"
          component={CustomersStatistics}
-        />
+        /> */}
         <PrivateRoute
          permissions={['admin']}
          exact
          path="/customers"
          component={Customers}
         />
-        <PrivateRoute
+        {/* <PrivateRoute
          permissions={['admin']}
          path="/customers/:id"
          component={Customer}
@@ -188,7 +188,7 @@ const App = () => {
          permissions={['admin']}
          path="/employees/:id"
          component={Employee}
-        />
+        /> */}
         <Route path="/catalog/colors" component={Colors} />
         <Route path="/catalog/veneers" component={Veneers} />
         <Route path="/catalog/handles" component={Handles} />
@@ -196,7 +196,7 @@ const App = () => {
         <Route path="/catalog/glassCases" component={GlassCases} />
         <Route path="/catalog/customs" component={Customs} />
         <Route path="/catalog/element/:name" exact component={Element} />
-        <PrivateRoute
+        {/* <PrivateRoute
          permissions={['admin', 'user']}
          path="/manual"
          exact
@@ -208,10 +208,10 @@ const App = () => {
          exact
          component={GlobalSettings}
         />
-        <Route path="/settings/account" exact component={AccountSettings} />
-        <Route component={ErrorPage} />
+        <Route path="/settings/account" exact component={AccountSettings} /> */}
+        {/* <Route component={ErrorPage} /> */}
        </Switch>
-       <Footer />
+       {/* <Footer /> */}
       </>
      </MainTemplate>
     </Router>

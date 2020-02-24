@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from "prop-types";
 import { useSelector, useDispatch } from 'react-redux';
 import { PageHeader, Table, Icon } from 'antd';
-import PageTemplate from 'templates/AuthPageTemplate';
-import FullWidthTemplate from 'templates/FullWidthPageTemplate';
-import List from 'components/molecules/customersList/List';
-import { setSpinner } from 'actions/view';
-import { loadCustomers } from 'actions/customers';
-import { signal } from 'const/';
+import PageTemplate from 'components/templates/authTemplate';
+import FullWidthTemplate from 'components/templates/fullWidth';
+// import { setSpinner } from 'actions/view';
+import {
+ getCustomers,
+ setSortCustomersList,
+} from 'services/store/actions/customer';
+import sortListBy from 'services/utils/sort/sortMethods';
+import { signal } from 'services/const';
 import { useHistory } from 'react-router';
-import sortBy from 'services/utils/sort/sortMethods';
 
 const columns = [
  {
@@ -37,43 +39,47 @@ const columns = [
 const Customers = () => {
  const history = useHistory();
  const dispatch = useDispatch();
- const customers = useSelector(state => state.customers.list);
- //  const sortBy = useSelector(state => state.view.sortList.customersList);
- const [list, setList] = useState(null);
+ const customers = useSelector(state => state.customers);
+ const { list, sortBy, sortDirection } = customers;
+
+ const [customersList, setCustomersList] = useState([]);
+ const [isLoading, setIsLoading] = useState(true);
 
  useEffect(() => {
-  dispatch(setSpinner(true));
-  dispatch(loadCustomers(() => dispatch(setSpinner(false)), signal.token));
+  setIsLoading(true);
+  dispatch(getCustomers(() => setIsLoading(false), signal.token));
  }, []);
 
  useEffect(() => {
-  if (customers) {
-   const customersList = customers.map((customer, index) => {
-    const { company, firstname, surname, ordersNumber } = customer;
-    return {
-     key: index,
-     company,
-     firstname,
-     surname,
-     ordersNumber,
-    };
-   });
-   setList(customersList);
+  if (list && sortBy) {
+   const newList = list
+    .sort((a, b) =>
+     sortListBy[sortBy === 'ordersNumber' ? 'number' : 'string'](
+      a,
+      b,
+      sortDirection,
+      sortBy,
+     ),
+    )
+    .map((customer, index) => {
+     const { company, firstname, surname, ordersNumber } = customer;
+     return {
+      key: index,
+      company,
+      firstname,
+      surname,
+      ordersNumber,
+     };
+    });
+   setCustomersList(newList);
   }
- }, [customers]);
+ }, [list, sortBy, sortDirection]);
 
  const onChange = (pagination, filters, sorter) => {
-  const { field } = sorter;
-  const newList = list.sort((a, b) =>
-   sortBy[field === 'ordersNumber' ? 'number' : 'string'](
-    a,
-    b,
-    sorter.order,
-    sorter.field,
-   ),
-  );
-  setList(newList);
+  dispatch(setSortCustomersList(sorter.field, sorter.order || 'ascend'));
  };
+
+ // przemyśleć jak w prosty sposób ogarnąć sortowanie
 
  return (
   <PageTemplate>
@@ -85,17 +91,17 @@ const Customers = () => {
       title="Klienci"
      />
      <>
-      {list && (
+      {
        <Table
+        loading={isLoading}
         size="middle"
         pagination={false}
         columns={columns}
-        dataSource={list}
+        dataSource={customersList}
         onChange={onChange}
        />
-      )}
+      }
      </>
-     {/* <>{customers && <List />}</> */}
     </>
    </FullWidthTemplate>
   </PageTemplate>

@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/prefer-default-export */
-const sortBy = {
+const sortListBy = {
  string: (a, b, type, key) => {
   if (type === 'ascend') return a[key].localeCompare(b[key]);
   if (type === 'descend') return b[key].localeCompare(a[key]);
@@ -17,4 +17,4 @@ const sortBy = {
  },
 };
 
-export default sortBy;
+export default sortListBy;

@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { PageHeader, Input, Tabs, notification } from 'antd';
-import PageTemplate from 'templates/AuthPageTemplate';
-import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import FlexTemplate from 'templates/FlexTemplate';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import FlexTemplate from 'components/templates/flexTemplate';
 import ALPI from 'assets/data/VeneersAlpi.json';
 import CALIFORNIA from 'assets/data/VeneersCalifornia.json';
 import NATURAL from 'assets/data/VeneersNatural.json';
-import { addVeneer } from 'actions/newOrder';
-import { setComponentInModal } from 'actions/view';
+// import { addVeneer } from 'actions/newOrder';
+// import { setComponentInModal } from 'actions/view';
 import { containsOneOf } from 'services/utils/array';
 import withContext from 'hoc/withContext';
 import ImageCard from '../components/ImageCard';
@@ -60,9 +59,9 @@ const Veneers = ({ permissionContext }) => {
    !containsOneOf(excludedHandles, [handleSymbol1, handleSymbol2]) &&
    ((glassCaseSymbol && glassCaseSymbol === 'W4') || !glassCaseSymbol)
   ) {
-   dispatch(addVeneer(name));
+   //  dispatch(addVeneer(name));
    openNotification('success', name);
-   dispatch(setComponentInModal(null));
+   //  dispatch(setComponentInModal(null));
   } else {
    openNotification('error', name);
   }
@@ -70,59 +69,57 @@ const Veneers = ({ permissionContext }) => {
 
  return (
   <div>
-   <PageTemplate>
-    <FullWidthPageTemplate>
-     <>
-      <PageHeader
-       ghost={false}
-       onBack={() => history.goBack()}
-       title="Forniry"
-       extra={[
-        <Input
-         key="1"
-         placeholder="Znajdź fornir"
-         value={search}
-         size="large"
-         onChange={handleSearch}
-         style={{ width: 300 }}
-        />,
-       ]}
-      />
-      {!search ? (
-       <Tabs defaultActiveKey={key} size="large" onChange={handleTab}>
-        {Object.keys(veneersArr).map(veneerKey => (
-         <TabPane tab={veneerKey} key={veneerKey}>
-          <FlexTemplate>
-           {key === veneerKey &&
-            veneersArr[veneerKey].map(veneer => (
-             <ImageCard
-              key={veneer.name}
-              itemName={veneer.name}
-              itemImage={veneer.image}
-              type="veneers"
-              onclick={handleClick}
-             />
-            ))}
-          </FlexTemplate>
-         </TabPane>
-        ))}
-       </Tabs>
-      ) : (
-       <FlexTemplate>
-        {newVeneers.map(veneer => (
-         <ImageCard
-          key={veneer.image}
-          itemName={veneer.name}
-          itemImage={veneer.image}
-          type="veneers"
-          onclick={handleClick}
-         />
-        ))}
-       </FlexTemplate>
-      )}
-     </>
-    </FullWidthPageTemplate>
-   </PageTemplate>
+   <FullWidthPageTemplate>
+    <>
+     <PageHeader
+      ghost={false}
+      onBack={() => history.goBack()}
+      title="Forniry"
+      extra={[
+       <Input
+        key="1"
+        placeholder="Znajdź fornir"
+        value={search}
+        size="large"
+        onChange={handleSearch}
+        style={{ width: 300 }}
+       />,
+      ]}
+     />
+     {!search ? (
+      <Tabs defaultActiveKey={key} size="large" onChange={handleTab}>
+       {Object.keys(veneersArr).map(veneerKey => (
+        <TabPane tab={veneerKey} key={veneerKey}>
+         <FlexTemplate>
+          {key === veneerKey &&
+           veneersArr[veneerKey].map(veneer => (
+            <ImageCard
+             key={veneer.name}
+             itemName={veneer.name}
+             itemImage={veneer.image}
+             type="veneers"
+             onclick={handleClick}
+            />
+           ))}
+         </FlexTemplate>
+        </TabPane>
+       ))}
+      </Tabs>
+     ) : (
+      <FlexTemplate>
+       {newVeneers.map(veneer => (
+        <ImageCard
+         key={veneer.image}
+         itemName={veneer.name}
+         itemImage={veneer.image}
+         type="veneers"
+         onclick={handleClick}
+        />
+       ))}
+      </FlexTemplate>
+     )}
+    </>
+   </FullWidthPageTemplate>
   </div>
  );
 };

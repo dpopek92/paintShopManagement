@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { PageHeader, Card, notification } from 'antd';
-import PageTemplate from 'templates/AuthPageTemplate';
-import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import FlexTemplate from 'templates/FlexTemplate';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import FlexTemplate from 'components/templates/flexTemplate';
 import HANDLES from 'assets/data/Handles.json';
-import { addHandle } from 'actions/newOrder';
-import { setComponentInModal } from 'actions/view';
+// import { addHandle } from 'actions/newOrder';
+// import { setComponentInModal } from 'actions/view';
 import { useHistory } from 'react-router';
 import withContext from 'hoc/withContext';
 import CardAction from '../components/CardAction';
@@ -41,53 +40,51 @@ const Handles = ({ permissionContext }) => {
 
  const handleClick = name => {
   if (permissionContext !== 'employee') {
-   dispatch(addHandle(name));
+   //    dispatch(addHandle(name));
    openNotification(name);
-   dispatch(setComponentInModal(null));
+   //    dispatch(setComponentInModal(null));
   }
  };
  return (
   <div>
-   <PageTemplate>
-    <FullWidthPageTemplate>
-     <>
-      <PageHeader
-       ghost={false}
-       onBack={() => history.goBack()}
-       title="Uchwyty frezowane"
-      />
-      <FlexTemplate>
-       {handles.map(item => (
-        <Card
-         key={item.name}
-         style={{ width: 300, margin: 5 }}
-         bodyStyle={{ padding: 0 }}
-         cover={
-          <img
-           alt={`Uchwyt ${item.name}`}
-           src={require(`assets/images/handles/${item.name}/${item.image}`)}
-          />
-         }
-         actions={[
-          <CardAction onclick={() => handleClick(item.name)}>
-           <>
-            Wybierz <strong>{item.name.toUpperCase()}</strong>
-           </>
-          </CardAction>,
-          <CardAction
-           onclick={() =>
-            history.push(`/catalog/element/${item.name}`, { ...item })
-           }
-          >
-           <>Szczegóły</>
-          </CardAction>,
-         ]}
-        />
-       ))}
-      </FlexTemplate>
-     </>
-    </FullWidthPageTemplate>
-   </PageTemplate>
+   <FullWidthPageTemplate>
+    <>
+     <PageHeader
+      ghost={false}
+      onBack={() => history.goBack()}
+      title="Uchwyty frezowane"
+     />
+     <FlexTemplate>
+      {handles.map(item => (
+       <Card
+        key={item.name}
+        style={{ width: 300, margin: 5 }}
+        bodyStyle={{ padding: 0 }}
+        cover={
+         <img
+          alt={`Uchwyt ${item.name}`}
+          src={require(`assets/images/handles/${item.name}/${item.image}`)}
+         />
+        }
+        actions={[
+         <CardAction onclick={() => handleClick(item.name)}>
+          <>
+           Wybierz <strong>{item.name.toUpperCase()}</strong>
+          </>
+         </CardAction>,
+         <CardAction
+          onclick={() =>
+           history.push(`/catalog/element/${item.name}`, { ...item })
+          }
+         >
+          <>Szczegóły</>
+         </CardAction>,
+        ]}
+       />
+      ))}
+     </FlexTemplate>
+    </>
+   </FullWidthPageTemplate>
   </div>
  );
 };

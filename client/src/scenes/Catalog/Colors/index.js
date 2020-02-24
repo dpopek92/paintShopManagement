@@ -3,17 +3,16 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { PageHeader, Input, Tabs, notification } from 'antd';
-import PageTemplate from 'templates/AuthPageTemplate';
-import FullWidthPageTemplate from 'templates/FullWidthPageTemplate';
-import FlexTemplate from 'templates/FlexTemplate';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import FlexTemplate from 'components/templates/flexTemplate';
 import RAL from 'assets/data/ColorsRal.json';
 import NCS from 'assets/data/ColorsNcs.json';
 import mordantBrown from 'assets/data/mordantBrown.json';
 import mordantYellow from 'assets/data/mordantYellow.json';
 import mordantWhite from 'assets/data/mordantWhite.json';
 import mordantGreen from 'assets/data/mordantGreen.json';
-import { addColor } from 'actions/newOrder';
-import { setComponentInModal } from 'actions/view';
+// import { addColor } from 'actions/newOrder';
+// import { setComponentInModal } from 'actions/view';
 import ColorCard from './components/ColorCard';
 import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
@@ -64,135 +63,133 @@ const Colors = ({ permissionContext }) => {
  const handleColor = (name, type) => {
   if (permissionContext !== 'employee') {
    if (type === 'mordant') {
-    dispatch(addColor(`bejca ${name}`));
+    // dispatch(addColor(`bejca ${name}`));
     openNotification(`bejca ${name}`);
    } else {
-    dispatch(addColor(name));
+    // dispatch(addColor(name));
     openNotification(name);
    }
-   dispatch(setComponentInModal(null));
+   //  dispatch(setComponentInModal(null));
   }
  };
  const addCustomMordant = () => {
-  dispatch(addColor(`bejca ${customMordant}`));
+  // dispatch(addColor(`bejca ${customMordant}`));
   openNotification(`bejca ${customMordant}`);
-  dispatch(setComponentInModal(null));
+  // dispatch(setComponentInModal(null));
  };
 
  return (
   <div>
-   <PageTemplate>
-    <FullWidthPageTemplate>
-     <>
-      <PageHeader
-       ghost={false}
-       onBack={() => history.goBack()}
-       title="Kolory"
-       extra={[
-        <Input
-         key="1"
-         placeholder="Znajdź kolor/bejcę"
-         value={search}
-         size="large"
-         onChange={handleSearch}
-         style={{ width: 300 }}
-        />,
-       ]}
-      />
-      {!search ? (
-       <Tabs defaultActiveKey={key} size="large" onChange={handleTab}>
-        <TabPane tab="RAL" key="RAL">
-         <FlexTemplate>
-          {key === 'RAL' &&
-           RAL.map(color => (
-            <ColorCard
-             key={color.name}
-             colorName={color.name}
-             colorValue={color.hexValue}
-             onclick={handleColor}
-            />
-           ))}
-         </FlexTemplate>
-        </TabPane>
-        <TabPane tab="NCS" key="NCS">
-         <FlexTemplate>
-          {key === 'NCS' &&
-           NCS.map(color => (
-            <ColorCard
-             key={color.name}
-             colorName={color.name}
-             colorValue={color.hexValue}
-             onclick={handleColor}
-            />
-           ))}
-         </FlexTemplate>
-        </TabPane>
-        <TabPane tab="Bejca" key="MORDANT">
-         <>
-          {permissionContext !== 'employee' && (
-           <StyledWrapper>
-            <CustomMordantInput
-             value={customMordant}
-             onChange={handleCustomMordant}
-             placeholder="Inny numer bejcy"
-             enterButton="Dodaj"
-             size="large"
-             onSearch={addCustomMordant}
-            />
+   <FullWidthPageTemplate>
+    <>
+     <PageHeader
+      ghost={false}
+      onBack={() => history.goBack()}
+      title="Kolory"
+      extra={[
+       <Input
+        key="1"
+        placeholder="Znajdź kolor/bejcę"
+        value={search}
+        size="large"
+        onChange={handleSearch}
+        style={{ width: 300 }}
+       />,
+      ]}
+     />
+     {!search ? (
+      <Tabs defaultActiveKey={key} size="large" onChange={handleTab}>
+       <TabPane tab="RAL" key="RAL">
+        <FlexTemplate>
+         {key === 'RAL' &&
+          RAL.map(color => (
+           <ColorCard
+            key={color.name}
+            colorName={color.name}
+            colorValue={color.hexValue}
+            onclick={handleColor}
+           />
+          ))}
+        </FlexTemplate>
+       </TabPane>
+       <TabPane tab="NCS" key="NCS">
+        <FlexTemplate>
+         {key === 'NCS' &&
+          NCS.map(color => (
+           <ColorCard
+            key={color.name}
+            colorName={color.name}
+            colorValue={color.hexValue}
+            onclick={handleColor}
+           />
+          ))}
+        </FlexTemplate>
+       </TabPane>
+       <TabPane tab="Bejca" key="MORDANT">
+        <>
+         {permissionContext !== 'employee' && (
+          <StyledWrapper>
+           <CustomMordantInput
+            value={customMordant}
+            onChange={handleCustomMordant}
+            placeholder="Inny numer bejcy"
+            enterButton="Dodaj"
+            size="large"
+            onSearch={addCustomMordant}
+           />
 
-            <small>
-             Pełny wzornik bejc na stronie:{' '}
-             <a href="https://www.sopur.com.pl/pl/katalog-kolorow">
-              sopur.com.pl
-             </a>
-             .
-            </small>
-           </StyledWrapper>
-          )}
-          <FlexTemplate>
-           {key === 'MORDANT' &&
-            newMordant.map(mordant => (
-             <ImageCard
-              key={mordant.name}
-              itemName={mordant.name}
-              itemImage={mordant.image}
-              type="mordant"
-              onclick={handleColor}
-             />
-            ))}
-          </FlexTemplate>
-         </>
-        </TabPane>
-       </Tabs>
-      ) : (
-       <>
-        <FlexTemplate>
-         {newColors.map(color => (
-          <ColorCard
-           key={color.name}
-           colorName={color.name}
-           colorValue={color.hexValue}
-           onclick={addColor}
-          />
-         ))}
-        </FlexTemplate>
-        <FlexTemplate>
-         {' '}
-         {newMordant.map(mordant => (
-          <ImageCard
-           key={mordant.name}
-           itemName={mordant.name}
-           itemImage={mordant.image}
-           type="mordant"
-           onclick={addColor}
-          />
-         ))}
-        </FlexTemplate>
-       </>
-      )}
-     </>
-    </FullWidthPageTemplate>
-   </PageTemplate>
+           <small>
+            Pełny wzornik bejc na stronie:{' '}
+            <a href="https://www.sopur.com.pl/pl/katalog-kolorow">
+             sopur.com.pl
+            </a>
+            .
+           </small>
+          </StyledWrapper>
+         )}
+         <FlexTemplate>
+          {key === 'MORDANT' &&
+           newMordant.map(mordant => (
+            <ImageCard
+             key={mordant.name}
+             itemName={mordant.name}
+             itemImage={mordant.image}
+             type="mordant"
+             onclick={handleColor}
+            />
+           ))}
+         </FlexTemplate>
+        </>
+       </TabPane>
+      </Tabs>
+     ) : (
+      <>
+       <FlexTemplate>
+        {newColors.map(color => (
+         <ColorCard
+          key={color.name}
+          colorName={color.name}
+          colorValue={color.hexValue}
+          // onclick={addColor}
+         />
+        ))}
+       </FlexTemplate>
+       <FlexTemplate>
+        {' '}
+        {newMordant.map(mordant => (
+         <ImageCard
+          key={mordant.name}
+          itemName={mordant.name}
+          itemImage={mordant.image}
+          type="mordant"
+          // onclick={addColor}
+         />
+        ))}
+       </FlexTemplate>
+      </>
+     )}
+    </>
+   </FullWidthPageTemplate>
   </div>
  );
 };
