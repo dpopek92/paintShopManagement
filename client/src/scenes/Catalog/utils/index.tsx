@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export const validateSearch = (searchValue, itemName) =>
+export const validateSearch = (searchValue: string, itemName: string) =>
  itemName
   .toLowerCase()
   .replace(/[\s-]/g, '')

@@ -80,6 +80,7 @@ const App = () => {
   //   dispatch(loadUser());
  }, []);
 
+ console.log(LoginPage);
  return (
   <div>
    <ErrorBoundary>

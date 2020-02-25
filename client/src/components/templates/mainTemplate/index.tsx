@@ -1,17 +1,19 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import permissionContext from 'context';
 import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/MainTheme';
 import { ThemeProvider } from 'styled-components';
 import withContext from 'hoc/withContext';
+// import { withRouter } from 'react-router';
 
-type index = {
- permission?: string;
-};
+interface Props {
+ permission: string | undefined;
+}
 
-const index: FunctionComponent<index> = ({ children, permission }) => {
+const MainTemplate: React.FC<Props> = ({ children }) => {
  // loadUser
  // setPositionForEmployee
+ const permission = localStorage.permission;
  return (
   <permissionContext.Provider value={permission}>
    <GlobalStyle />
@@ -20,4 +22,4 @@ const index: FunctionComponent<index> = ({ children, permission }) => {
  );
 };
 
-export default withContext(index);
+export default withContext(MainTemplate);

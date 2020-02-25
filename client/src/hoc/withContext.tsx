@@ -1,8 +1,8 @@
-import React from "react";
-import permissionContext from "context";
+import React from 'react';
+import permissionContext from 'context';
 
-const withContext = Component => {
- return function contextComponent(props) {
+const withContext = (Component: React.FC<any>) => {
+ return function contextComponent(props: any) {
   return (
    <permissionContext.Consumer>
     {context => <Component {...props} permissionContext={context} />}

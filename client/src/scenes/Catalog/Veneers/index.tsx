@@ -15,9 +15,9 @@ import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
 
 const { TabPane } = Tabs;
-const veneersArr = { ALPI, CALIFORNIA, NATURAL };
+const veneersArr: { [key: string]: veneer[] } = { ALPI, CALIFORNIA, NATURAL };
 
-const openNotification = (type, veneer) => {
+const openNotification = (type: 'error' | 'success', veneer: string) => {
  notification[type]({
   message: 'Forniry',
   description:
@@ -29,20 +29,33 @@ const openNotification = (type, veneer) => {
 
 const excludedHandles = ['UK', 'UP', 'UC'];
 
-const Veneers = ({ permissionContext }) => {
+interface Props {
+ permissionContext: string;
+}
+interface veneer {
+ type: string;
+ id: string;
+ symbol: string;
+ distribution: string;
+ name: string;
+ image: string;
+ text: string;
+}
+
+const Veneers = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- const newOrder = useSelector(state => state.newOrder);
- const [key, setKey] = useState('ALPI');
- const [search, setSearch] = useState('');
- const [newVeneers, setNewVeneers] = useState(null);
- const {
-  handleSymbol1,
-  handleSymbol2,
-  millingSymbol,
-  glassCaseSymbol,
- } = newOrder;
-
+ //  const newOrder = useSelector(state => state.newOrder);
+ const [key, setKey] = useState<string>('ALPI');
+ const [search, setSearch] = useState<string>('');
+ const [newVeneers, setNewVeneers] = useState<veneer[] | []>([]);
+ //  const {
+ //   handleSymbol1,
+ //   handleSymbol2,
+ //   millingSymbol,
+ //   glassCaseSymbol,
+ //  } = newOrder;
+ console.log('veneers');
  useEffect(() => {
   const veneers = ALPI.concat(CALIFORNIA, NATURAL).filter(item =>
    validateSearch(search, item.name),
@@ -50,22 +63,29 @@ const Veneers = ({ permissionContext }) => {
   setNewVeneers(veneers);
  }, [search]);
 
- const handleTab = tab => setKey(tab);
- const handleSearch = e => setSearch(e.target.value);
- const handleClick = name => {
-  if (
-   permissionContext !== 'employee' &&
-   !millingSymbol &&
-   !containsOneOf(excludedHandles, [handleSymbol1, handleSymbol2]) &&
-   ((glassCaseSymbol && glassCaseSymbol === 'W4') || !glassCaseSymbol)
-  ) {
-   //  dispatch(addVeneer(name));
-   openNotification('success', name);
-   //  dispatch(setComponentInModal(null));
-  } else {
-   openNotification('error', name);
-  }
+ const handleTab = (tab: string) => setKey(tab);
+ const handleSearch = (e: { target: HTMLInputElement }) =>
+  setSearch(e.target.value);
+ const handleClick = (name: string) => {
+  // if (
+  //  permissionContext !== 'employee' &&
+  //  !millingSymbol &&
+  //  !containsOneOf(excludedHandles, [handleSymbol1, handleSymbol2]) &&
+  //  ((glassCaseSymbol && glassCaseSymbol === 'W4') || !glassCaseSymbol)
+  // ) {
+  //  dispatch(addVeneer(name));
+  openNotification('success', name);
+  //  dispatch(setComponentInModal(null));
+  // } else {
+  //  openNotification('error', name);
+  // }
  };
+
+ type ArrayElem<A> = A extends Array<infer Elem> ? Elem : never;
+
+ function elemT<T>(array: T): Array<ArrayElem<T>> {
+  return array as any;
+ }
 
  return (
   <div>
@@ -107,7 +127,7 @@ const Veneers = ({ permissionContext }) => {
       </Tabs>
      ) : (
       <FlexTemplate>
-       {newVeneers.map(veneer => (
+       {elemT(newVeneers).map((veneer: veneer) => (
         <ImageCard
          key={veneer.image}
          itemName={veneer.name}

@@ -1,6 +1,7 @@
 [
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "0",
   "distribution": "Natural",
   "name": "Acajou",
@@ -9,6 +10,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "1",
   "distribution": "Natural",
   "name": "Amazakue",
@@ -17,6 +19,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "2",
   "distribution": "Natural",
   "name": "Anegre",
@@ -25,6 +28,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "3",
   "distribution": "Natural",
   "name": "Badi",
@@ -33,6 +37,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "4",
   "distribution": "Natural",
   "name": "Bambus - ciemny",
@@ -41,6 +46,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "5",
   "distribution": "Natural",
   "name": "Bambus - jasny",
@@ -49,6 +55,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "6",
   "distribution": "Natural",
   "name": "Brzoza",
@@ -57,6 +64,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "7",
   "distribution": "Natural",
   "name": "Bubinga",
@@ -65,6 +73,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "8",
   "distribution": "Natural",
   "name": "Buk",
@@ -73,6 +82,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "9",
   "distribution": "Natural",
   "name": "Ceiba",
@@ -81,6 +91,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "10",
   "distribution": "Natural",
   "name": "Cocobolo",
@@ -89,6 +100,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "11",
   "distribution": "Natural",
   "name": "Czereśnia amerykańska",
@@ -97,6 +109,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "12",
   "distribution": "Natural",
   "name": "Dąb",
@@ -105,6 +118,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "13",
   "distribution": "Natural",
   "name": "Dąb czarny",
@@ -113,6 +127,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "14",
   "distribution": "Natural",
   "name": "Dąb - czeczot",
@@ -121,6 +136,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "15",
   "distribution": "Natural",
   "name": "Drzewo kasztanowe",
@@ -129,6 +145,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "16",
   "distribution": "Natural",
   "name": "Drzewo różane",
@@ -137,6 +154,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "17",
   "distribution": "Natural",
   "name": "Drzewo tygrysie",
@@ -145,6 +163,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "18",
   "distribution": "Natural",
   "name": "Eldorado",
@@ -153,6 +172,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "19",
   "distribution": "Natural",
   "name": "Frake czarne",
@@ -161,6 +181,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "20",
   "distribution": "Natural",
   "name": "Frejo",
@@ -169,6 +190,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "21",
   "distribution": "Natural",
   "name": "Grusza",
@@ -177,6 +199,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "22",
   "distribution": "Natural",
   "name": "Heban",
@@ -185,6 +208,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "23",
   "distribution": "Natural",
   "name": "Iroko",
@@ -193,6 +217,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "24",
   "distribution": "Natural",
   "name": "Jabłoń indyjska",
@@ -201,6 +226,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "25",
   "distribution": "Natural",
   "name": "Jatoba",
@@ -209,6 +235,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "26",
   "distribution": "Natural",
   "name": "Jesion",
@@ -217,6 +244,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "27",
   "distribution": "Natural",
   "name": "Klon",
@@ -225,6 +253,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "28",
   "distribution": "Natural",
   "name": "Koto",
@@ -233,6 +262,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "29",
   "distribution": "Natural",
   "name": "Limba",
@@ -241,6 +271,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "30",
   "distribution": "Natural",
   "name": "Makore",
@@ -249,6 +280,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "31",
   "distribution": "Natural",
   "name": "Meranti",
@@ -257,6 +289,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "32",
   "distribution": "Natural",
   "name": "Merbau",
@@ -265,6 +298,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "33",
   "distribution": "Natural",
   "name": "Okume",
@@ -273,6 +307,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "34",
   "distribution": "Natural",
   "name": "Olcha",
@@ -281,6 +316,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "35",
   "distribution": "Natural",
   "name": "Oliwka",
@@ -289,6 +325,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "36",
   "distribution": "Natural",
   "name": "Orzech - boliwia",
@@ -297,6 +334,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "37",
   "distribution": "Natural",
   "name": "Orzech - czeczota",
@@ -305,6 +343,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "38",
   "distribution": "Natural",
   "name": "Orzech włoski",
@@ -313,6 +352,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "39",
   "distribution": "Natural",
   "name": "Orzech amerykański",
@@ -321,6 +361,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "40",
   "distribution": "Natural",
   "name": "Palisander indyjski",
@@ -329,6 +370,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "41",
   "distribution": "Natural",
   "name": "Palisander - madagaskar",
@@ -337,6 +379,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "42",
   "distribution": "Natural",
   "name": "Palisander - rio",
@@ -345,6 +388,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "43",
   "distribution": "Natural",
   "name": "Palisander - santos",
@@ -353,6 +397,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "44",
   "distribution": "Natural",
   "name": "Różowe łuski",
@@ -361,6 +406,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "45",
   "distribution": "Natural",
   "name": "Sapeli - flader",
@@ -369,6 +415,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "46",
   "distribution": "Natural",
   "name": "Sapeli - pasiak",
@@ -377,6 +424,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "47",
   "distribution": "Natural",
   "name": "Sosna",
@@ -385,6 +433,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "48",
   "distribution": "Natural",
   "name": "Teak",
@@ -393,6 +442,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "49",
   "distribution": "Natural",
   "name": "Tipo - cocobolo",
@@ -401,6 +451,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "50",
   "distribution": "Natural",
   "name": "Tulipanowiec",
@@ -409,6 +460,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "51",
   "distribution": "Natural",
   "name": "Wenge",
@@ -417,6 +469,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "52",
   "distribution": "Natural",
   "name": "Zebrano",
@@ -425,6 +478,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "53",
   "distribution": "Natural",
   "name": "Ziricote",

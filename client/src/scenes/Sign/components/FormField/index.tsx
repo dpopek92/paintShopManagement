@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Input, Form } from 'antd';
 
 interface Props {
@@ -9,8 +9,8 @@ interface Props {
  name: string;
  touched: any;
  values: any;
- handleChange: () => void;
- handleBlur: () => void;
+ handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+ handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  prefix?: any;
  required?: boolean;
 }

@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PageHeader, Card, Icon, Modal } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
@@ -15,7 +14,7 @@ const StyledImage = styled.img`
  margin: 0 auto;
 `;
 
-const names = {
+const names: Images = {
  image: 'Model',
  imageProfile: 'Przekrój',
  imageProfile2: 'Przekrój',
@@ -23,12 +22,22 @@ const names = {
  imageIzometric: 'Rzut izometryczny',
 };
 
-const Element = ({ location }) => {
+interface location {
+ pathname: string;
+ search: string;
+ hash: string;
+ state: any;
+}
+interface Images {
+ [key: string]: string;
+}
+
+const Element = ({ location }: { location: location }) => {
  const history = useHistory();
  const [img, setImg] = useState('');
  const { state } = location;
 
- const images = {
+ const images: Images = {
   image: state.image,
   imageProfile: state.imageProfile,
   imageProfile2: state.imageProfile2,
@@ -48,7 +57,7 @@ const Element = ({ location }) => {
       />
       <div>
        <FlexTemplate>
-        {Object.keys(images).map(key => {
+        {Object.keys(images).map((key: any) => {
          const image = images[key];
          if (image) {
           return (
@@ -91,7 +100,7 @@ const Element = ({ location }) => {
       setImg('');
      }}
      role="button"
-     tabIndex="0"
+     tabIndex={0}
     >
      {img && (
       <img
@@ -106,10 +115,6 @@ const Element = ({ location }) => {
    )}
   </>
  );
-};
-
-Element.propTypes = {
- location: PropTypes.instanceOf(Object),
 };
 
 export default Element;

@@ -1,6 +1,7 @@
 [
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "0",
   "distribution": "Alpi",
   "name": "Anrgre",
@@ -9,6 +10,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "1",
   "distribution": "Alpi",
   "name": "Ayous",
@@ -17,6 +19,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "2",
   "distribution": "Alpi",
   "name": "Brzoza",
@@ -25,6 +28,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "3",
   "distribution": "Alpi",
   "name": "Buk",
@@ -33,6 +37,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "4",
   "distribution": "Alpi",
   "name": "Czereśnia amerykańska",
@@ -41,6 +46,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "5",
   "distribution": "Alpi",
   "name": "06?",
@@ -49,6 +55,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "6",
   "distribution": "Alpi",
   "name": "Dąb - 01",
@@ -57,6 +64,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "7",
   "distribution": "Alpi",
   "name": "Dąb - 02",
@@ -65,6 +73,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "8",
   "distribution": "Alpi",
   "name": "Dąb bielony",
@@ -73,6 +82,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "9",
   "distribution": "Alpi",
   "name": "Dąb - bryza",
@@ -81,6 +91,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "10",
   "distribution": "Alpi",
   "name": "Dąb dymiony",
@@ -89,6 +100,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "11",
   "distribution": "Alpi",
   "name": "Dąb - flader",
@@ -97,6 +109,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "12",
   "distribution": "Alpi",
   "name": "Dąb - grafit",
@@ -105,6 +118,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "13",
   "distribution": "Alpi",
   "name": "Dąb - kakao",
@@ -113,6 +127,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "14",
   "distribution": "Alpi",
   "name": "Dąb mleczny",
@@ -121,6 +136,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "15",
   "distribution": "Alpi",
   "name": "Dąb - moro",
@@ -129,6 +145,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "16",
   "distribution": "Alpi",
   "name": "Dąb prosty",
@@ -137,6 +154,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "17",
   "distribution": "Alpi",
   "name": "Dąb - rustical",
@@ -145,6 +163,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "18",
   "distribution": "Alpi",
   "name": "Dąb szary - 01",
@@ -153,6 +172,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "19",
   "distribution": "Alpi",
   "name": "Dąb szary - 02",
@@ -161,6 +181,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "20",
   "distribution": "Alpi",
   "name": "Dąb wędzony",
@@ -169,6 +190,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "21",
   "distribution": "Alpi",
   "name": "Heban",
@@ -177,6 +199,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "22",
   "distribution": "Alpi",
   "name": "Heban - ammara",
@@ -185,6 +208,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "23",
   "distribution": "Alpi",
   "name": "Heban brazylijski",
@@ -193,6 +217,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "24",
   "distribution": "Alpi",
   "name": "Heban czarno-biały",
@@ -201,6 +226,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "25",
   "distribution": "Alpi",
   "name": "Heban - flader",
@@ -209,6 +235,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "26",
   "distribution": "Alpi",
   "name": "Heban - gabon",
@@ -217,6 +244,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "27",
   "distribution": "Alpi",
   "name": "Heban makassar - flader",
@@ -225,6 +253,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "28",
   "distribution": "Alpi",
   "name": "Heban makassar - pasiak",
@@ -233,6 +262,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "29",
   "distribution": "Alpi",
   "name": "Heban - yoruba",
@@ -241,6 +271,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "30",
   "distribution": "Alpi",
   "name": "Jesion",
@@ -249,6 +280,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "31",
   "distribution": "Alpi",
   "name": "Klon",
@@ -257,6 +289,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "32",
   "distribution": "Alpi",
   "name": "Klon piaskowy",
@@ -265,6 +298,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "33",
   "distribution": "Alpi",
   "name": "Klon - pawie oczko",
@@ -273,6 +307,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "34",
   "distribution": "Alpi",
   "name": "Mahoń",
@@ -281,6 +316,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "35",
   "distribution": "Alpi",
   "name": "Orzech",
@@ -289,6 +325,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "36",
   "distribution": "Alpi",
   "name": "Orzech amerykański",
@@ -297,6 +334,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "37",
   "distribution": "Alpi",
   "name": "Orzech boliwijski",
@@ -305,6 +343,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "38",
   "distribution": "Alpi",
   "name": "Orzech canaletto - flader",
@@ -313,6 +352,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "39",
   "distribution": "Alpi",
   "name": "Orzech canaletto - pasiak",
@@ -321,6 +361,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "40",
   "distribution": "Alpi",
   "name": "Orzech czarny",
@@ -329,6 +370,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "41",
   "distribution": "Alpi",
   "name": "Orzech czeczot - ciemny",
@@ -337,6 +379,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "42",
   "distribution": "Alpi",
   "name": "Orzech czeczot - jasny",
@@ -345,6 +388,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "43",
   "distribution": "Alpi",
   "name": "Orzech włoski",
@@ -353,6 +397,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "44",
   "distribution": "Alpi",
   "name": "Palisander",
@@ -361,6 +406,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "45",
   "distribution": "Alpi",
   "name": "Palisander indyjski",
@@ -369,6 +415,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "46",
   "distribution": "Alpi",
   "name": "Palisander madagaskar",
@@ -377,6 +424,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "47",
   "distribution": "Alpi",
   "name": "Palisander santos",
@@ -385,6 +433,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "48",
   "distribution": "Alpi",
   "name": "Sosna",
@@ -393,6 +442,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "49",
   "distribution": "Alpi",
   "name": "Teak",
@@ -401,6 +451,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "50",
   "distribution": "Alpi",
   "name": "Teak - burma",
@@ -409,6 +460,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "51",
   "distribution": "Alpi",
   "name": "Teag - rigatto",
@@ -417,6 +469,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "52",
   "distribution": "Alpi",
   "name": "Wenge - 01",
@@ -425,6 +478,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "53",
   "distribution": "Alpi",
   "name": "Wenge - 02",
@@ -433,6 +487,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "54",
   "distribution": "Alpi",
   "name": "Wenge drobnosłoiste",
@@ -441,6 +496,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "55",
   "distribution": "Alpi",
   "name": "Wenge drobnosłoiste - moro",
@@ -449,6 +505,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "56",
   "distribution": "Alpi",
   "name": "Wenge - flader",
@@ -457,6 +514,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "57",
   "distribution": "Alpi",
   "name": "Wenge - pasiak",
@@ -465,6 +523,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "58",
   "distribution": "Alpi",
   "name": "Wiśnia",
@@ -473,6 +532,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "59",
   "distribution": "Alpi",
   "name": "Zebrano",
@@ -481,6 +541,7 @@
  },
  {
   "type": "veneer",
+  "symbol": "veneer",
   "id": "60",
   "distribution": "Alpi",
   "name": "Zebrano - bianco",

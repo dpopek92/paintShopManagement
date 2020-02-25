@@ -1,47 +1,52 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import withContext from 'hoc/withContext';
 import { PageHeader, Card, notification } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
 import FlexTemplate from 'components/templates/flexTemplate';
-import HANDLES from 'assets/data/Handles.json';
-// import { addHandle } from 'actions/newOrder';
+import GLASSCASES from 'assets/data/GlassCases.json';
+// import { addGlassCase } from 'actions/newOrder';
 // import { setComponentInModal } from 'actions/view';
-import { useHistory } from 'react-router';
-import withContext from 'hoc/withContext';
 import CardAction from '../components/CardAction';
 
-const openNotification = handle => {
+const openNotification = (glassCase: string) => {
  notification.success({
-  message: 'Uchwyty frezowane',
-  description: `Wybrałeś uchwyt: ${handle.toUpperCase()}`,
+  message: 'Witryny',
+  description: `Wybrałeś witrynę: ${glassCase.toUpperCase()}`,
  });
 };
 
-const Handles = ({ permissionContext }) => {
+interface Props {
+ permissionContext: string;
+}
+
+const Veneers = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- const veneer = useSelector(state => state.newOrder.veneerSymbol);
- const color = useSelector(state => state.newOrder.color);
- const [handles, setHandles] = useState(HANDLES);
+ //  const veneer = useSelector(state => state.newOrder.veneerSymbol);
+ //  const color = useSelector(state => state.newOrder.color);
+ const [glassCases, setGlassCases] = useState(GLASSCASES);
 
- useEffect(() => {
-  if (veneer || color.toLowerCase().includes('bejca')) {
-   const newHandles = handles.filter(
-    item => item.name !== 'uk' && item.name !== 'up' && item.name !== 'uc',
-   );
-   setHandles(newHandles);
-  } else {
-   setHandles(HANDLES);
-  }
- }, [veneer, color]);
+ useEffect(
+  () => {
+   //   if (veneer || color.toLowerCase().includes('bejca')) {
+   //    const newGlassCases = glassCases.filter(item => item.name === 'w4');
+   //    setGlassCases(newGlassCases);
+   //   } else {
+   setGlassCases(GLASSCASES);
+   //   }
+  },
+  [],
+  //  [veneer, color]
+ );
 
- const handleClick = name => {
+ const handleClick = (name: string) => {
   if (permissionContext !== 'employee') {
-   //    dispatch(addHandle(name));
    openNotification(name);
+   //    dispatch(addGlassCase(name));
    //    dispatch(setComponentInModal(null));
   }
  };
@@ -52,18 +57,18 @@ const Handles = ({ permissionContext }) => {
      <PageHeader
       ghost={false}
       onBack={() => history.goBack()}
-      title="Uchwyty frezowane"
+      title="Witryny"
      />
      <FlexTemplate>
-      {handles.map(item => (
+      {glassCases.map(item => (
        <Card
         key={item.name}
         style={{ width: 300, margin: 5 }}
         bodyStyle={{ padding: 0 }}
         cover={
          <img
-          alt={`Uchwyt ${item.name}`}
-          src={require(`assets/images/handles/${item.name}/${item.image}`)}
+          alt={`Front ${item.name}`}
+          src={require(`assets/images/glassCases/${item.name}/${item.image}`)}
          />
         }
         actions={[
@@ -89,8 +94,4 @@ const Handles = ({ permissionContext }) => {
  );
 };
 
-Handles.propTypes = {
- permissionContext: PropTypes.string,
-};
-
-export default withContext(Handles);
+export default withContext(Veneers);

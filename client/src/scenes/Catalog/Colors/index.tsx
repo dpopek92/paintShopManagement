@@ -29,21 +29,33 @@ const StyledWrapper = styled.div`
  }
 `;
 
-const openNotification = color => {
+const openNotification = (color: string) => {
  notification.success({
   message: 'Kolory',
   description: `Wybrałeś kolor: ${color.toUpperCase()}`,
  });
 };
 
-const Colors = ({ permissionContext }) => {
+interface Props {
+ permissionContext: string;
+}
+interface mordant {
+ name: string;
+ image: string;
+}
+interface color {
+ name: string;
+ hexValue: string;
+}
+
+const Colors: React.FC<Props> = ({ permissionContext }) => {
  const history = useHistory();
  const dispatch = useDispatch();
- const [key, setKey] = useState('RAL');
- const [customMordant, setCustomMordant] = useState('');
- const [search, setSearch] = useState('');
- const [newMordant, setNewMordant] = useState(null);
- const [newColors, setNewColors] = useState(null);
+ const [key, setKey] = useState<string>('RAL');
+ const [customMordant, setCustomMordant] = useState<string>('');
+ const [search, setSearch] = useState<string>('');
+ const [newMordant, setNewMordant] = useState<mordant[]>([]);
+ const [newColors, setNewColors] = useState<color[]>([]);
 
  useEffect(() => {
   const mordant = mordantBrown
@@ -56,11 +68,13 @@ const Colors = ({ permissionContext }) => {
   setNewMordant(mordant);
  }, [search]);
 
- const handleCustomMordant = e => setCustomMordant(e.target.value);
- const handleSearch = e => setSearch(e.target.value);
- const handleTab = tab => setKey(tab);
+ const handleCustomMordant = (e: { target: HTMLInputElement }) =>
+  setCustomMordant(e.target.value);
+ const handleSearch = (e: { target: HTMLInputElement }) =>
+  setSearch(e.target.value);
+ const handleTab = (tab: string) => setKey(tab);
 
- const handleColor = (name, type) => {
+ const handleColor = (name: string, type: string) => {
   if (permissionContext !== 'employee') {
    if (type === 'mordant') {
     // dispatch(addColor(`bejca ${name}`));
@@ -193,7 +207,5 @@ const Colors = ({ permissionContext }) => {
   </div>
  );
 };
-
-Colors.propTypes = {};
 
 export default Colors;

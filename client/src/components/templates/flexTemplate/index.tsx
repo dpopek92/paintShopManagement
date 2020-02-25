@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const StyledWrapper = styled.div`
  display: flex;
@@ -9,10 +8,8 @@ const StyledWrapper = styled.div`
  flex-wrap: wrap;
 `;
 
-const FlexTemplate = ({ children }) => {
+const FlexTemplate: React.FC = ({ children }) => {
  return <StyledWrapper>{children}</StyledWrapper>;
 };
-
-FlexTemplate.propTypes = {};
 
 export default FlexTemplate;

@@ -1,9 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import withContext from 'hoc/withContext';
 import './ColorCard.scss';
 
-const ColorCard = ({
+interface Props {
+ colorName: string;
+ colorValue: string;
+ onclick: (colorName: string, type: string | null) => void;
+ type?: string | null;
+ permissionContext: string;
+}
+
+const ColorCard: React.FC<Props> = ({
  colorName,
  colorValue,
  onclick,
@@ -21,19 +28,11 @@ const ColorCard = ({
     permissionContext !== 'employee' ? onclick(colorName, type) : null
    }
    role="button"
-   tabIndex="0"
+   tabIndex={0}
   >
    <div className="cardCaption">{colorName}</div>
   </div>
  );
-};
-
-ColorCard.propTypes = {
- colorName: PropTypes.string,
- colorValue: PropTypes.string,
- onclick: PropTypes.func,
- type: PropTypes.string,
- permissionContext: PropTypes.string,
 };
 
 export default withContext(ColorCard);

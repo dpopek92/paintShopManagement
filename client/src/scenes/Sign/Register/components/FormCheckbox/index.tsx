@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, Checkbox } from 'antd';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 
 const StyledCheckboxWrapper = styled.div`
  display: flex;
@@ -46,7 +47,7 @@ interface Props {
  touched: any;
  errors: any;
  values: any;
- handleChange: () => void;
+ handleChange: (e: CheckboxChangeEvent) => void;
  name: string;
 }
 

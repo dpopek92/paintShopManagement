@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageTemplate from '../authTemplate';
 
@@ -10,16 +9,12 @@ const StyledWrapper = styled.div`
  }
 `;
 
-const FullWidthPageTemplate = ({ children }) => {
+const FullWidthPageTemplate: React.FC = ({ children }) => {
  return (
   <PageTemplate>
    <StyledWrapper>{children}</StyledWrapper>
   </PageTemplate>
  );
-};
-
-FullWidthPageTemplate.propTypes = {
- children: PropTypes.element,
 };
 
 export default FullWidthPageTemplate;

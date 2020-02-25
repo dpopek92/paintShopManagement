@@ -13,20 +13,24 @@ import FlexTemplate from 'components/templates/flexTemplate';
 import MILLINGS from 'assets/data/Millings.json';
 import CardAction from '../components/CardAction';
 
-const openNotification = milling => {
+const openNotification = (milling: string) => {
  notification.success({
   message: 'Fronty frezowane',
   description: `Wybrałeś frezowanie: ${milling.toUpperCase()}`,
  });
 };
 
-const Millings = ({ permissionContext }) => {
+interface Props {
+ permissionContext: string;
+}
+
+const Millings = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- const userId = useSelector(state => state.auth.user._id);
- const [fileList, setFileList] = useState([]);
+ //  const userId = useSelector(state => state.auth.user._id);
+ const [fileList, setFileList] = useState<any[]>([]);
 
- const handleClick = name => {
+ const handleClick = (name: string) => {
   if (permissionContext !== 'employee') {
    openNotification(name);
    setFileList([]);
@@ -40,7 +44,7 @@ const Millings = ({ permissionContext }) => {
    //    dispatch(removeMilling());
    //    dispatch(setComponentInModal(null));
   },
-  beforeUpload: file => {
+  beforeUpload: (file: any) => {
    setFileList([file]);
    openNotification('ze zdjęcia');
    //    dispatch(addCustomMilling(file, userId, 'Inny'));

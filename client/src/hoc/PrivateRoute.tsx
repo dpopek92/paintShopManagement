@@ -1,14 +1,19 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import withContext from "hoc/withContext";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import withContext from 'hoc/withContext';
+
+interface Props {
+ component: React.FC<any>;
+ permissionContext: string;
+ permissions: string[];
+}
 
 const PrivateRoute = ({
  component: Component,
  permissionContext,
  permissions,
  ...props
-}) => {
+}: Props) => {
  return (
   <Route
    {...props}
@@ -21,11 +26,6 @@ const PrivateRoute = ({
    }
   />
  );
-};
-
-PrivateRoute.propTypes = {
- permissionContext: PropTypes.string,
- permissions: PropTypes.array
 };
 
 export default withContext(PrivateRoute);
