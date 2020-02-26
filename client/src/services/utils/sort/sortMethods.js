@@ -2,8 +2,8 @@
 /* eslint-disable import/prefer-default-export */
 const sortListBy = {
  string: (a, b, type, key) => {
-  if (type === 'ascend') return a[key].localeCompare(b[key]);
-  if (type === 'descend') return b[key].localeCompare(a[key]);
+  if (type === 'ascend') return a.user[key].localeCompare(b.user[key]);
+  if (type === 'descend') return b.user[key].localeCompare(a.user[key]);
  },
  date: (a, b, type, key) => {
   const dateA = new Date(a[key]);

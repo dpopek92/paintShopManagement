@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { Form, Button } from 'antd';
 import { Formik } from 'formik';
 import styled from 'styled-components';
-import AuthTemplate from 'components/templates/authTemplate';
 import Header from 'components/header';
 import { createNewAccount } from 'services/apiRequests/user/post';
 import { schema } from './utils/validate';
 import FormField from '../components/FormField';
 import FormCheckbox from './components/FormCheckbox';
 import Success from './components/Modals/Success';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSpinner } from 'services/store/actions/view';
+import { AppState } from 'services/store';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -55,16 +57,26 @@ interface Errors {
 }
 
 const Register = () => {
+ const dispatch = useDispatch();
  const history = useHistory();
+ const isAuthenticated: boolean = useSelector(
+  (state: AppState) => state.auth.isAuthenticated,
+ );
+ const { token } = localStorage;
+ if (token && isAuthenticated) {
+  return <Redirect to="/" />;
+ }
 
  const handleSubmit = async (values: Values, action: any) => {
+  dispatch(setSpinner(true));
   await createNewAccount(
    values,
    () => {
-    // spinner
+    dispatch(setSpinner(false));
     Success({ onOk: () => history.push('/login') });
    },
    (errors: Errors) => {
+    dispatch(setSpinner(false));
     action.setErrors(errors);
    },
   );

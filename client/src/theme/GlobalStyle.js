@@ -21,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
    color: #fa3e54;
    font-size: 12px;
   }
+  .tableRow__clicable{
+    cursor:pointer;
+  }
   /* .nav-tabs{
     .nav-item{
     color: #73a52e;

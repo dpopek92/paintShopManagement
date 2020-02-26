@@ -1,4 +1,4 @@
-const { check, body, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator/check");
 const { sanitizeBody } = require("express-validator/filter");
 
 const validateEmail = [

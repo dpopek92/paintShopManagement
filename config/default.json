@@ -1,6 +1,3 @@
 {
   "mongoURI": "mongodb://localhost:27017/paintShopDB"
 }
-//mongodb+srv://Damian:sidewinder123@testdb-vujpl.mongodb.net/test?retryWrites=true&w=majority
-// mongodb://blow-mongo-user:bcTpF7N9uDXyfh@localhost:27017/blow
-// mongodb://homebd-mongo-user:bcTpF7N9uDXyfh@localhost:27017/blow

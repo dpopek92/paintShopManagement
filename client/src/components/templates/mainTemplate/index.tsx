@@ -1,19 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import permissionContext from 'context';
 import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/MainTheme';
 import { ThemeProvider } from 'styled-components';
-import withContext from 'hoc/withContext';
-// import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
+import { AppState } from 'services/store';
 
-interface Props {
- permission: string | undefined;
-}
-
-const MainTemplate: React.FC<Props> = ({ children }) => {
- // loadUser
- // setPositionForEmployee
- const permission = localStorage.permission;
+const MainTemplate: React.FC = ({ children }) => {
+ const user = useSelector((state: AppState) => state.auth.user);
+ let { permission } = localStorage;
+ useEffect(() => {}, [user]);
  return (
   <permissionContext.Provider value={permission}>
    <GlobalStyle />
@@ -22,4 +18,4 @@ const MainTemplate: React.FC<Props> = ({ children }) => {
  );
 };
 
-export default withContext(MainTemplate);
+export default MainTemplate;

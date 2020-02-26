@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
   },
   permission: {
     type: String,
-    default: ""
+    default: "user"
   },
   isAccepted: {
     type: Boolean,

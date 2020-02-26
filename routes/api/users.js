@@ -6,7 +6,7 @@ const {
   checkValidation
 } = require("../utils/validation");
 
-const usersControler = require("../contolers/users");
+const usersControler = require("../controlers/users");
 
 /**
 |--------------------------------------------------
@@ -30,6 +30,7 @@ router.post(
 // @route  POST api/users
 // @desc   Register user and create profile
 // @acces  Public
+// +
 router.post(
   "/",
   [validateRegister, checkValidation],

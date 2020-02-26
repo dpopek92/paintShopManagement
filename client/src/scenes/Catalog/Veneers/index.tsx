@@ -13,6 +13,7 @@ import { containsOneOf } from 'services/utils/array';
 import withContext from 'hoc/withContext';
 import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
+import Header from 'components/header';
 
 const { TabPane } = Tabs;
 const veneersArr: { [key: string]: veneer[] } = { ALPI, CALIFORNIA, NATURAL };
@@ -93,8 +94,7 @@ const Veneers = ({ permissionContext }: Props) => {
     <>
      <PageHeader
       ghost={false}
-      onBack={() => history.goBack()}
-      title="Forniry"
+      title={<Header title="Forniry" />}
       extra={[
        <Input
         key="1"

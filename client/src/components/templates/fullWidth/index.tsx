@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PageTemplate from '../authTemplate';
+import AuthTemplate from '../authTemplate';
 
 const StyledWrapper = styled.div`
  padding: 0 20px 0 20px;
@@ -11,9 +11,9 @@ const StyledWrapper = styled.div`
 
 const FullWidthPageTemplate: React.FC = ({ children }) => {
  return (
-  <PageTemplate>
+  <AuthTemplate>
    <StyledWrapper>{children}</StyledWrapper>
-  </PageTemplate>
+  </AuthTemplate>
  );
 };
 

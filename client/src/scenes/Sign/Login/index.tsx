@@ -1,11 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Form, Button, Icon } from 'antd';
 import { Formik } from 'formik';
 import styled from 'styled-components';
 import Header from 'components/header';
+import AuthTemplate from 'components/templates/authTemplate';
 import { schema } from './utils/validate';
 import FormField from '../components/FormField';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSpinner } from 'services/store/actions/view';
+import { authUser } from 'services/apiRequests/auth/get';
+import {
+ logInSuccess,
+ loadUserData,
+ logInFail,
+} from 'services/store/actions/auth';
+import { AppState } from 'services/store';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -26,6 +36,31 @@ interface Values {
 }
 
 const Login = () => {
+ const dispatch = useDispatch();
+ const isAuthenticated: boolean = useSelector(
+  (state: AppState) => state.auth.isAuthenticated,
+ );
+ const { token } = localStorage;
+ if (token && isAuthenticated) {
+  return <Redirect to="/" />;
+ }
+
+ const handleSubmit = async (values: Values, actions: any) => {
+  dispatch(setSpinner(true));
+  await authUser(
+   values,
+   token => {
+    dispatch(logInSuccess(token));
+    dispatch(loadUserData());
+    dispatch(setSpinner(false));
+   },
+   errors => {
+    dispatch(logInFail());
+    actions.setErrors(errors);
+    dispatch(setSpinner(false));
+   },
+  );
+ };
  return (
   <StyledWrapper>
    <div>
@@ -33,7 +68,7 @@ const Login = () => {
     <Formik
      validationSchema={schema}
      // ONSUBMIT REQUEST
-     onSubmit={async (values: Values, actions: any) => {}}
+     onSubmit={handleSubmit}
      initialValues={{
       email: '',
       password: '',

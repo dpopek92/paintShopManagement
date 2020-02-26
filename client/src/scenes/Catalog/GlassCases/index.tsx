@@ -11,6 +11,7 @@ import GLASSCASES from 'assets/data/GlassCases.json';
 // import { addGlassCase } from 'actions/newOrder';
 // import { setComponentInModal } from 'actions/view';
 import CardAction from '../components/CardAction';
+import Header from 'components/header';
 
 const openNotification = (glassCase: string) => {
  notification.success({
@@ -54,11 +55,7 @@ const Veneers = ({ permissionContext }: Props) => {
   <div>
    <FullWidthPageTemplate>
     <>
-     <PageHeader
-      ghost={false}
-      onBack={() => history.goBack()}
-      title="Witryny"
-     />
+     <PageHeader ghost={false} title={<Header title="Witryny" />} />
      <FlexTemplate>
       {glassCases.map(item => (
        <Card

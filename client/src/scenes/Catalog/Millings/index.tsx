@@ -12,6 +12,7 @@ import FlexTemplate from 'components/templates/flexTemplate';
 // import { setComponentInModal } from 'actions/view';
 import MILLINGS from 'assets/data/Millings.json';
 import CardAction from '../components/CardAction';
+import Header from 'components/header';
 
 const openNotification = (milling: string) => {
  notification.success({
@@ -59,8 +60,7 @@ const Millings = ({ permissionContext }: Props) => {
     <>
      <PageHeader
       ghost={false}
-      onBack={() => history.goBack()}
-      title="Fronty frezowane"
+      title={<Header title="Fronty frezowane" />}
       extra={
        permissionContext !== 'employee' && [
         <Button

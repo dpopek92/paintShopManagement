@@ -11,6 +11,7 @@ import HANDLES from 'assets/data/Handles.json';
 import { useHistory } from 'react-router';
 import withContext from 'hoc/withContext';
 import CardAction from '../components/CardAction';
+import Header from 'components/header';
 
 const openNotification = (handle: string) => {
  notification.success({
@@ -56,11 +57,7 @@ const Handles = ({ permissionContext }: Props) => {
   <div>
    <FullWidthPageTemplate>
     <>
-     <PageHeader
-      ghost={false}
-      onBack={() => history.goBack()}
-      title="Uchwyty frezowane"
-     />
+     <PageHeader ghost={false} title={<Header title="Uchwyty frezowane" />} />
      <FlexTemplate>
       {handles.map(item => (
        <Card

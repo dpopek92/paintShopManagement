@@ -7,6 +7,7 @@ import FullWidthPageTemplate from 'components/templates/fullWidth';
 import FlexTemplate from 'components/templates/flexTemplate';
 import { useHistory } from 'react-router';
 import CardAction from '../components/CardAction';
+import Header from 'components/header';
 
 const StyledImage = styled.img`
  width: 200px;
@@ -52,8 +53,7 @@ const Element = ({ location }: { location: location }) => {
      <div style={{ textAlign: 'center' }}>
       <PageHeader
        ghost={false}
-       onBack={() => history.goBack()}
-       title={state.name.toUpperCase()}
+       title={<Header title={state.name.toUpperCase()} />}
       />
       <div>
        <FlexTemplate>

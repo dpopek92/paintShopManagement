@@ -16,6 +16,8 @@ import mordantGreen from 'assets/data/mordantGreen.json';
 import ColorCard from './components/ColorCard';
 import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
+import Header from 'components/header';
+import withContext from 'hoc/withContext';
 
 const { Search: CustomMordantInput } = Input;
 const { TabPane } = Tabs;
@@ -49,8 +51,6 @@ interface color {
 }
 
 const Colors: React.FC<Props> = ({ permissionContext }) => {
- const history = useHistory();
- const dispatch = useDispatch();
  const [key, setKey] = useState<string>('RAL');
  const [customMordant, setCustomMordant] = useState<string>('');
  const [search, setSearch] = useState<string>('');
@@ -98,8 +98,7 @@ const Colors: React.FC<Props> = ({ permissionContext }) => {
     <>
      <PageHeader
       ghost={false}
-      onBack={() => history.goBack()}
-      title="Kolory"
+      title={<Header title="Kolory" />}
       extra={[
        <Input
         key="1"
@@ -208,4 +207,4 @@ const Colors: React.FC<Props> = ({ permissionContext }) => {
  );
 };
 
-export default Colors;
+export default withContext(Colors);
