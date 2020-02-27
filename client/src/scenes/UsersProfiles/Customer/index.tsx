@@ -3,17 +3,28 @@ import FullWidthPageTemplate from 'components/templates/fullWidth';
 import { Customer } from 'services/store/types/customers/Customers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from 'services/store';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import { getCustomers } from 'services/store/actions/customer';
 import { setSpinner } from 'services/store/actions/view';
 import Header from 'components/header';
-import { Descriptions, Tag, PageHeader, Button, Icon } from 'antd';
+import { Descriptions, Tag, PageHeader, Button, Icon, message } from 'antd';
+import AccountRemove from '../components/Modals/accountRemove';
+import { customerAccountRemove } from 'services/apiRequests/customer/remove';
+
+const initModal = {
+ accountRemove: false,
+ setSubordinates: false,
+};
 
 const CustomerProfile = () => {
  const dispatch = useDispatch();
+ const history = useHistory();
  const [customer, setCustomer] = useState<Customer | null>(null);
  const customers = useSelector((state: AppState) => state.customers.list);
  const { id } = useParams();
+
+ const [loading, setLoading] = useState(false);
+ const [modal, setModal] = useState(initModal);
 
  useEffect(() => {
   if (customers.length) {
@@ -24,7 +35,26 @@ const CustomerProfile = () => {
    dispatch(getCustomers(() => dispatch(setSpinner(false))));
   }
  }, [customers]);
- console.log(customer);
+
+ const handleUserRemove = async () => {
+  setLoading(true);
+  if (customer)
+   await customerAccountRemove(
+    customer.user._id,
+    () => {
+     setLoading(false);
+     history.push('/customers');
+    },
+    err => {
+     setLoading(false);
+     message.error(err.msg);
+     closeModals();
+    },
+   );
+ };
+
+ const closeModals = () => setModal(initModal);
+
  return (
   <FullWidthPageTemplate>
    <>
@@ -32,15 +62,20 @@ const CustomerProfile = () => {
      ghost={false}
      title={<Header title="Dane klienta" />}
      extra={[
-      <Button key="1" onClick={() => {}}>
+      <Button key="1" onClick={() => {}} disabled>
        <Icon type="pie-chart" />
        Wyświetl statystyki
       </Button>,
-      <Button key="2" onClick={() => {}}>
+      <Button key="2" onClick={() => {}} disabled>
        <Icon type="team" />
        Wybierz podwładnych
       </Button>,
-      <Button key="3" onClick={() => {}} type="danger">
+      <Button
+       key="3"
+       onClick={() => setModal({ ...modal, accountRemove: true })}
+       type="danger"
+       disabled={customer ? customer.user.permission === 'admin' : false}
+      >
        <Icon type="delete" />
        Usuń
       </Button>,
@@ -77,6 +112,14 @@ const CustomerProfile = () => {
     <Header title="Cennik indywidualny" />
     <hr />
     <Header title="Zamówienia" />
+
+    {/* MODALS */}
+    <AccountRemove
+     loading={loading}
+     visible={modal.accountRemove}
+     handleOk={handleUserRemove}
+     handleCancel={closeModals}
+    />
    </>
   </FullWidthPageTemplate>
  );

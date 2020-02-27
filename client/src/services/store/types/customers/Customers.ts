@@ -10,7 +10,7 @@ export interface Customer {
  phone: string;
  ordersNumber: number;
  currentFreeOrderId: number;
- subordinates: any;
+ subordinates: string[] | [];
  discounts: {
   manHour: number;
   gloss: {

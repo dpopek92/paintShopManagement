@@ -1,7 +1,9 @@
-const { getAllCustomers, getCustomer } = require("../../actions/customer/get");
+const {
+  getAllCustomers,
+  getCustomerByUserId
+} = require("../../actions/customer/get");
 
 const get = {
-  // +
   allCustomers: async (req, res) => {
     try {
       const customers = await getAllCustomers();
@@ -16,7 +18,7 @@ const get = {
   currentProfile: async (req, res) => {
     const { id } = req.user;
     try {
-      const customer = await getCustomer(id);
+      const customer = await getCustomerByUserId(id);
 
       return res.json(customer);
     } catch (error) {

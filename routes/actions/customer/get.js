@@ -1,18 +1,19 @@
 const Customer = require("../../../models/Customer");
 
-// +
 const checkIfCustomerProfileExist = async id => {
   return await Customer.findById(id);
 };
 
-// +
 const getAllCustomers = async () => {
   return await Customer.find().populate("user", "-password");
 };
 
-// +
-const getCustomer = async id => {
+const getCustomerByUserId = async id => {
   return await Customer.findOne({ user: id });
 };
 
-module.exports = { checkIfCustomerProfileExist, getAllCustomers, getCustomer };
+module.exports = {
+  checkIfCustomerProfileExist,
+  getAllCustomers,
+  getCustomerByUserId
+};

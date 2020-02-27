@@ -1,3 +1,5 @@
+import { Customer } from '../customers/Customers';
+
 export interface User {
  _id: string;
  company: string;
@@ -9,21 +11,9 @@ export interface User {
  isTrusted: boolean;
 }
 
-export interface Profile {
- _id: string;
- user: string;
- postcode: string;
- NIP: string;
- city: string;
- street: string;
- phone: string;
- ordersNumber: number;
- currentFreeOrderId: number;
-}
-
 export interface Auth {
  token: string | null;
  isAuthenticated: boolean;
  user: User;
- profile: Profile;
+ profile: Customer | null;
 }

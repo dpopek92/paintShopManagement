@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../../middleware/auth");
+const isAdmin = require("../../middleware/isAdmin");
 const {
   validateRegister,
   validateEmail,
@@ -7,6 +9,36 @@ const {
 } = require("../utils/validation");
 
 const usersControler = require("../controlers/users");
+
+/**
+|--------------------------------------------------
+| REMOVE USER ACCOUNT BY OWNER
+|--------------------------------------------------
+*/
+// @route  DELETE api/users/
+// @desc   Remove user account
+// @acces  Private
+router.delete("/", auth, usersControler.remove.accountByUser);
+
+/**
+|--------------------------------------------------
+| CHANGE USER DATA
+|--------------------------------------------------
+*/
+// @route  PUT api/users/data
+// @desc   Change user data
+// @acces  Private
+router.put("/data", auth, usersControler.update.data);
+
+/**
+|--------------------------------------------------
+| CHANGE PASSWORD
+|--------------------------------------------------
+*/
+// @route  PUT api/users/changepassword
+// @desc   Change password
+// @acces  Private
+router.put("/password", auth, usersControler.update.password);
 
 /**
 |--------------------------------------------------

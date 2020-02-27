@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Header from 'components/header';
 import { createNewAccount } from 'services/apiRequests/user/post';
 import { schema } from './utils/validate';
-import FormField from '../components/FormField';
+import FormField from '../../../components/FormField';
 import FormCheckbox from './components/FormCheckbox';
 import Success from './components/Modals/Success';
 import { useDispatch, useSelector } from 'react-redux';

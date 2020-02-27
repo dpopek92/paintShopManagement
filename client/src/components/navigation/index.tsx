@@ -5,6 +5,7 @@ import GuestNav from './GuestNav';
 import AdminNav from './AdminNav';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from 'services/store/actions/auth';
+import CustomerNav from './CustomerNav';
 
 interface Props {
  permissionContext: string;
@@ -19,7 +20,8 @@ const Navigation: React.FC<Props> = ({ permissionContext }) => {
 
  if (permissionContext === 'admin')
   return <AdminNav location={location} logoutUser={handleLogout} />;
- if (permissionContext === 'user') return null;
+ if (permissionContext === 'user')
+  return <CustomerNav location={location} logoutUser={handleLogout} />;
  if (permissionContext === 'employee') return null;
  return <GuestNav location={location} />;
 };

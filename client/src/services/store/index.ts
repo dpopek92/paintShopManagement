@@ -5,11 +5,13 @@ import { appActions } from './types/appActions';
 import { viewReducer } from './reducers/view';
 import { customersReducer } from './reducers/customers';
 import { authReducer } from './reducers/auth';
+import { settingsReducer } from './reducers/settings';
 
 const rootReducer = combineReducers({
  view: viewReducer,
  customers: customersReducer,
  auth: authReducer,
+ settings: settingsReducer,
 });
 export type AppState = ReturnType<typeof rootReducer>;
 

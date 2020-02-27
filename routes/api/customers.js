@@ -9,6 +9,21 @@ const customersControler = require("../controlers/customers");
 
 /**
 |--------------------------------------------------
+| REMOVE CUSTOMER ACCOUNT PERM
+|--------------------------------------------------
+*/
+// @route  DELETE api/customers/:userId
+// @desc   Remove customer account permamently
+// @acces  Private
+router.delete(
+  "/:userId",
+  auth,
+  isAdmin,
+  customersControler.remove.accountByAdmin
+);
+
+/**
+|--------------------------------------------------
 | GET CURRENT USER PROFILE
 |--------------------------------------------------
 */

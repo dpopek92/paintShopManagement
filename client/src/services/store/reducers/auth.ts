@@ -4,6 +4,7 @@ import {
  AUTH_LOGIN_ERROR,
  AUTH_USER_LOAD_SUCCESS,
  AUTH_LOGOUT_USER,
+ AUTH_USER_PROFILE_LOAD_SUCCESS,
 } from '../types/auth/actions';
 import { authActions } from '../types/auth/actions';
 
@@ -20,21 +21,15 @@ const initialState: Auth = {
   isAccepted: false,
   isTrusted: false,
  },
- profile: {
-  _id: '',
-  user: '',
-  postcode: '',
-  NIP: '',
-  city: '',
-  street: '',
-  phone: '',
-  ordersNumber: 0,
-  currentFreeOrderId: 0,
- },
+ profile: null,
 };
 
 const authReducer = (state = initialState, action: authActions): Auth => {
  switch (action.type) {
+  case AUTH_USER_PROFILE_LOAD_SUCCESS: {
+   return { ...state, profile: action.profile };
+  }
+
   case AUTH_LOGIN_SUCCESS: {
    localStorage.setItem('token', action.token);
    return { ...state, isAuthenticated: true, token: action.token };

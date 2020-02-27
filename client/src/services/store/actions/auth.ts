@@ -11,9 +11,12 @@ import {
  logoutUser,
  AUTH_LOGOUT_USER,
  loadUser,
+ profileLoadSuccess,
+ AUTH_USER_PROFILE_LOAD_SUCCESS,
 } from '../types/auth/actions';
 import { Dispatch } from 'redux';
 import { User } from '../types/auth/Auth';
+import { Customer } from '../types/customers/Customers';
 
 export const logInSuccess = (token: string): loginSuccess => ({
  type: AUTH_LOGIN_SUCCESS,
@@ -30,6 +33,10 @@ export const logInFail = (): loginFail => ({ type: AUTH_LOGIN_ERROR });
 
 export const logOutUser = (): logoutUser => ({ type: AUTH_LOGOUT_USER });
 
+export const userProfileLoadSuccess = (
+ profile: Customer,
+): profileLoadSuccess => ({ type: AUTH_USER_PROFILE_LOAD_SUCCESS, profile });
+
 export const loadUserData = () => async (dispatch: Dispatch) => {
  if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -44,5 +51,15 @@ export const loadUserData = () => async (dispatch: Dispatch) => {
  } catch (err) {
   console.log(`ERROR:`, err);
   dispatch(logInFail());
+ }
+};
+
+export const loadUserProfile = () => async (dispatch: Dispatch) => {
+ console.log('THUNK', 'loadUserProfile');
+ try {
+  const res = await Axios.get('/api/customers/me');
+  dispatch(userProfileLoadSuccess(res.data));
+ } catch (err) {
+  console.log(`ERROR:`, err);
  }
 };

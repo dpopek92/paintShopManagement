@@ -1,9 +1,19 @@
 import React from 'react';
 import { Input, Form } from 'antd';
+import styled from 'styled-components';
+
+const StyledFormItem = styled(Form.Item)`
+ .ant-form-item-label {
+  label {
+   font-weight: bold;
+   margin: 0;
+  }
+ }
+`;
 
 interface Props {
  label?: string;
- placeholder: string;
+ placeholder?: string;
  type: string;
  errors: any;
  name: string;
@@ -13,6 +23,8 @@ interface Props {
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  prefix?: any;
  required?: boolean;
+ disabled?: boolean;
+ size?: 'default' | 'small' | 'large';
 }
 
 const FormField: React.FC<Props> = ({
@@ -27,13 +39,18 @@ const FormField: React.FC<Props> = ({
  handleBlur,
  prefix,
  required,
+ disabled,
+ size,
 }) => {
  return (
-  <Form.Item
+  <StyledFormItem
    label={label}
+   labelAlign="left"
    validateStatus={touched[name] && errors[name] ? 'error' : 'success'}
    hasFeedback={touched[name]}
    help={touched[name] && errors[name]}
+   labelCol={label ? { span: 6 } : {}}
+   wrapperCol={label ? { span: 18 } : {}}
   >
    {type === 'password' ? (
     <Input.Password
@@ -45,6 +62,8 @@ const FormField: React.FC<Props> = ({
      value={values[name]}
      onChange={handleChange}
      onBlur={handleBlur}
+     disabled={disabled}
+     size={size}
     />
    ) : (
     <Input
@@ -56,9 +75,11 @@ const FormField: React.FC<Props> = ({
      value={values[name]}
      onChange={handleChange}
      onBlur={handleBlur}
+     disabled={disabled}
+     size={size}
     />
    )}
-  </Form.Item>
+  </StyledFormItem>
  );
 };
 

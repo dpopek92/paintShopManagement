@@ -26,7 +26,7 @@ import Customer from 'scenes/UsersProfiles/Customer';
 // import Employees from 'views/Employees/Employees';
 // import Employee from 'views/Employee/Employee';
 import AccountSettings from 'scenes/Settings/Account';
-// import GlobalSettings from 'views/Settings/Global/GlobalSettings';
+import GlobalSettings from 'scenes/Settings/Global';
 // import Prices from 'views/UserPriceList/UserPriceList';
 
 // Orders
@@ -208,14 +208,14 @@ const App = () => {
          exact
          component={Manual}
         />
+         */}
+
         <PrivateRoute
          permissions={['admin']}
-         path="/settings/global"
+         path="/settings"
          exact
          component={GlobalSettings}
         />
-         */}
-
         {/* <Route component={ErrorPage} /> */}
        </Switch>
        {/* <Footer /> */}

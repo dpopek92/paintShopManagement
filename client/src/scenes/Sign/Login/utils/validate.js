@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import * as yup from 'yup';
 
 export const schema = yup.object({

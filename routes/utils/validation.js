@@ -28,10 +28,6 @@ const validateLogin = [
     .not()
     .isEmpty()
     .withMessage("Password is required."),
-  check("password")
-    .trim()
-    .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters long."),
   sanitizeBody("*").escape()
 ];
 

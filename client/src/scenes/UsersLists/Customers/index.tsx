@@ -1,16 +1,12 @@
-import React, { useEffect, useState, JSXElementConstructor } from 'react';
-// import PropTypes from "prop-types";
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PageHeader, Table, Icon, Tag } from 'antd';
-import PageTemplate from 'components/templates/authTemplate';
 import FullWidthTemplate from 'components/templates/fullWidth';
-// import { setSpinner } from 'actions/view';
 import {
  getCustomers,
  setSortCustomersList,
 } from 'services/store/actions/customer';
 import sortListBy from 'services/utils/sort/sortMethods';
-import { signal } from 'services/const';
 import { useHistory } from 'react-router';
 import Header from 'components/header';
 import { AppState } from 'services/store';
@@ -97,7 +93,11 @@ const Customers = () => {
        <div>
         {
          <Tag color={user.isAccepted ? 'green' : 'red'}>
-          {user.isAccepted ? 'Zaakceptowany' : 'Niezaakceptowany'}
+          {user.isAccepted
+           ? 'Zaakceptowany'
+           : user.company === 'USUNIĘTO'
+           ? 'Usunięto'
+           : 'Niezaakceptowany'}
          </Tag>
         }
        </div>
@@ -138,6 +138,7 @@ const Customers = () => {
         };
        }}
        rowClassName={() => 'tableRow__clicable'}
+       scroll={{ x: 600 }}
       />
      }
     </>
@@ -145,7 +146,5 @@ const Customers = () => {
   </FullWidthTemplate>
  );
 };
-
-// Customers.propTypes = {};
 
 export default Customers;

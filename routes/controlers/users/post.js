@@ -54,9 +54,8 @@ const post = {
 
       return res.json({ msg: "Account created" });
     } catch (err) {
-      console.log(req.originalUrl);
-      console.error(err);
-      return res.status(500).json({ info: "Server error", msg: err });
+      console.error(req.originalUrl, err.message);
+      return res.status(500).send({ info: "Server error", msg: err });
     }
   },
 
@@ -77,8 +76,7 @@ const post = {
 
       return res.json({ msg: "Email sended" });
     } catch (err) {
-      console.log(req.originalUrl);
-      console.error(err);
+      console.error(req.originalUrl, err.message);
       return res.status(500).send("server error");
     }
   }
