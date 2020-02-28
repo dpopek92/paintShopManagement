@@ -26,7 +26,7 @@ export const getGlobalSettings = (onEnd: () => void) => async (
  try {
   const res = await Axios.get('/api/settings/');
 
-  console.log(res.data);
+  //   console.log(res.data);
   dispatch(globalSettingsLoaded(res.data));
   onEnd();
  } catch (err) {

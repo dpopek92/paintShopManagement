@@ -12,6 +12,8 @@ interface PropsT {
  values: PricesT | null;
 }
 
+// LAKIEROWANIE UCHWYTU PRZERZUCIĆ DO CUSTOMER_MATERIAL (25ZL)
+
 const Prices: React.FC<PropsT> = ({ values }) => {
  const [isEdit, setIsEdit] = useState(false);
 
@@ -36,13 +38,25 @@ const Prices: React.FC<PropsT> = ({ values }) => {
         >
          <div>
           {values.companyMaterial && (
-           <CompanyMaterial {...props} values={values.companyMaterial} />
+           <CompanyMaterial
+            {...props}
+            values={values.companyMaterial}
+            disabled={!isEdit}
+           />
           )}
           {values.customerMaterial && (
-           <CustomerMaterial {...props} values={values.customerMaterial} />
+           <CustomerMaterial
+            {...props}
+            values={values.customerMaterial}
+            disabled={!isEdit}
+           />
           )}
           {values.services && (
-           <ServicesFields {...props} values={values.services} />
+           <ServicesFields
+            {...props}
+            values={values.services}
+            disabled={!isEdit}
+           />
           )}
          </div>
          <Button onClick={handleEdit}>Edytuj</Button>

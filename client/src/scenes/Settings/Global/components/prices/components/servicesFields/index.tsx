@@ -18,14 +18,74 @@ interface PropsT {
 
 const ServicesFields: React.FC<PropsT> = props => {
  const { values, setFieldValue } = props;
- console.log(values);
  return (
   <>
    {values && (
     <div>
      <h2>Usługi</h2>
-     texts
-     {/* <FormFieldNumber label="Frezowanie+Lakierowanie uchwytu" setFieldValue={setFieldValue} values={values} name="milledHandle" required={true} size="large" {...props}/> */}
+     <FormFieldNumber
+      label="Frezowanie+Lakierowanie uchwytu"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="milledHandle"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Frezowanie+Lakierowanie uchwytu częściowego"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="milledPartHandle"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Frezowanie uchwytu"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="millingHandle"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Gierowanie"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="chamfering"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Frezowanie pod plecy"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="backMilling"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Nawiercanie otworów"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="hingeHole"
+      required={true}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="Prace stolarskie"
+      setFieldValue={setFieldValue}
+      values={values}
+      name="manHour"
+      required={true}
+      size="large"
+      {...props}
+     />
     </div>
    )}
   </>

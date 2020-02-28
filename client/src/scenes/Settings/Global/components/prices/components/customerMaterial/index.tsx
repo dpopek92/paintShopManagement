@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomerMaterialT } from 'services/store/types/settings/Settings';
 import GlossFields from '../glossFields';
 import SemiGlossFields from '../semiGlossFields';
-import BoldItemsFields from '../boldItemsFields';
+import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 
 // Do poprawy
 
@@ -32,6 +32,15 @@ const CustomerMaterial: React.FC<PropsT> = props => {
      <h3>Półmat</h3>
      {values.semiGloss && (
       <SemiGlossFields {...props} values={values.semiGloss} />
+     )}
+     {values && (
+      <FormFieldNumber
+       {...props}
+       label="Lakierowanie uchwytu"
+       name="paintHandle"
+       required={true}
+       size="large"
+      />
      )}
     </div>
    )}

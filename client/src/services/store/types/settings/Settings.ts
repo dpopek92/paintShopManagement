@@ -32,6 +32,7 @@ export interface CompanyMaterialPricesT {
 export interface CustomerMaterialT {
  gloss: GlossT;
  semiGloss: SemiGlossT;
+ paintHandle: number;
 }
 export interface GlossT {
  oneSide: number;
@@ -68,7 +69,6 @@ export interface ServicesT {
  milledHandle: number;
  milledPartHandle: number;
  millingHandle: number;
- paintHandle: number;
  zobalHandle: number;
  hingeHole: number;
 }
@@ -79,11 +79,11 @@ export interface ContactT {
  companyName: string;
  NIP: string;
  REGON: string;
- webPages: WebPageT[];
- emails: EmailT[];
- phones: PhoneT[];
- addresses: AddressT[];
- bankAccounts: BankAccountT[];
+ webPages: WebPageT[] | [];
+ emails: EmailT[] | [];
+ phones: PhoneT[] | [];
+ addresses: AddressT[] | [];
+ bankAccounts: BankAccountT[] | [];
 }
 
 export interface WebPageT {

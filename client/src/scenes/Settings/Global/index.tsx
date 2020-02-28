@@ -25,7 +25,7 @@ const GlobalSettings = () => {
   <FullWidthPageTemplate>
    <>
     <PageHeader ghost={false} title={<Header title="Ustawienia globalne" />} />
-    <Tabs defaultActiveKey="1">
+    <Tabs defaultActiveKey="2">
      <TabPane
       tab={
        <span>

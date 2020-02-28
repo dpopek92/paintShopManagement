@@ -192,6 +192,10 @@ const SettingsChema = new mongoose.Schema({
           type: Number,
           default: 370
         }
+      },
+      paintHandle: {
+        type: Number,
+        default: 25
       }
     },
     services: {
@@ -218,10 +222,6 @@ const SettingsChema = new mongoose.Schema({
       millingHandle: {
         type: Number,
         default: 15
-      },
-      paintHandle: {
-        type: Number,
-        default: 25
       },
       zobalHandle: {
         type: Number,
