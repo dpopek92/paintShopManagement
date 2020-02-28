@@ -22,7 +22,7 @@ export interface PaintsProducersT {
 export interface PricesT {
  companyMaterial: CompanyMaterialPricesT;
  customerMaterial: CustomerMaterialT;
- serviced: ServicesT;
+ services: ServicesT;
 }
 export interface CompanyMaterialPricesT {
  gloss: GlossT;

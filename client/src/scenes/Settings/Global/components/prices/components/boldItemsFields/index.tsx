@@ -1,9 +1,9 @@
 import React from 'react';
-import { GlossT } from 'services/store/types/settings/Settings';
+import { BoardT } from 'services/store/types/settings/Settings';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 
 interface PropsT {
- values: GlossT | undefined;
+ values: BoardT | undefined;
  label?: string;
  placeholder?: string;
  errors: any;
@@ -16,39 +16,59 @@ interface PropsT {
  size?: 'default' | 'small' | 'large';
 }
 
-const GlossFields: React.FC<PropsT> = props => {
+const BoldItemsFields: React.FC<PropsT> = props => {
  const { values, setFieldValue } = props;
  return (
   <>
    {values && (
     <div>
      <FormFieldNumber
-      label="Jednostronny"
+      label="22mm"
       setFieldValue={setFieldValue}
-      name="oneSide"
+      name="22"
       values={values}
       required={true}
-      //  disabled={}
+      // disabled={}
       size="large"
       {...props}
      />
      <FormFieldNumber
-      label="Dwustronny"
+      label="25mm"
       setFieldValue={setFieldValue}
-      name="bothSides"
+      name="25"
       values={values}
       required={true}
-      //  disabled={}
+      // disabled={}
       size="large"
       {...props}
      />
      <FormFieldNumber
-      label="Połysk/Półmat"
+      label="28mm"
       setFieldValue={setFieldValue}
-      name="oneGlossSecondSemigloss"
+      name="28"
       values={values}
       required={true}
-      //  disabled={}
+      // disabled={}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="30mm"
+      setFieldValue={setFieldValue}
+      name="30"
+      values={values}
+      required={true}
+      // disabled={}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="38mm"
+      setFieldValue={setFieldValue}
+      name="38"
+      values={values}
+      required={true}
+      // disabled={}
       size="large"
       {...props}
      />
@@ -58,4 +78,4 @@ const GlossFields: React.FC<PropsT> = props => {
  );
 };
 
-export default GlossFields;
+export default BoldItemsFields;

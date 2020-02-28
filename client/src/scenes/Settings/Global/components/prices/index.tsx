@@ -5,6 +5,8 @@ import { Formik } from 'formik';
 import { Form, Button } from 'antd';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import CompanyMaterial from './components/companyMaterial';
+import CustomerMaterial from './components/customerMaterial';
+import ServicesFields from './components/servicesFields';
 
 interface PropsT {
  values: PricesT | null;
@@ -25,7 +27,6 @@ const Prices: React.FC<PropsT> = ({ values }) => {
      }}
      initialValues={values}
      render={props => {
-      console.log(props);
       return (
        <>
         <Form
@@ -35,9 +36,14 @@ const Prices: React.FC<PropsT> = ({ values }) => {
         >
          <div>
           {values.companyMaterial && (
-           <CompanyMaterial {...props} data={values.companyMaterial} />
+           <CompanyMaterial {...props} values={values.companyMaterial} />
           )}
-          {/* /|\ to do poprawy */}
+          {values.customerMaterial && (
+           <CustomerMaterial {...props} values={values.customerMaterial} />
+          )}
+          {values.services && (
+           <ServicesFields {...props} values={values.services} />
+          )}
          </div>
          <Button onClick={handleEdit}>Edytuj</Button>
          <Button type="primary" disabled={!isEdit} htmlType="submit">

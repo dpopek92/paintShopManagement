@@ -1,9 +1,9 @@
 import React from 'react';
-import { GlossT } from 'services/store/types/settings/Settings';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
+import { SemiGlossT } from 'services/store/types/settings/Settings';
 
 interface PropsT {
- values: GlossT | undefined;
+ values: SemiGlossT | undefined;
  label?: string;
  placeholder?: string;
  errors: any;
@@ -16,7 +16,7 @@ interface PropsT {
  size?: 'default' | 'small' | 'large';
 }
 
-const GlossFields: React.FC<PropsT> = props => {
+const SemiGlossFields: React.FC<PropsT> = props => {
  const { values, setFieldValue } = props;
  return (
   <>
@@ -43,9 +43,19 @@ const GlossFields: React.FC<PropsT> = props => {
       {...props}
      />
      <FormFieldNumber
-      label="Połysk/Półmat"
+      label="CNC (Jednostronny)"
       setFieldValue={setFieldValue}
-      name="oneGlossSecondSemigloss"
+      name="milledElement"
+      values={values}
+      required={true}
+      //  disabled={}
+      size="large"
+      {...props}
+     />
+     <FormFieldNumber
+      label="CNC (Dwustronny)"
+      setFieldValue={setFieldValue}
+      name="milledElementBothSides"
       values={values}
       required={true}
       //  disabled={}
@@ -58,4 +68,4 @@ const GlossFields: React.FC<PropsT> = props => {
  );
 };
 
-export default GlossFields;
+export default SemiGlossFields;
