@@ -27,15 +27,11 @@ export interface PricesT {
 export interface CompanyMaterialPricesT {
  gloss: GlossT;
  semiGloss: SemiGlossT;
- milledElement: number;
- milledElementBothSides: number;
  board: BoardT;
 }
 export interface CustomerMaterialT {
  gloss: GlossT;
  semiGloss: SemiGlossT;
- milledElement: number;
- milledElementBothSides: number;
 }
 export interface GlossT {
  oneSide: number;
@@ -47,6 +43,8 @@ export interface SemiGlossT {
  bothSides: number;
  mordant?: number;
  veneerColorless?: number;
+ milledElement: number;
+ milledElementBothSides: number;
 }
 export interface BoardT {
  3: number;

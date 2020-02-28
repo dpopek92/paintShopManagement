@@ -2,10 +2,10 @@ import React from 'react';
 import { Modal, Button, Form, Icon } from 'antd';
 import { Formik } from 'formik';
 import { schema } from './utils/validate';
-import FormField from 'components/FormField';
 import { User } from 'services/store/types/auth/Auth';
 import { Customer } from 'services/store/types/customers/Customers';
 import { userDataChangeValues } from 'scenes/Settings/Account/utils/types';
+import FormFieldInput from 'components/FormFields/FormFieldInput';
 
 interface Props {
  visible: boolean;
@@ -69,7 +69,7 @@ const UserDataChange: React.FC<Props> = ({
        onSubmit={props.handleSubmit}
        id="userDataChangeForm"
       >
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Imię"
         name="firstname"
@@ -77,7 +77,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Imię"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Nazwisko"
         name="surname"
@@ -85,7 +85,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Nazwisko"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="E-mail"
         name="email"
@@ -93,7 +93,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="E-mail"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Nr telefonu"
         name="phone"
@@ -101,7 +101,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Nr telefonu"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Nazwa firmy"
         name="company"
@@ -109,7 +109,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Nazwa firmy"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="NIP"
         name="NIP"
@@ -117,7 +117,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="NIP"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Ulica"
         name="street"
@@ -125,7 +125,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Ulica"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Kod pocztowy"
         name="postcode"
@@ -133,7 +133,7 @@ const UserDataChange: React.FC<Props> = ({
         required
         label="Kod pocztowy"
        />
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="Miasto"
         name="city"

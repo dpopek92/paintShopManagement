@@ -2,8 +2,8 @@ import React from 'react';
 import { Modal, Button, Form, Icon } from 'antd';
 import { Formik } from 'formik';
 import { schema } from './utils/validate';
-import FormField from 'components/FormField';
 import { passwordChangeValues } from 'scenes/Settings/Account/utils/types';
+import FormFieldPassword from 'components/FormFields/FormFieldPassword';
 
 const initValues = {
  password: '',
@@ -63,27 +63,24 @@ const PasswordChange: React.FC<Props> = ({
       onSubmit={props.handleSubmit}
       id="passwordChangeForm"
      >
-      <FormField
+      <FormFieldPassword
        {...props}
        placeholder="Hasło"
        name="password"
-       type="password"
        required
        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
       />
-      <FormField
+      <FormFieldPassword
        {...props}
        placeholder="Nowe hasło"
        name="newPassword"
-       type="password"
        required
        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
       />
-      <FormField
+      <FormFieldPassword
        {...props}
        placeholder="Powtórz nowe hasło"
        name="newPassword2"
-       type="password"
        required
        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
       />

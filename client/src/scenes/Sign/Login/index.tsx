@@ -5,7 +5,6 @@ import { Formik } from 'formik';
 import styled from 'styled-components';
 import Header from 'components/header';
 import { schema } from './utils/validate';
-import FormField from '../../../components/FormField';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
 import { authUser } from 'services/apiRequests/auth/get';
@@ -15,6 +14,8 @@ import {
  logInFail,
 } from 'services/store/actions/auth';
 import { AppState } from 'services/store';
+import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FormFieldPassword from 'components/FormFields/FormFieldPassword';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -74,7 +75,7 @@ const Login = () => {
      }}
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
-       <FormField
+       <FormFieldInput
         {...props}
         placeholder="E-mail"
         name="email"
@@ -82,11 +83,10 @@ const Login = () => {
         required
         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
        />
-       <FormField
+       <FormFieldPassword
         {...props}
         placeholder="Hasło"
         name="password"
-        type="password"
         required
         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
        />

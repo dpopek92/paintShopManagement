@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { RealizationDatesT } from 'services/store/types/settings/Settings';
 import { Formik } from 'formik';
 import { Form, Button } from 'antd';
-import FormField from 'components/FormField';
+import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 
 const StyledWrapper = styled.div`
  width: 300px;
@@ -17,7 +17,7 @@ interface PropsT {
 }
 
 const RealizationDates: React.FC<PropsT> = ({ values }) => {
- const [isEdit, setIsEdit] = useState(true);
+ const [isEdit, setIsEdit] = useState(false);
 
  const handleEdit = () => setIsEdit(!isEdit);
  return (
@@ -31,44 +31,40 @@ const RealizationDates: React.FC<PropsT> = ({ values }) => {
      initialValues={values}
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
-       <FormField
+       <FormFieldNumber
         {...props}
         label="Połysk"
         name="gloss"
-        type="number"
         size="large"
-        disabled={isEdit}
+        disabled={!isEdit}
         required
        />
-       <FormField
+       <FormFieldNumber
         {...props}
         label="Półmat"
         name="semiGloss"
-        type="number"
         size="large"
-        disabled={isEdit}
+        disabled={!isEdit}
         required
        />
-       <FormField
+       <FormFieldNumber
         {...props}
         label="CNC"
         name="milling"
-        type="number"
         size="large"
-        disabled={isEdit}
+        disabled={!isEdit}
         required
        />
-       <FormField
+       <FormFieldNumber
         {...props}
         label="Fornir"
         name="veneer"
-        type="number"
         size="large"
-        disabled={isEdit}
+        disabled={!isEdit}
         required
        />
        <Button onClick={handleEdit}>Edytuj</Button>
-       <Button type="primary" disabled={isEdit} htmlType="submit">
+       <Button type="primary" disabled={!isEdit} htmlType="submit">
         Zatwierdź
        </Button>
       </Form>

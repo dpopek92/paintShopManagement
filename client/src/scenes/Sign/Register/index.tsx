@@ -6,12 +6,13 @@ import styled from 'styled-components';
 import Header from 'components/header';
 import { createNewAccount } from 'services/apiRequests/user/post';
 import { schema } from './utils/validate';
-import FormField from '../../../components/FormField';
 import FormCheckbox from './components/FormCheckbox';
 import Success from './components/Modals/Success';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
 import { AppState } from 'services/store';
+import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FormFieldPassword from 'components/FormFields/FormFieldPassword';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -103,39 +104,35 @@ const Register = () => {
         className="form-container"
         onSubmit={props.handleSubmit}
        >
-        <FormField
+        <FormFieldInput
          {...props}
          placeholder="Imię*"
          name="firstname"
-         type="firstname"
          required
         />
-        <FormField
-         {...props}
-         placeholder="Nazwisko"
-         name="surname"
-         type="surname"
-        />
-        <FormField
+        <FormFieldInput {...props} placeholder="Nazwisko" name="surname" />
+        <FormFieldInput
          {...props}
          placeholder="Nazwa firmy*"
          name="company"
-         type="company"
          required
         />
-        <FormField {...props} placeholder="E-mail*" name="email" type="email" />
-        <FormField
+        <FormFieldInput
+         {...props}
+         placeholder="E-mail*"
+         name="email"
+         type="email"
+        />
+        <FormFieldPassword
          {...props}
          placeholder="Hasło*"
          name="password"
-         type="password"
          required
         />
-        <FormField
+        <FormFieldPassword
          {...props}
          placeholder="Powtórz hasło"
          name="password2"
-         type="password"
          required
         />
 

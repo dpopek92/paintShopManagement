@@ -87,15 +87,15 @@ const SettingsChema = new mongoose.Schema({
         bothSides: {
           type: Number,
           default: 290
+        },
+        milledElement: {
+          type: Number,
+          default: 350
+        },
+        milledElementBothSides: {
+          type: Number,
+          default: 440
         }
-      },
-      milledElement: {
-        type: Number,
-        default: 350
-      },
-      milledElementBothSides: {
-        type: Number,
-        default: 440
       },
       board: {
         3: {
@@ -183,15 +183,15 @@ const SettingsChema = new mongoose.Schema({
         veneerColorless: {
           type: Number,
           default: 160
+        },
+        milledElement: {
+          type: Number,
+          default: 280
+        },
+        milledElementBothSides: {
+          type: Number,
+          default: 370
         }
-      },
-      milledElement: {
-        type: Number,
-        default: 280
-      },
-      milledElementBothSides: {
-        type: Number,
-        default: 370
       }
     },
     services: {
