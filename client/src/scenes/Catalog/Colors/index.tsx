@@ -98,7 +98,7 @@ const Colors: React.FC<Props> = ({ permissionContext }) => {
     <>
      <PageHeader
       ghost={false}
-      title={<Header title="Kolory" />}
+      title={<Header title="Kolory" type="h1" />}
       extra={[
        <Input
         key="1"

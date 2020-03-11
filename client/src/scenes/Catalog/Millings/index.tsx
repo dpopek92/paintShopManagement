@@ -60,7 +60,7 @@ const Millings = ({ permissionContext }: Props) => {
     <>
      <PageHeader
       ghost={false}
-      title={<Header title="Fronty frezowane" />}
+      title={<Header title="Fronty frezowane" type="h1" />}
       extra={
        permissionContext !== 'employee' && [
         <Button

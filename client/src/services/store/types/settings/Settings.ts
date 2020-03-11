@@ -1,4 +1,4 @@
-export interface SettingsT {
+export interface GlobalSettingsT {
  prices: PricesT | null;
  paintsProducers: PaintsProducersT | null;
  realizationDates: RealizationDatesT | null;
@@ -74,18 +74,28 @@ export interface ServicesT {
 }
 
 // CONTACT
-
 export interface ContactT {
  companyName: string;
  NIP: string;
  REGON: string;
- webPages: WebPageT[] | [];
- emails: EmailT[] | [];
- phones: PhoneT[] | [];
- addresses: AddressT[] | [];
- bankAccounts: BankAccountT[] | [];
+ webPages: WebPageT[];
+ emails: EmailT[];
+ phones: PhoneT[];
+ addresses: AddressT[];
+ bankAccounts: BankAccountT[];
 }
-
+export interface AddressT {
+ name: string;
+ postcode: string;
+ city: string;
+ street: string;
+ description: string;
+}
+export interface BankAccountT {
+ name: string;
+ bankName: string;
+ accountNumber: string;
+}
 export interface WebPageT {
  name: string;
  webPage: string;
@@ -98,14 +108,16 @@ export interface PhoneT {
  name: string;
  number: string;
 }
-export interface AddressT {
- name: string;
- postcode: string;
- city: string;
- street: string;
-}
-export interface BankAccountT {
- name: string;
- bankName: string;
- accountNumber: string;
-}
+
+export type ContactItemsT =
+ | AddressT
+ | BankAccountT
+ | WebPageT
+ | EmailT
+ | PhoneT;
+export type ContactKeysT =
+ | 'emails'
+ | 'webPages'
+ | 'phones'
+ | 'addresses'
+ | 'bankAccounts';

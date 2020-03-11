@@ -57,7 +57,10 @@ const Handles = ({ permissionContext }: Props) => {
   <div>
    <FullWidthPageTemplate>
     <>
-     <PageHeader ghost={false} title={<Header title="Uchwyty frezowane" />} />
+     <PageHeader
+      ghost={false}
+      title={<Header title="Uchwyty frezowane" type="h1" />}
+     />
      <FlexTemplate>
       {handles.map(item => (
        <Card

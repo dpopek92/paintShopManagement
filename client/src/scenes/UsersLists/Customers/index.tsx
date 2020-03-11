@@ -120,7 +120,7 @@ const Customers = () => {
  return (
   <FullWidthTemplate>
    <>
-    <PageHeader ghost={false} title={<Header title="Klienci" />} />
+    <PageHeader ghost={false} title={<Header title="Klienci" type="h1" />} />
     <>
      {
       <Table

@@ -1,15 +1,40 @@
 import Axios from 'axios';
 import { Dispatch } from 'redux';
 import {
- loadGlobalSettingsT,
- SETTINGS_LOADED,
- loadGlobalSettingsErrorT,
  SETTINGS_LOADED_ERROR,
+ SETTINGS_LOADED,
+ SETTINGS_ADD_ITEM,
+ SETTINGS_REMOVE_ITEM,
+ loadGlobalSettingsT,
+ loadGlobalSettingsErrorT,
+ settingsAddItemT,
+ settingsRemoveItemT,
 } from '../types/settings/actions';
-import { SettingsT } from '../types/settings/Settings';
+import {
+ GlobalSettingsT,
+ ContactKeysT,
+ ContactItemsT,
+} from '../types/settings/Settings';
+
+export const globalSettingsAddItem = (
+ key: ContactKeysT,
+ item: ContactItemsT,
+): settingsAddItemT => ({
+ type: SETTINGS_ADD_ITEM,
+ key,
+ item,
+});
+export const globalSettingsRemoveItem = (
+ key: ContactKeysT,
+ index: number,
+): settingsRemoveItemT => ({
+ type: SETTINGS_REMOVE_ITEM,
+ key,
+ index,
+});
 
 export const globalSettingsLoaded = (
- settings: SettingsT,
+ settings: GlobalSettingsT,
 ): loadGlobalSettingsT => ({
  type: SETTINGS_LOADED,
  settings,
@@ -26,7 +51,6 @@ export const getGlobalSettings = (onEnd: () => void) => async (
  try {
   const res = await Axios.get('/api/settings/');
 
-  //   console.log(res.data);
   dispatch(globalSettingsLoaded(res.data));
   onEnd();
  } catch (err) {

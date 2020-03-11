@@ -94,7 +94,7 @@ const Veneers = ({ permissionContext }: Props) => {
     <>
      <PageHeader
       ghost={false}
-      title={<Header title="Forniry" />}
+      title={<Header title="Forniry" type="h1" />}
       extra={[
        <Input
         key="1"

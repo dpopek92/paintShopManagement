@@ -9,6 +9,18 @@ const StyledFormItem = styled(Form.Item)`
    margin: 0;
   }
  }
+ @media (max-width: 768px) {
+  width: 100%;
+
+  .ant-form-item-label,
+  .ant-form-item-control-wrapper {
+   ${({ label }) => {
+    if (label) {
+     return 'display: inline-block; width: 50%;';
+    }
+   }}
+  }
+ }
 `;
 
 interface Props {
@@ -32,8 +44,8 @@ const FormField: React.FC<Props> = ({
    validateStatus={touched[name] && errors[name] ? 'error' : 'success'}
    hasFeedback={touched[name]}
    help={touched[name] && errors[name]}
-   labelCol={label ? { span: 6 } : {}}
-   wrapperCol={label ? { span: 18 } : {}}
+   labelCol={label ? { span: 12 } : {}}
+   wrapperCol={label ? { span: 12 } : {}}
   >
    {children}
   </StyledFormItem>

@@ -107,7 +107,7 @@ const AccountSettings = ({
    <>
     <PageHeader
      ghost={false}
-     title={<Header title="Twoje dane" />}
+     title={<Header title="Twoje dane" type="h1" />}
      extra={[
       <Button key="1" onClick={() => setModal({ ...modal, dataChange: true })}>
        <Icon type="edit" />

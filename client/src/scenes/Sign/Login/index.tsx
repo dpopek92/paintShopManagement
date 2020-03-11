@@ -64,7 +64,7 @@ const Login = () => {
  return (
   <StyledWrapper>
    <div>
-    <Header title="Panel logowania" />
+    <Header title="Panel logowania" type="h1" />
     <Formik
      validationSchema={schema}
      // ONSUBMIT REQUEST

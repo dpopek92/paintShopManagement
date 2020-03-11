@@ -3,21 +3,15 @@ import { CustomerMaterialT } from 'services/store/types/settings/Settings';
 import GlossFields from '../glossFields';
 import SemiGlossFields from '../semiGlossFields';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
+import Header from 'components/header';
+import { InputNumberProps } from 'antd/lib/input-number';
 
-// Do poprawy
-
-interface PropsT {
+interface PropsT extends InputNumberProps {
  values: CustomerMaterialT | undefined;
  errors: any;
- label?: string;
- placeholder?: string;
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
- prefix?: any;
- required?: boolean;
- disabled?: boolean;
- size?: 'default' | 'small' | 'large';
 }
 
 const CustomerMaterial: React.FC<PropsT> = props => {
@@ -26,10 +20,12 @@ const CustomerMaterial: React.FC<PropsT> = props => {
   <>
    {values && (
     <div>
-     <h2>Materiał klienta</h2>
-     <h3>Połysk</h3>
+     <Header title="Materiał klienta" type="h2" />
+
+     <Header title="Połysk" type="h3" />
      {values.gloss && <GlossFields {...props} values={values.gloss} />}
-     <h3>Półmat</h3>
+
+     <Header title="Półmat" type="h3" />
      {values.semiGloss && (
       <SemiGlossFields {...props} values={values.semiGloss} />
      )}

@@ -1,19 +1,15 @@
 import React from 'react';
 import { ServicesT } from 'services/store/types/settings/Settings';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
+import Header from 'components/header';
+import { InputNumberProps } from 'antd/lib/input-number';
 
-interface PropsT {
+interface PropsT extends InputNumberProps {
  values: ServicesT | undefined;
  errors: any;
- label?: string;
- placeholder?: string;
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
- prefix?: any;
- required?: boolean;
- disabled?: boolean;
- size?: 'default' | 'small' | 'large';
 }
 
 const ServicesFields: React.FC<PropsT> = props => {
@@ -22,9 +18,9 @@ const ServicesFields: React.FC<PropsT> = props => {
   <>
    {values && (
     <div>
-     <h2>Usługi</h2>
+     <Header title="Usługi" type="h2" />
      <FormFieldNumber
-      label="Frezowanie+Lakierowanie uchwytu"
+      label="Frez. + Lak. uchwytu"
       setFieldValue={setFieldValue}
       values={values}
       name="milledHandle"
@@ -33,7 +29,7 @@ const ServicesFields: React.FC<PropsT> = props => {
       {...props}
      />
      <FormFieldNumber
-      label="Frezowanie+Lakierowanie uchwytu częściowego"
+      label="Frez. + Lak. uchwytu częściowego"
       setFieldValue={setFieldValue}
       values={values}
       name="milledPartHandle"

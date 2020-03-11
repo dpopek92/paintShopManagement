@@ -31,7 +31,11 @@ const FormFieldNumber: React.FC<Props> = ({
  disabled,
  size,
 }) => {
- const handleChange = (value: number | undefined) => setFieldValue(name, value);
+ const handleChange = (value: number | undefined) => {
+  console.log(values);
+  console.log(name, value);
+  setFieldValue(name, value);
+ };
  return (
   <FormField label={label} name={name} errors={errors} touched={touched}>
    <InputNumber

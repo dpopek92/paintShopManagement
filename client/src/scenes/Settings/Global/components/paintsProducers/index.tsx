@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PaintsProducersT } from 'services/store/types/settings/Settings';
 import { Formik } from 'formik';
-import { Form, Button } from 'antd';
+import { Form, Button, message } from 'antd';
 import FormFieldInput from 'components/FormFields/FormFieldInput';
+import Header from 'components/header';
+import { useDispatch } from 'react-redux';
+import { setSpinner } from 'services/store/actions/view';
+import { updateGlobalSettings } from 'services/apiRequests/settings/update';
+import { globalSettingsLoaded } from 'services/store/actions/settings';
 
 const StyledWrapper = styled.div`
- width: 300px;
+ width: 400px;
  button {
   margin-right: 10px;
+ }
+ @media (max-width: 600px) {
+  width: 100%;
  }
 `;
 
@@ -17,6 +25,7 @@ interface PropsT {
 }
 
 const PaintsProducers: React.FC<PropsT> = ({ values }) => {
+ const dispatch = useDispatch();
  const [isEdit, setIsEdit] = useState(false);
 
  const handleEdit = () => setIsEdit(!isEdit);
@@ -25,12 +34,27 @@ const PaintsProducers: React.FC<PropsT> = ({ values }) => {
    {values && (
     <Formik
      //  validationSchema={schema}
-     onSubmit={values => {
-      console.log(values);
+     onSubmit={async (values, actions) => {
+      dispatch(setSpinner(true));
+      await updateGlobalSettings(
+       { paintsProducers: values },
+       data => {
+        if (data.paintsProducers) actions.setValues(data.paintsProducers);
+        dispatch(globalSettingsLoaded(data));
+        setIsEdit(false);
+        dispatch(setSpinner(false));
+        message.success('Dane zostały zaktualizowane');
+       },
+       () => {
+        dispatch(setSpinner(false));
+        message.error('Błąd serwera');
+       },
+      );
      }}
      initialValues={values}
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
+       <Header title="Producenci lakierów" type="h2" />
        <FormFieldInput
         {...props}
         label="Połysk"

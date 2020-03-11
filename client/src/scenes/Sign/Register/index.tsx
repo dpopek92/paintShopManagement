@@ -85,7 +85,7 @@ const Register = () => {
  return (
   <StyledWrapper>
    <div>
-    <Header title="Rejestracja" />
+    <Header title="Rejestracja" type="h1" />
     <Formik
      validationSchema={schema}
      onSubmit={handleSubmit}

@@ -53,7 +53,7 @@ const Element = ({ location }: { location: location }) => {
      <div style={{ textAlign: 'center' }}>
       <PageHeader
        ghost={false}
-       title={<Header title={state.name.toUpperCase()} />}
+       title={<Header title={state.name.toUpperCase()} type="h1" />}
       />
       <div>
        <FlexTemplate>

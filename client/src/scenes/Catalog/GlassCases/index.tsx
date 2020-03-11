@@ -55,7 +55,7 @@ const Veneers = ({ permissionContext }: Props) => {
   <div>
    <FullWidthPageTemplate>
     <>
-     <PageHeader ghost={false} title={<Header title="Witryny" />} />
+     <PageHeader ghost={false} title={<Header title="Witryny" type="h1" />} />
      <FlexTemplate>
       {glassCases.map(item => (
        <Card

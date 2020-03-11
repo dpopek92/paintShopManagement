@@ -19,24 +19,15 @@ const GlobalSettings = () => {
  useEffect(() => {
   dispatch(getGlobalSettings(() => {}));
  }, []);
- //  console.log(settings);
 
  return (
   <FullWidthPageTemplate>
    <>
-    <PageHeader ghost={false} title={<Header title="Ustawienia globalne" />} />
-    <Tabs defaultActiveKey="2">
-     <TabPane
-      tab={
-       <span>
-        <Icon type="dollar" />
-        Cennik
-       </span>
-      }
-      key="1"
-     >
-      <Prices values={prices} />
-     </TabPane>
+    <PageHeader
+     ghost={false}
+     title={<Header title="Ustawienia globalne" type="h1" />}
+    />
+    <Tabs defaultActiveKey="24">
      <TabPane
       tab={
        <span>
@@ -44,9 +35,20 @@ const GlobalSettings = () => {
         Dane kontaktowe
        </span>
       }
+      key="1"
+     >
+      <Contact data={contact} />
+     </TabPane>
+     <TabPane
+      tab={
+       <span>
+        <Icon type="dollar" />
+        Cennik
+       </span>
+      }
       key="2"
      >
-      <Contact values={contact} />
+      <Prices data={prices} />
      </TabPane>
      <TabPane
       tab={

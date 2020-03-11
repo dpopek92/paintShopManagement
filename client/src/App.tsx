@@ -9,7 +9,7 @@ import Spinner from 'components/spinner';
 // Layout
 import MainTemplate from 'components/templates/mainTemplate';
 import Navigation from 'components/navigation';
-// import Footer from 'components/molecules/footer/Footer';
+import Footer from 'components/Footer';
 
 // Stats
 // import ProductionStatistics from 'views/Statistics/Production';
@@ -93,7 +93,9 @@ const App = () => {
     <BackTop />
     <Router>
      <MainTemplate>
-      <>
+      <div
+       style={{ minHeight: '100vh', position: 'relative', paddingBottom: 100 }}
+      >
        <Navigation />
        {/* <button onClick={() => console.log(user.emaile.bound)}>Klik</button> */}
        <Switch>
@@ -218,8 +220,8 @@ const App = () => {
         />
         {/* <Route component={ErrorPage} /> */}
        </Switch>
-       {/* <Footer /> */}
-      </>
+       <Footer />
+      </div>
      </MainTemplate>
     </Router>
    </ErrorBoundary>

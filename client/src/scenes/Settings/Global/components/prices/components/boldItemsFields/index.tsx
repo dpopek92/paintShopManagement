@@ -1,19 +1,14 @@
 import React from 'react';
 import { BoardT } from 'services/store/types/settings/Settings';
 import FormFieldNumber from 'components/FormFields/FormFieldNumber';
+import { InputNumberProps } from 'antd/lib/input-number';
 
-interface PropsT {
+interface PropsT extends InputNumberProps {
  values: BoardT | undefined;
- label?: string;
- placeholder?: string;
  errors: any;
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
- prefix?: any;
- required?: boolean;
- disabled?: boolean;
- size?: 'default' | 'small' | 'large';
 }
 
 const BoldItemsFields: React.FC<PropsT> = props => {

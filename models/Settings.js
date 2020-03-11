@@ -52,7 +52,8 @@ const SettingsChema = new mongoose.Schema({
         name: { type: String },
         postcode: { type: String },
         city: { type: String },
-        street: { type: String }
+        street: { type: String },
+        description: { type: String }
       }
     ],
     bankAccounts: [

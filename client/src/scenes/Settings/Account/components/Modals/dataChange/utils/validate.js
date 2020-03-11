@@ -16,6 +16,7 @@ export const schema = yup.object({
  company: yup.string().required('Nazwa firmy jest wymagana'),
  postcode: yup.string().matches(/^\d{2}-\d{3}$/, 'Nieprawidłowy format'),
  street: yup.string(),
+ city: yup.string(),
  NIP: yup.string().matches(/^[0-9_.-\s]*$/, 'Nieprawidłowy format'),
  phone: yup.string().matches(/^[0-9_.-\s]*$/, 'Nieprawidłowy format'),
 });

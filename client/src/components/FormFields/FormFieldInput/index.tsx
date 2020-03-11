@@ -33,6 +33,7 @@ const FormFieldInput: React.FC<Props> = ({
  disabled,
  size,
 }) => {
+ //  console.log(values);
  return (
   <FormField label={label} name={name} errors={errors} touched={touched}>
    <Input
@@ -42,7 +43,10 @@ const FormFieldInput: React.FC<Props> = ({
     type={type}
     name={name}
     value={values[name]}
-    onChange={handleChange}
+    onChange={e => {
+     console.log(e.target.value);
+     handleChange(e);
+    }}
     onBlur={handleBlur}
     disabled={disabled}
     size={size}

@@ -60,7 +60,7 @@ const CustomerProfile = () => {
    <>
     <PageHeader
      ghost={false}
-     title={<Header title="Dane klienta" />}
+     title={<Header title="Dane klienta" type="h1" />}
      extra={[
       <Button key="1" onClick={() => {}} disabled>
        <Icon type="pie-chart" />
@@ -109,9 +109,9 @@ const CustomerProfile = () => {
      </Descriptions>
     )}
     <hr />
-    <Header title="Cennik indywidualny" />
+    <Header title="Cennik indywidualny" type="h2" />
     <hr />
-    <Header title="Zamówienia" />
+    <Header title="Zamówienia" type="h2" />
 
     {/* MODALS */}
     <AccountRemove
