@@ -3,7 +3,6 @@ const { getGlobalSettings } = require("../../actions/settings/get");
 const update = {
   settings: async (req, res) => {
     const { body } = req;
-    console.log(body);
     try {
       const settings = await getGlobalSettings();
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { PhoneT, ContactT } from 'services/store/types/settings/Settings';
+import { ContactT } from 'services/store/types/settings/Settings';
 import { Form, Button } from 'antd';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FieldInput from 'components/FormFields/FieldInput';
 import { schema } from './utils/validate';
 import styled from 'styled-components';
 import withDrawer from '../withDrawer';
@@ -53,14 +53,14 @@ const AddEmail: React.FC<PropsT> = ({
    initialValues={initValues}
    render={props => (
     <Form noValidate onSubmit={props.handleSubmit}>
-     <FormFieldInput
+     <FieldInput
       {...props}
       placeholder="Nazwa"
       name="name"
       size="large"
       required
      />
-     <FormFieldInput
+     <FieldInput
       {...props}
       placeholder="Adres e-mail"
       name="email"

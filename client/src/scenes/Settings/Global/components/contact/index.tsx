@@ -9,9 +9,9 @@ import {
  ContactKeysT,
 } from 'services/store/types/settings/Settings';
 import styled from 'styled-components';
-import { Formik, FormikActions } from 'formik';
+import { Formik } from 'formik';
 import { Button, Form, message } from 'antd';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FieldInput from 'components/FormFields/FieldInput';
 import Header from 'components/header';
 import ContactCard from './components/contactCard';
 import AddCard from './components/addItemCard';
@@ -29,6 +29,7 @@ import {
 import update from 'immutability-helper';
 import { updateGlobalSettings } from 'services/apiRequests/settings/update';
 import { setSpinner } from 'services/store/actions/view';
+import { schema } from './utils/validate';
 
 const initDrawers = {
  address: false,
@@ -112,7 +113,7 @@ const Contact: React.FC<PropsT> = ({ data }) => {
   <div>
    {data && (
     <Formik
-     //  validationSchema={schema}
+     validationSchema={schema}
      onSubmit={async (values, actions) => {
       dispatch(setSpinner(true));
       await updateGlobalSettings(
@@ -144,7 +145,7 @@ const Contact: React.FC<PropsT> = ({ data }) => {
          <StyledContainer>
           <StyledWrapper>
            <Header title="Dane firmy" type="h3" />
-           <FormFieldInput
+           <FieldInput
             {...props}
             label="Nazwa firmy"
             name="companyName"
@@ -152,7 +153,7 @@ const Contact: React.FC<PropsT> = ({ data }) => {
             disabled={!isEdit}
             required
            />
-           <FormFieldInput
+           <FieldInput
             {...props}
             label="NIP"
             name="NIP"
@@ -160,7 +161,7 @@ const Contact: React.FC<PropsT> = ({ data }) => {
             disabled={!isEdit}
             required
            />
-           <FormFieldInput
+           <FieldInput
             {...props}
             label="REGON"
             name="REGON"

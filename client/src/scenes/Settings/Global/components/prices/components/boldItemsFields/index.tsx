@@ -1,71 +1,49 @@
 import React from 'react';
 import { BoardT } from 'services/store/types/settings/Settings';
-import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import { InputNumberProps } from 'antd/lib/input-number';
+import FieldNumber from 'components/FormFields/FieldNumber';
 
 interface PropsT extends InputNumberProps {
  values: BoardT | undefined;
- errors: any;
- touched: any;
- handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
- setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
+ nestPath?: string;
 }
 
 const BoldItemsFields: React.FC<PropsT> = props => {
- const { values, setFieldValue } = props;
+ const { values, nestPath } = props;
+ console.log(props);
  return (
   <>
    {values && (
     <div>
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.board.22`}
       label="22mm"
-      setFieldValue={setFieldValue}
-      name="22"
-      values={values}
-      required={true}
-      // disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.board.25`}
       label="25mm"
-      setFieldValue={setFieldValue}
-      name="25"
-      values={values}
-      required={true}
-      // disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.board.28`}
       label="28mm"
-      setFieldValue={setFieldValue}
-      name="28"
-      values={values}
-      required={true}
-      // disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.board.30`}
       label="30mm"
-      setFieldValue={setFieldValue}
-      name="30"
-      values={values}
-      required={true}
-      // disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
-      label="38mm"
-      setFieldValue={setFieldValue}
-      name="38"
-      values={values}
-      required={true}
-      // disabled={}
-      size="large"
+     <FieldNumber
       {...props}
+      name={`${nestPath}.board.38`}
+      label="38mm"
+      size="large"
      />
     </div>
    )}

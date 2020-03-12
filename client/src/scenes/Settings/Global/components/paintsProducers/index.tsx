@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PaintsProducersT } from 'services/store/types/settings/Settings';
 import { Formik } from 'formik';
 import { Form, Button, message } from 'antd';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FieldInput from 'components/FormFields/FieldInput';
 import Header from 'components/header';
 import { useDispatch } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
@@ -55,7 +55,7 @@ const PaintsProducers: React.FC<PropsT> = ({ values }) => {
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
        <Header title="Producenci lakierów" type="h2" />
-       <FormFieldInput
+       <FieldInput
         {...props}
         label="Połysk"
         name="gloss"
@@ -63,7 +63,7 @@ const PaintsProducers: React.FC<PropsT> = ({ values }) => {
         disabled={!isEdit}
         required
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         label="Półmat"
         name="semiGloss"
@@ -71,7 +71,7 @@ const PaintsProducers: React.FC<PropsT> = ({ values }) => {
         disabled={!isEdit}
         required
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         label="Podkład"
         name="base"
@@ -79,6 +79,7 @@ const PaintsProducers: React.FC<PropsT> = ({ values }) => {
         disabled={!isEdit}
         required
        />
+
        <Button onClick={handleEdit}>Edytuj</Button>
        <Button type="primary" disabled={!isEdit} htmlType="submit">
         Zatwierdź

@@ -5,7 +5,7 @@ import { schema } from './utils/validate';
 import { User } from 'services/store/types/auth/Auth';
 import { Customer } from 'services/store/types/customers/Customers';
 import { userDataChangeValues } from 'scenes/Settings/Account/utils/types';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FieldInput from 'components/FormFields/FieldInput';
 
 interface Props {
  visible: boolean;
@@ -69,75 +69,67 @@ const UserDataChange: React.FC<Props> = ({
        onSubmit={props.handleSubmit}
        id="userDataChangeForm"
       >
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Imię"
         name="firstname"
-        type="firstname"
         required
         label="Imię"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Nazwisko"
         name="surname"
-        type="surname"
         required
         label="Nazwisko"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="E-mail"
         name="email"
-        type="email"
         required
         label="E-mail"
+        type="email"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Nr telefonu"
         name="phone"
-        type="phone"
         required
         label="Nr telefonu"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Nazwa firmy"
         name="company"
-        type="company"
         required
         label="Nazwa firmy"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="NIP"
         name="NIP"
-        type="NIP"
         required
         label="NIP"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Ulica"
         name="street"
-        type="street"
         required
         label="Ulica"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Kod pocztowy"
         name="postcode"
-        type="postcode"
         required
         label="Kod pocztowy"
        />
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="Miasto"
         name="city"
-        type="city"
         required
         label="Miasto"
        />

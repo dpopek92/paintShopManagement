@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button, Form, Icon } from 'antd';
 import { Formik } from 'formik';
 import { schema } from './utils/validate';
-import FormFieldPassword from 'components/FormFields/FormFieldPassword';
+import FieldPassword from 'components/FormFields/FieldPassword';
 
 interface Props {
  visible: boolean;
@@ -53,7 +53,7 @@ const AccountRemove: React.FC<Props> = ({
       onSubmit={props.handleSubmit}
       id="accountRemoveForm"
      >
-      <FormFieldPassword
+      <FieldPassword
        {...props}
        placeholder="Hasło"
        name="password"

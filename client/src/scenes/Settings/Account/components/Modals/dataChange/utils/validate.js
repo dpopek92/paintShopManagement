@@ -17,6 +17,9 @@ export const schema = yup.object({
  postcode: yup.string().matches(/^\d{2}-\d{3}$/, 'Nieprawidłowy format'),
  street: yup.string(),
  city: yup.string(),
- NIP: yup.string().matches(/^[0-9_.-\s]*$/, 'Nieprawidłowy format'),
+ NIP: yup
+  .string()
+  .length(9, 'NIP musi składać się z 9 cyfr')
+  .matches(/^[0-9_.-\s]*$/, 'Nieprawidłowy format'),
  phone: yup.string().matches(/^[0-9_.-\s]*$/, 'Nieprawidłowy format'),
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ServicesT } from 'services/store/types/settings/Settings';
-import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import Header from 'components/header';
 import { InputNumberProps } from 'antd/lib/input-number';
+import FieldNumber from 'components/FormFields/FieldNumber';
 
 interface PropsT extends InputNumberProps {
  values: ServicesT | undefined;
@@ -10,77 +10,61 @@ interface PropsT extends InputNumberProps {
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
+ setFieldTouched: (
+  name: string,
+  touched?: boolean,
+  shouldValidate?: boolean,
+ ) => void;
 }
 
 const ServicesFields: React.FC<PropsT> = props => {
- const { values, setFieldValue } = props;
+ const { values, setFieldValue, setFieldTouched } = props;
  return (
   <>
    {values && (
     <div>
      <Header title="Usługi" type="h2" />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.milledHandle`}
       label="Frez. + Lak. uchwytu"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="milledHandle"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.milledPartHandle`}
       label="Frez. + Lak. uchwytu częściowego"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="milledPartHandle"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.millingHandle`}
       label="Frezowanie uchwytu"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="millingHandle"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.chamfering`}
       label="Gierowanie"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="chamfering"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.backMilling`}
       label="Frezowanie pod plecy"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="backMilling"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`services.hingeHole`}
       label="Nawiercanie otworów"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="hingeHole"
-      required={true}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
-      label="Prace stolarskie"
-      setFieldValue={setFieldValue}
-      values={values}
-      name="manHour"
-      required={true}
-      size="large"
+     <FieldNumber
       {...props}
+      name={`services.manHour`}
+      label="Prace stolarskie"
+      size="large"
      />
     </div>
    )}

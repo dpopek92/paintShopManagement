@@ -1,51 +1,36 @@
 import React from 'react';
 import { GlossT } from 'services/store/types/settings/Settings';
-import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import { InputNumberProps } from 'antd/lib/input-number';
+import FieldNumber from 'components/FormFields/FieldNumber';
 
 interface PropsT extends InputNumberProps {
  values: GlossT | undefined;
- errors: any;
- touched: any;
- handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
- setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
+ nestPath?: string;
 }
 
 const GlossFields: React.FC<PropsT> = props => {
- const { values, setFieldValue } = props;
+ const { values, nestPath } = props;
  return (
   <>
    {values && (
     <div>
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.gloss.oneSide`}
       label="Jednostronny"
-      setFieldValue={setFieldValue}
-      name="oneSide"
-      values={values}
-      required={true}
-      //  disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.gloss.bothSides`}
       label="Dwustronny"
-      setFieldValue={setFieldValue}
-      name="bothSides"
-      values={values}
-      required={true}
-      //  disabled={}
       size="large"
-      {...props}
      />
-     <FormFieldNumber
-      label="Połysk/Półmat"
-      setFieldValue={setFieldValue}
-      name="oneGlossSecondSemigloss"
-      values={values}
-      required={true}
-      //  disabled={}
-      size="large"
+     <FieldNumber
       {...props}
+      name={`${nestPath}.gloss.oneGlossSecondSemigloss`}
+      label="Połysk/Półmat"
+      size="large"
      />
     </div>
    )}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { ContactT } from 'services/store/types/settings/Settings';
 import { Form, Button } from 'antd';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
+import FieldInput from 'components/FormFields/FieldInput';
 import { schema } from './utils/validate';
 import styled from 'styled-components';
 import withDrawer from '../withDrawer';
@@ -57,14 +57,14 @@ const AddWebPage: React.FC<PropsT> = ({
    initialValues={initValues}
    render={props => (
     <Form noValidate onSubmit={props.handleSubmit}>
-     <FormFieldInput
+     <FieldInput
       {...props}
       placeholder="Nazwa"
       name="name"
       size="large"
       required
      />
-     <FormFieldInput
+     <FieldInput
       {...props}
       placeholder="Adres strony www"
       name="webPage"

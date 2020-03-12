@@ -2,7 +2,6 @@ import React from 'react';
 import { CustomerMaterialT } from 'services/store/types/settings/Settings';
 import GlossFields from '../glossFields';
 import SemiGlossFields from '../semiGlossFields';
-import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import Header from 'components/header';
 import { InputNumberProps } from 'antd/lib/input-number';
 
@@ -12,6 +11,11 @@ interface PropsT extends InputNumberProps {
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
  setFieldValue: (name: string, value: any, shouldValidate?: boolean) => void;
+ setFieldTouched: (
+  name: string,
+  touched?: boolean,
+  shouldValidate?: boolean,
+ ) => void;
 }
 
 const CustomerMaterial: React.FC<PropsT> = props => {
@@ -23,21 +27,32 @@ const CustomerMaterial: React.FC<PropsT> = props => {
      <Header title="Materiał klienta" type="h2" />
 
      <Header title="Połysk" type="h3" />
-     {values.gloss && <GlossFields {...props} values={values.gloss} />}
+     {values.gloss && (
+      <GlossFields
+       {...props}
+       values={values.gloss}
+       nestPath="customerMaterial"
+      />
+     )}
 
      <Header title="Półmat" type="h3" />
      {values.semiGloss && (
-      <SemiGlossFields {...props} values={values.semiGloss} />
+      <SemiGlossFields
+       {...props}
+       values={values.semiGloss}
+       nestPath="customerMaterial"
+      />
      )}
-     {values && (
+     {/* {values && (
       <FormFieldNumber
        {...props}
        label="Lakierowanie uchwytu"
        name="paintHandle"
        required={true}
        size="large"
+       nestPath="customerMaterial"
       />
-     )}
+     )} */}
     </div>
    )}
   </>

@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { RealizationDatesT } from 'services/store/types/settings/Settings';
 import { Formik } from 'formik';
 import { Form, Button, message } from 'antd';
-import FormFieldNumber from 'components/FormFields/FormFieldNumber';
 import Header from 'components/header';
 import { useDispatch } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
 import { updateGlobalSettings } from 'services/apiRequests/settings/update';
 import { globalSettingsLoaded } from 'services/store/actions/settings';
+import FieldNumber from 'components/FormFields/FieldNumber';
+import { schema } from './utils/validate';
 
 const StyledWrapper = styled.div`
  width: 400px;
@@ -21,19 +22,19 @@ const StyledWrapper = styled.div`
 `;
 
 interface PropsT {
- values: RealizationDatesT | null;
+ data: RealizationDatesT | null;
 }
 
-const RealizationDates: React.FC<PropsT> = ({ values }) => {
+const RealizationDates: React.FC<PropsT> = ({ data }) => {
  const dispatch = useDispatch();
  const [isEdit, setIsEdit] = useState(false);
 
  const handleEdit = () => setIsEdit(!isEdit);
  return (
   <StyledWrapper>
-   {values && (
+   {data && (
     <Formik
-     //  validationSchema={schema}
+     validationSchema={schema}
      onSubmit={async (values, actions) => {
       dispatch(setSpinner(true));
       await updateGlobalSettings(
@@ -51,41 +52,37 @@ const RealizationDates: React.FC<PropsT> = ({ values }) => {
        },
       );
      }}
-     initialValues={values}
+     initialValues={data}
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
        <Header title="Terminy realizacji" type="h2" />
-       <FormFieldNumber
+       <FieldNumber
         {...props}
+        disabled={!isEdit}
+        name={`gloss`}
         label="Połysk"
-        name="gloss"
         size="large"
-        disabled={!isEdit}
-        required
        />
-       <FormFieldNumber
+       <FieldNumber
         {...props}
+        disabled={!isEdit}
+        name={`semiGloss`}
         label="Półmat"
-        name="semiGloss"
         size="large"
-        disabled={!isEdit}
-        required
        />
-       <FormFieldNumber
+       <FieldNumber
         {...props}
+        disabled={!isEdit}
+        name={`milling`}
         label="CNC"
-        name="milling"
         size="large"
-        disabled={!isEdit}
-        required
        />
-       <FormFieldNumber
+       <FieldNumber
         {...props}
-        label="Fornir"
-        name="veneer"
-        size="large"
         disabled={!isEdit}
-        required
+        name={`veneer`}
+        label="Fornir"
+        size="large"
        />
        <Button onClick={handleEdit}>Edytuj</Button>
        <Button type="primary" disabled={!isEdit} htmlType="submit">

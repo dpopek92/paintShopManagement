@@ -11,8 +11,8 @@ import Success from './components/Modals/Success';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
 import { AppState } from 'services/store';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
-import FormFieldPassword from 'components/FormFields/FormFieldPassword';
+import FieldInput from 'components/FormFields/FieldInput';
+import FieldPassword from 'components/FormFields/FieldPassword';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -104,32 +104,27 @@ const Register = () => {
         className="form-container"
         onSubmit={props.handleSubmit}
        >
-        <FormFieldInput
-         {...props}
-         placeholder="Imię*"
-         name="firstname"
-         required
-        />
-        <FormFieldInput {...props} placeholder="Nazwisko" name="surname" />
-        <FormFieldInput
+        <FieldInput {...props} placeholder="Imię*" name="firstname" required />
+        <FieldInput {...props} placeholder="Nazwisko" name="surname" />
+        <FieldInput
          {...props}
          placeholder="Nazwa firmy*"
          name="company"
          required
         />
-        <FormFieldInput
+        <FieldInput
          {...props}
          placeholder="E-mail*"
          name="email"
          type="email"
         />
-        <FormFieldPassword
+        <FieldPassword
          {...props}
          placeholder="Hasło*"
          name="password"
          required
         />
-        <FormFieldPassword
+        <FieldPassword
          {...props}
          placeholder="Powtórz hasło"
          name="password2"

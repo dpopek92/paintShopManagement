@@ -27,7 +27,7 @@ const GlobalSettings = () => {
      ghost={false}
      title={<Header title="Ustawienia globalne" type="h1" />}
     />
-    <Tabs defaultActiveKey="24">
+    <Tabs defaultActiveKey="1">
      <TabPane
       tab={
        <span>
@@ -59,7 +59,7 @@ const GlobalSettings = () => {
       }
       key="3"
      >
-      <RealizationDates values={realizationDates} />
+      <RealizationDates data={realizationDates} />
      </TabPane>
      <TabPane
       tab={

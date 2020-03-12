@@ -38,10 +38,10 @@ interface PropsT {
 
 const Prices: React.FC<PropsT> = ({ data }) => {
  const dispatch = useDispatch();
- const [isEdit, setIsEdit] = useState(true);
+ const [isEdit, setIsEdit] = useState(false);
 
  const handleEdit = () => setIsEdit(!isEdit);
- console.log(data);
+
  return (
   <div>
    {data && (

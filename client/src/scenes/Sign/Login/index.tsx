@@ -14,8 +14,8 @@ import {
  logInFail,
 } from 'services/store/actions/auth';
 import { AppState } from 'services/store';
-import FormFieldInput from 'components/FormFields/FormFieldInput';
-import FormFieldPassword from 'components/FormFields/FormFieldPassword';
+import FieldInput from 'components/FormFields/FieldInput';
+import FieldPassword from 'components/FormFields/FieldPassword';
 
 const StyledWrapper = styled.div`
  padding: 30px;
@@ -75,7 +75,7 @@ const Login = () => {
      }}
      render={props => (
       <Form noValidate className="form-container" onSubmit={props.handleSubmit}>
-       <FormFieldInput
+       <FieldInput
         {...props}
         placeholder="E-mail"
         name="email"
@@ -83,7 +83,7 @@ const Login = () => {
         required
         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
        />
-       <FormFieldPassword
+       <FieldPassword
         {...props}
         placeholder="Hasło"
         name="password"
