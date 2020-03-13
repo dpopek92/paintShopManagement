@@ -1,13 +1,13 @@
-import { User } from 'services/store/types/auth/Auth';
-import { Customer } from 'services/store/types/customers/Customers';
+import { UserT } from 'services/store/types/auth/Auth';
+import { CustomerT } from 'services/store/types/customers/Customers';
 
-export interface passwordChangeValues {
+export interface passwordChangeValuesT {
  password: string;
  newPassword: string;
  newPassword2: string;
 }
 
-export interface userDataChangeValues {
+export interface userDataChangeValuesT {
  firstname: string;
  surname: string;
  email: string;
@@ -18,7 +18,7 @@ export interface userDataChangeValues {
  postcode: string;
  city: string;
 }
-export interface userDataChangeResponse {
- user: User;
- profile: Customer;
+export interface userDataChangeResponseT {
+ user: UserT;
+ profile: CustomerT;
 }

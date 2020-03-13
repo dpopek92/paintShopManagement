@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
+import { NavLink, Link } from 'react-router-dom';
+import { Menu, Icon, Button } from 'antd';
 
 const { SubMenu } = Menu;
 
 const StyledMenu = styled(Menu)`
  display: flex;
  justify-content: flex-end;
+`;
+const StyledMenuItem = styled(Menu.Item)`
+ &:hover {
+  border-bottom: none !important;
+ }
 `;
 
 interface location {
@@ -25,6 +30,14 @@ interface Props {
 const CustomerNav: React.FC<Props> = ({ location, logoutUser }) => {
  return (
   <StyledMenu selectedKeys={[location.pathname]} mode="horizontal">
+   <StyledMenuItem>
+    <Link to="/neworder">
+     <Button type="primary">
+      <Icon type="plus" /> Nowe zamówienie
+     </Button>
+    </Link>
+   </StyledMenuItem>
+
    <Menu.Item key="/">
     <NavLink to="/">Strona główna</NavLink>
    </Menu.Item>

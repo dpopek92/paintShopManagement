@@ -13,7 +13,7 @@ import {
  loadUserData,
  logInFail,
 } from 'services/store/actions/auth';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import FieldInput from 'components/FormFields/FieldInput';
 import FieldPassword from 'components/FormFields/FieldPassword';
 
@@ -38,7 +38,7 @@ interface Values {
 const Login = () => {
  const dispatch = useDispatch();
  const isAuthenticated: boolean = useSelector(
-  (state: AppState) => state.auth.isAuthenticated,
+  (state: AppStateT) => state.auth.isAuthenticated,
  );
  const { token } = localStorage;
  if (token && isAuthenticated) {

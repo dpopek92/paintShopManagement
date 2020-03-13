@@ -4,10 +4,10 @@ import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/MainTheme';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 
 const MainTemplate: React.FC = ({ children }) => {
- const user = useSelector((state: AppState) => state.auth.user);
+ const user = useSelector((state: AppStateT) => state.auth.user);
  let { permission } = localStorage;
  useEffect(() => {}, [user]);
  return (

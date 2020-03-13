@@ -1,6 +1,6 @@
-import { Customer } from '../customers/Customers';
+import { CustomerT } from '../customers/Customers';
 
-export interface User {
+export interface UserT {
  _id: string;
  company: string;
  firstname: string;
@@ -11,9 +11,9 @@ export interface User {
  isTrusted: boolean;
 }
 
-export interface Auth {
+export interface AuthT {
  token: string | null;
  isAuthenticated: boolean;
- user: User;
- profile: Customer | null;
+ user: UserT;
+ profile: CustomerT | null;
 }

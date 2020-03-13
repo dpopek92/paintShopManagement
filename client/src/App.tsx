@@ -31,7 +31,7 @@ import GlobalSettings from 'scenes/Settings/Global';
 
 // Orders
 // import Order from 'views/Order/Order';
-// import OrderForm from 'views/OrderForm/NewOrderForm';
+import NewOrderForm from 'scenes/OrderForm/NewOrder';
 // import EditOrderForm from 'views/OrderForm/EditOrderForm';
 // import OrderSummary from 'views/OrderForm/OrderSummary';
 // import Production from 'views/Production/Production';
@@ -62,7 +62,7 @@ import LoginPage from 'scenes/Sign/Login';
 
 import setAuthToken from 'services/utils/setAuthToken';
 import { BackTop } from 'antd';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import { loadUserData } from 'services/store/actions/auth';
 // import { loadUser, logOutUser } from 'actions/auth';
 
@@ -74,7 +74,7 @@ if (localStorage.token) {
 // LOAD USER DATA
 const App = () => {
  const dispatch = useDispatch();
- const isSpinner = useSelector((state: AppState) => state.view.isSpinner);
+ const isSpinner = useSelector((state: AppStateT) => state.view.isSpinner);
  //  const user = useSelector(state => state.auth.user);
  //  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -104,6 +104,12 @@ const App = () => {
 
         <Route exact path="/" component={HomePage} />
         <Route path="/account" exact component={AccountSettings} />
+        <PrivateRoute
+         permissions={['admin', 'user']}
+         exact
+         path="/neworder"
+         component={NewOrderForm}
+        />
         {/* <Route path="/passwordremind" component={PasswordRemind} />
         <Route path="/recover/:userId" component={AccountRecover} />
         <Route path="/regulations" component={Regulations} />
@@ -114,12 +120,7 @@ const App = () => {
          path="/order/:id/edit"
          component={EditOrderForm}
         />
-        <PrivateRoute
-         permissions={['admin', 'user']}
-         exact
-         path="/orderform"
-         component={OrderForm}
-        />
+       
         <PrivateRoute
          permissions={['admin', 'user']}
          path="/orderform/summary"

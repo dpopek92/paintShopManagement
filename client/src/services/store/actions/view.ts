@@ -1,6 +1,6 @@
-import { viewActions, VIEW_SET_SPINNER } from '../types/view/actions';
+import { viewActionsT, VIEW_SET_SPINNER } from '../types/view/actions';
 
-export const setSpinner = (isSpinner: boolean): viewActions => ({
+export const setSpinner = (isSpinner: boolean): viewActionsT => ({
  type: VIEW_SET_SPINNER,
  isSpinner,
 });

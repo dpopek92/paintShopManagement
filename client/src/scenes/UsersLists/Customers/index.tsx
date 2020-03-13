@@ -9,8 +9,8 @@ import {
 import sortListBy from 'services/utils/sort/sortMethods';
 import { useHistory } from 'react-router';
 import Header from 'components/header';
-import { AppState } from 'services/store';
-import { Customer } from 'services/store/types/customers/Customers';
+import { AppStateT } from 'services/store';
+import { CustomerT } from 'services/store/types/customers/Customers';
 
 const columns = [
  {
@@ -45,7 +45,7 @@ const columns = [
  },
 ];
 
-interface CustomerItem {
+interface CustomerItemT {
  key: number;
  company: string;
  firstname: string;
@@ -58,10 +58,10 @@ interface CustomerItem {
 const Customers = () => {
  const history = useHistory();
  const dispatch = useDispatch();
- const customers = useSelector((state: AppState) => state.customers);
+ const customers = useSelector((state: AppStateT) => state.customers);
  const { list, sortBy, sortDirection } = customers;
 
- const [customersList, setCustomersList] = useState<CustomerItem[]>([]);
+ const [customersList, setCustomersList] = useState<CustomerItemT[]>([]);
  const [isLoading, setIsLoading] = useState<boolean>(true);
 
  useEffect(() => {
@@ -72,7 +72,7 @@ const Customers = () => {
  useEffect(() => {
   if (list && sortBy) {
    const newList = list
-    .sort((a: Customer, b: Customer) =>
+    .sort((a: CustomerT, b: CustomerT) =>
      sortListBy[sortBy === 'ordersNumber' ? 'number' : 'string'](
       a,
       b,
@@ -80,7 +80,7 @@ const Customers = () => {
       sortBy,
      ),
     )
-    .map((customer: Customer, index: number) => {
+    .map((customer: CustomerT, index: number) => {
      const { user, ordersNumber } = customer;
      return {
       key: index,

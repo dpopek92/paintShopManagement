@@ -1,10 +1,10 @@
-import { viewActions } from './view/actions';
-import { customersActions } from './customers/actions';
-import { authActions } from './auth/actions';
+import { viewActionsT } from './view/actions';
+import { customersActionsT } from './customers/actions';
+import { authActionsT } from './auth/actions';
 import { settingsActionsT } from './settings/actions';
 
-export type appActions =
- | viewActions
- | customersActions
- | authActions
+export type appActionsT =
+ | viewActionsT
+ | customersActionsT
+ | authActionsT
  | settingsActionsT;

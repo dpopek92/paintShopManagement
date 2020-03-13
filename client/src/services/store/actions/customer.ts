@@ -5,23 +5,26 @@ import {
  CUSTOMERS_SET_SORT,
  CUSTOMERS_LIST_LOADED,
  CUSTOMERS_LIST_LOADED_ERROR,
- customersActions,
- loadCustomersListSuccess,
- loadCustomersListError,
+ customersActionsT,
+ loadCustomersListSuccessT,
+ loadCustomersListErrorT,
 } from '../types/customers/actions';
 import { Dispatch } from 'redux';
-import { Customer } from '../types/customers/Customers';
+import { CustomerT } from '../types/customers/Customers';
 
 export const setSortCustomersList = (
  sortBy: 'company' | 'firstname' | 'ordersNumber',
  sortDirection: 'ascend' | 'descend',
-): customersActions => ({ type: CUSTOMERS_SET_SORT, sortBy, sortDirection });
+): customersActionsT => ({ type: CUSTOMERS_SET_SORT, sortBy, sortDirection });
 
 export const customersListLoadSuccess = (
- customersList: Customer[],
-): loadCustomersListSuccess => ({ type: CUSTOMERS_LIST_LOADED, customersList });
+ customersList: CustomerT[],
+): loadCustomersListSuccessT => ({
+ type: CUSTOMERS_LIST_LOADED,
+ customersList,
+});
 
-export const customersListLoadError = (): loadCustomersListError => ({
+export const customersListLoadError = (): loadCustomersListErrorT => ({
  type: CUSTOMERS_LIST_LOADED_ERROR,
 });
 

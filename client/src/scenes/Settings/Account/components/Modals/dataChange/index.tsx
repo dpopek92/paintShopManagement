@@ -2,18 +2,18 @@ import React from 'react';
 import { Modal, Button, Form, Icon } from 'antd';
 import { Formik } from 'formik';
 import { schema } from './utils/validate';
-import { User } from 'services/store/types/auth/Auth';
-import { Customer } from 'services/store/types/customers/Customers';
-import { userDataChangeValues } from 'scenes/Settings/Account/utils/types';
+import { UserT } from 'services/store/types/auth/Auth';
+import { CustomerT } from 'services/store/types/customers/Customers';
+import { userDataChangeValuesT } from 'scenes/Settings/Account/utils/types';
 import FieldInput from 'components/FormFields/FieldInput';
 
 interface Props {
  visible: boolean;
  loading: boolean;
- handleOk: (values: userDataChangeValues, actions: any) => void;
+ handleOk: (values: userDataChangeValuesT, actions: any) => void;
  handleCancel: () => void;
- user: User;
- profile: Customer | null;
+ user: UserT;
+ profile: CustomerT | null;
 }
 
 const UserDataChange: React.FC<Props> = ({

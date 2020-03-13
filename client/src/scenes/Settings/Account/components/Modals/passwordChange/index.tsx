@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button, Form, Icon } from 'antd';
 import { Formik } from 'formik';
 import { schema } from './utils/validate';
-import { passwordChangeValues } from 'scenes/Settings/Account/utils/types';
+import { passwordChangeValuesT } from 'scenes/Settings/Account/utils/types';
 import FieldPassword from 'components/FormFields/FieldPassword';
 
 const initValues = {
@@ -14,7 +14,7 @@ const initValues = {
 interface Props {
  visible: boolean;
  loading: boolean;
- handleOk: (values: passwordChangeValues, actions: any) => void;
+ handleOk: (values: passwordChangeValuesT, actions: any) => void;
  handleCancel: () => void;
 }
 

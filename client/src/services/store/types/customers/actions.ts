@@ -1,25 +1,25 @@
-import { Customer } from './Customers';
+import { CustomerT } from './Customers';
 
 export const CUSTOMERS_LIST_LOADED = 'CUSTOMERS_LIST_LOADED';
 export const CUSTOMERS_LIST_LOADED_ERROR = 'CUSTOMERS_LIST_LOADED_ERROR';
 export const CUSTOMERS_SET_SORT = 'CUSTOMERS_SET_SORT';
 
-export interface loadCustomersListSuccess {
+export interface loadCustomersListSuccessT {
  type: typeof CUSTOMERS_LIST_LOADED;
- customersList: Customer[];
+ customersList: CustomerT[];
 }
 
-export interface loadCustomersListError {
+export interface loadCustomersListErrorT {
  type: typeof CUSTOMERS_LIST_LOADED_ERROR;
 }
 
-export interface setSortCustomersList {
+export interface setSortCustomersListT {
  type: typeof CUSTOMERS_SET_SORT;
  sortBy: string;
  sortDirection: string;
 }
 
-export type customersActions =
- | loadCustomersListSuccess
- | loadCustomersListError
- | setSortCustomersList;
+export type customersActionsT =
+ | loadCustomersListSuccessT
+ | loadCustomersListErrorT
+ | setSortCustomersListT;

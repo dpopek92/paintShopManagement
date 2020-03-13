@@ -10,7 +10,7 @@ import FormCheckbox from './components/FormCheckbox';
 import Success from './components/Modals/Success';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSpinner } from 'services/store/actions/view';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import FieldInput from 'components/FormFields/FieldInput';
 import FieldPassword from 'components/FormFields/FieldPassword';
 
@@ -61,7 +61,7 @@ const Register = () => {
  const dispatch = useDispatch();
  const history = useHistory();
  const isAuthenticated: boolean = useSelector(
-  (state: AppState) => state.auth.isAuthenticated,
+  (state: AppStateT) => state.auth.isAuthenticated,
  );
  const { token } = localStorage;
  if (token && isAuthenticated) {

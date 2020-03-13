@@ -1,4 +1,4 @@
-import { Auth } from '../types/auth/Auth';
+import { AuthT } from '../types/auth/Auth';
 import {
  AUTH_LOGIN_SUCCESS,
  AUTH_LOGIN_ERROR,
@@ -6,9 +6,9 @@ import {
  AUTH_LOGOUT_USER,
  AUTH_USER_PROFILE_LOAD_SUCCESS,
 } from '../types/auth/actions';
-import { authActions } from '../types/auth/actions';
+import { authActionsT } from '../types/auth/actions';
 
-const initialState: Auth = {
+const initialState: AuthT = {
  token: localStorage.getItem('token'),
  isAuthenticated: false,
  user: {
@@ -24,7 +24,7 @@ const initialState: Auth = {
  profile: null,
 };
 
-const authReducer = (state = initialState, action: authActions): Auth => {
+const authReducer = (state = initialState, action: authActionsT): AuthT => {
  switch (action.type) {
   case AUTH_USER_PROFILE_LOAD_SUCCESS: {
    return { ...state, profile: action.profile };

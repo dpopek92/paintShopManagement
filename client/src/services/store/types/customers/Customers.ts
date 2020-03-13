@@ -1,7 +1,7 @@
-import { User } from '../auth/Auth';
+import { UserT } from '../auth/Auth';
 
-export interface Customer {
- user: User;
+export interface CustomerT {
+ user: UserT;
  _id: string;
  postcode: string;
  NIP: string;
@@ -65,8 +65,8 @@ export interface Customer {
  };
 }
 
-export interface Customers {
- list: Customer[] | [];
+export interface CustomersT {
+ list: CustomerT[] | [];
  sortBy: string;
  sortDirection: string;
 }

@@ -1,11 +1,11 @@
-import { viewActions, VIEW_SET_SPINNER } from '../types/view/actions';
-import { View } from '../types/view/View';
+import { viewActionsT, VIEW_SET_SPINNER } from '../types/view/actions';
+import { ViewT } from '../types/view/View';
 
-const initialState: View = {
+const initialState: ViewT = {
  isSpinner: false,
 };
 
-const viewReducer = (state = initialState, action: viewActions): View => {
+const viewReducer = (state = initialState, action: viewActionsT): ViewT => {
  switch (action.type) {
   case VIEW_SET_SPINNER: {
    return { ...state, isSpinner: action.isSpinner };

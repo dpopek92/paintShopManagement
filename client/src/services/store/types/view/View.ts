@@ -1,3 +1,3 @@
-export interface View {
+export interface ViewT {
  isSpinner: boolean;
 }

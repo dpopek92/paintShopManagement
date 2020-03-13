@@ -1,17 +1,17 @@
-import { Customers } from '../types/customers/Customers';
+import { CustomersT } from '../types/customers/Customers';
 import {
- customersActions,
+ customersActionsT,
  CUSTOMERS_LIST_LOADED,
  CUSTOMERS_SET_SORT,
 } from '../types/customers/actions';
 
-const initialState: Customers = {
+const initialState: CustomersT = {
  list: [],
  sortBy: 'company',
  sortDirection: 'ascend',
 };
 
-const customersReducer = (state = initialState, action: customersActions) => {
+const customersReducer = (state = initialState, action: customersActionsT) => {
  switch (action.type) {
   case CUSTOMERS_LIST_LOADED:
    return { ...state, list: action.customersList };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
-import { Customer } from 'services/store/types/customers/Customers';
+import { CustomerT } from 'services/store/types/customers/Customers';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import { useParams, useHistory } from 'react-router';
 import { getCustomers } from 'services/store/actions/customer';
 import { setSpinner } from 'services/store/actions/view';
@@ -19,8 +19,8 @@ const initModal = {
 const CustomerProfile = () => {
  const dispatch = useDispatch();
  const history = useHistory();
- const [customer, setCustomer] = useState<Customer | null>(null);
- const customers = useSelector((state: AppState) => state.customers.list);
+ const [customer, setCustomer] = useState<CustomerT | null>(null);
+ const customers = useSelector((state: AppStateT) => state.customers.list);
  const { id } = useParams();
 
  const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ const CustomerProfile = () => {
 
  useEffect(() => {
   if (customers.length) {
-   const profile = customers.find((customer: Customer) => customer._id === id);
+   const profile = customers.find((customer: CustomerT) => customer._id === id);
    if (profile) setCustomer(profile);
   } else {
    dispatch(setSpinner(true));

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import { getGlobalSettings } from 'services/store/actions/settings';
 import { PageHeader, Tabs, Icon } from 'antd';
 import Header from 'components/header';
@@ -13,7 +13,7 @@ const { TabPane } = Tabs;
 
 const GlobalSettings = () => {
  const dispatch = useDispatch();
- const settings = useSelector((state: AppState) => state.settings);
+ const settings = useSelector((state: AppStateT) => state.settings);
  const { prices, contact, realizationDates, paintsProducers } = settings;
 
  useEffect(() => {

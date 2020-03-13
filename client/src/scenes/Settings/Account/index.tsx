@@ -3,7 +3,7 @@ import FullWidthPageTemplate from 'components/templates/fullWidth';
 import Header from 'components/header';
 import { PageHeader, Button, Icon, Descriptions, message } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from 'services/store';
+import { AppStateT } from 'services/store';
 import {
  loadUserProfile,
  userProfileLoadSuccess,
@@ -13,7 +13,7 @@ import {
 import PasswordChange from './components/Modals/passwordChange';
 import DataChange from './components/Modals/dataChange';
 import AccountRemove from './components/Modals/accountRemove';
-import { passwordChangeValues, userDataChangeValues } from './utils/types';
+import { passwordChangeValuesT, userDataChangeValuesT } from './utils/types';
 import {
  passwordChange,
  userDataChange,
@@ -33,7 +33,7 @@ const AccountSettings = ({
  permissionContext: string;
 }) => {
  const dispatch = useDispatch();
- const auth = useSelector((state: AppState) => state.auth);
+ const auth = useSelector((state: AppStateT) => state.auth);
  const { user, profile } = auth;
  const [modal, setModal] = useState(initModals);
  const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ const AccountSettings = ({
  }, []);
 
  const handlePasswordChange = async (
-  values: passwordChangeValues,
+  values: passwordChangeValuesT,
   actions: any,
  ) => {
   setLoading(true);
@@ -62,7 +62,7 @@ const AccountSettings = ({
  };
 
  const handleUserDataChange = async (
-  values: userDataChangeValues,
+  values: userDataChangeValuesT,
   actions: any,
  ) => {
   setLoading(true);

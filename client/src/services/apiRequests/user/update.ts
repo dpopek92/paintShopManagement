@@ -1,12 +1,12 @@
 import Axios from 'axios';
 import {
- userDataChangeValues,
- passwordChangeValues,
- userDataChangeResponse,
+ userDataChangeValuesT,
+ passwordChangeValuesT,
+ userDataChangeResponseT,
 } from 'scenes/Settings/Account/utils/types';
 
 export const passwordChange = async (
- values: passwordChangeValues,
+ values: passwordChangeValuesT,
  onEnd: () => void,
  onError: (errors: { [key: string]: string }) => void,
 ) => {
@@ -30,8 +30,8 @@ export const passwordChange = async (
 };
 
 export const userDataChange = async (
- values: userDataChangeValues,
- onEnd: (data: userDataChangeResponse) => void,
+ values: userDataChangeValuesT,
+ onEnd: (data: userDataChangeResponseT) => void,
  onError: (errors: { [key: string]: string }) => void,
 ) => {
  try {

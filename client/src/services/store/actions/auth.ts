@@ -3,39 +3,42 @@
 import Axios from 'axios';
 import setAuthToken from 'services/utils/setAuthToken';
 import {
- loginSuccess,
+ loginSuccessT,
  AUTH_LOGIN_SUCCESS,
- loginFail,
+ loginFailT,
  AUTH_LOGIN_ERROR,
  AUTH_USER_LOAD_SUCCESS,
- logoutUser,
+ logoutUserT,
  AUTH_LOGOUT_USER,
- loadUser,
- profileLoadSuccess,
+ loadUserT,
+ profileLoadSuccessT,
  AUTH_USER_PROFILE_LOAD_SUCCESS,
 } from '../types/auth/actions';
 import { Dispatch } from 'redux';
-import { User } from '../types/auth/Auth';
-import { Customer } from '../types/customers/Customers';
+import { UserT } from '../types/auth/Auth';
+import { CustomerT } from '../types/customers/Customers';
 
-export const logInSuccess = (token: string): loginSuccess => ({
+export const logInSuccess = (token: string): loginSuccessT => ({
  type: AUTH_LOGIN_SUCCESS,
  token,
 });
 
-export const userLoadSuccess = (user: User, permission: string): loadUser => ({
+export const userLoadSuccess = (
+ user: UserT,
+ permission: string,
+): loadUserT => ({
  type: AUTH_USER_LOAD_SUCCESS,
  user,
  permission,
 });
 
-export const logInFail = (): loginFail => ({ type: AUTH_LOGIN_ERROR });
+export const logInFail = (): loginFailT => ({ type: AUTH_LOGIN_ERROR });
 
-export const logOutUser = (): logoutUser => ({ type: AUTH_LOGOUT_USER });
+export const logOutUser = (): logoutUserT => ({ type: AUTH_LOGOUT_USER });
 
 export const userProfileLoadSuccess = (
- profile: Customer,
-): profileLoadSuccess => ({ type: AUTH_USER_PROFILE_LOAD_SUCCESS, profile });
+ profile: CustomerT,
+): profileLoadSuccessT => ({ type: AUTH_USER_PROFILE_LOAD_SUCCESS, profile });
 
 export const loadUserData = () => async (dispatch: Dispatch) => {
  if (localStorage.token) {
