@@ -3,8 +3,8 @@ import { Dispatch } from 'redux';
 import {
  SETTINGS_LOADED_ERROR,
  SETTINGS_LOADED,
- SETTINGS_ADD_ITEM,
- SETTINGS_REMOVE_ITEM,
+ SETTINGS_ADD_CONTACT_ITEM,
+ SETTINGS_REMOVE_CONTACT_ITEM,
  loadGlobalSettingsT,
  loadGlobalSettingsErrorT,
  settingsAddItemT,
@@ -20,7 +20,7 @@ export const globalSettingsAddItem = (
  key: ContactKeysT,
  item: ContactItemsT,
 ): settingsAddItemT => ({
- type: SETTINGS_ADD_ITEM,
+ type: SETTINGS_ADD_CONTACT_ITEM,
  key,
  item,
 });
@@ -28,7 +28,7 @@ export const globalSettingsRemoveItem = (
  key: ContactKeysT,
  index: number,
 ): settingsRemoveItemT => ({
- type: SETTINGS_REMOVE_ITEM,
+ type: SETTINGS_REMOVE_CONTACT_ITEM,
  key,
  index,
 });

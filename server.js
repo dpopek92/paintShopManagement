@@ -53,7 +53,6 @@ cron.schedule("00 00 00 * * * ", async () => {
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {
-  console.log(req);
   res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
 });
 // }

@@ -1,5 +1,11 @@
 import { NewOrderT } from '../types/newOrder/NewOrder';
-import { newOrderActionsT } from '../types/newOrder/actions';
+import {
+ orderFormActionsT,
+ ORDERFORM_SET_COLOR,
+ ORDERFORM_ADD_ITEM,
+} from '../types/newOrder/actions';
+import { createOrderItem } from './utils/newOrder';
+import { orderItemTemplate } from './utils/newOrder/const';
 
 const initialState: NewOrderT = {
  // to order
@@ -34,9 +40,20 @@ const initialState: NewOrderT = {
 
 const newOrderReducer = (
  state = initialState,
- action: newOrderActionsT,
+ action: orderFormActionsT,
 ): NewOrderT => {
  switch (action.type) {
+  // orderItems
+  case ORDERFORM_ADD_ITEM: {
+   const item = createOrderItem(state);
+   return { ...state, items: [...state.items, item] };
+  }
+
+  // orderForm
+  case ORDERFORM_SET_COLOR: {
+   return { ...state, color: action.color };
+  }
+
   default:
    return state;
  }

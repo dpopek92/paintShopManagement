@@ -2,10 +2,11 @@ import { GlobalSettingsT } from '../types/settings/Settings';
 import {
  settingsActionsT,
  SETTINGS_LOADED,
- SETTINGS_ADD_ITEM,
- SETTINGS_REMOVE_ITEM,
+ SETTINGS_ADD_CONTACT_ITEM,
+ SETTINGS_REMOVE_CONTACT_ITEM,
 } from '../types/settings/actions';
 import update from 'immutability-helper';
+import { addContactItem, removeContactItem } from './utils/settings';
 
 const initialState: GlobalSettingsT = {
  paintsProducers: null,
@@ -19,22 +20,16 @@ const settingsReducer = (
  action: settingsActionsT,
 ): GlobalSettingsT => {
  switch (action.type) {
-  case SETTINGS_ADD_ITEM: {
-   const { key, item } = action;
+  case SETTINGS_ADD_CONTACT_ITEM: {
    if (state.contact) {
-    const contact = update(state.contact, {
-     [key]: { $push: [item] },
-    });
+    const contact = addContactItem(action, state.contact);
     return { ...state, contact };
    }
    return state;
   }
-  case SETTINGS_REMOVE_ITEM: {
+  case SETTINGS_REMOVE_CONTACT_ITEM: {
    if (state.contact) {
-    const { key, index } = action;
-    const contact = update(state.contact, {
-     [key]: { $splice: [[index, 1]] },
-    });
+    const contact = removeContactItem(action, state.contact);
     return { ...state, contact };
    }
    return state;

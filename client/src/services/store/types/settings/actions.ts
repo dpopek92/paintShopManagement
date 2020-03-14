@@ -2,16 +2,16 @@ import { GlobalSettingsT, ContactKeysT, ContactItemsT } from './Settings';
 
 export const SETTINGS_LOADED = 'SETTINGS_LOADED';
 export const SETTINGS_LOADED_ERROR = 'SETTINGS_LOADED_ERROR';
-export const SETTINGS_ADD_ITEM = 'SETTINGS_ADD_ITEM';
-export const SETTINGS_REMOVE_ITEM = 'SETTINGS_REMOVE_ITEM';
+export const SETTINGS_ADD_CONTACT_ITEM = 'SETTINGS_ADD_CONTACT_ITEM';
+export const SETTINGS_REMOVE_CONTACT_ITEM = 'SETTINGS_REMOVE_CONTACT_ITEM';
 
 export interface settingsAddItemT {
- type: typeof SETTINGS_ADD_ITEM;
+ type: typeof SETTINGS_ADD_CONTACT_ITEM;
  key: ContactKeysT;
  item: ContactItemsT;
 }
 export interface settingsRemoveItemT {
- type: typeof SETTINGS_REMOVE_ITEM;
+ type: typeof SETTINGS_REMOVE_CONTACT_ITEM;
  key: ContactKeysT;
  index: number;
 }

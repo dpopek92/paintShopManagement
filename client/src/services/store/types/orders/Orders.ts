@@ -46,18 +46,18 @@ export interface OrderT {
 
 export interface OrderItemT {
  type: OrderItemTypeT;
- width: number;
- w1P: OrderItemRightSideEdgeT;
- w2P: OrderItemRightSideEdgeT;
- w1L: OrderItemLeftSideEdgeT;
- w2L: OrderItemLeftSideEdgeT;
- wLPaintedEdge: boolean;
  height: number;
  h1P: OrderItemRightSideEdgeT;
  h2P: OrderItemRightSideEdgeT;
  h1L: OrderItemLeftSideEdgeT;
  h2L: OrderItemLeftSideEdgeT;
  hLPaintedEdge: boolean;
+ width: number;
+ w1P: OrderItemRightSideEdgeT;
+ w2P: OrderItemRightSideEdgeT;
+ w1L: OrderItemLeftSideEdgeT;
+ w2L: OrderItemLeftSideEdgeT;
+ wLPaintedEdge: boolean;
  paintRight: boolean;
  paintLeft: boolean;
  surfacePL?: number;
@@ -65,7 +65,7 @@ export interface OrderItemT {
  milledHandle?: number;
  thickness: number;
  quantity: number;
- comments?: string;
+ comments: string;
  includedToPrice: boolean;
  image?: OrderItemImageT;
 }
