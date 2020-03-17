@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { NewOrderT } from 'services/store/types/newOrder/NewOrder';
 import { Input, Form } from 'antd';
+import { useDispatch } from 'react-redux';
+import { setName, setComment } from 'services/store/actions/newOrder';
 const { TextArea } = Input;
 
 const StyledWrapper = styled.div`
@@ -36,16 +38,25 @@ interface PropsT {
 }
 
 const InfoData: React.FC<PropsT> = ({ newOrder: { name, comments } }) => {
+ const dispatch = useDispatch();
  return (
   <StyledWrapper>
    <StyledItem>
     <StyledFormItem label="Nazwa zamówienia">
-     <Input value={name} placeholder="Nazwa zamówienia" />
+     <Input
+      value={name}
+      onChange={e => dispatch(setName(e.target.value))}
+      placeholder="Nazwa zamówienia"
+     />
     </StyledFormItem>
    </StyledItem>
    <StyledItem>
     <StyledFormItem label="Uwagi do zamówienia">
-     <TextArea value={comments} placeholder="Uwagi do zamówienia" />
+     <TextArea
+      value={comments}
+      onChange={e => dispatch(setComment(e.target.value))}
+      placeholder="Uwagi do zamówienia"
+     />
     </StyledFormItem>
    </StyledItem>
   </StyledWrapper>

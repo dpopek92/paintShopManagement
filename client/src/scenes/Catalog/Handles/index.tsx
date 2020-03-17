@@ -6,12 +6,14 @@ import { PageHeader, Card, notification } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
 import FlexTemplate from 'components/templates/flexTemplate';
 import HANDLES from 'assets/data/Handles.json';
-// import { addHandle } from 'actions/newOrder';
-// import { setComponentInModal } from 'actions/view';
 import { useHistory } from 'react-router';
 import withContext from 'hoc/withContext';
 import CardAction from '../components/CardAction';
 import Header from 'components/header';
+import { AppStateT } from 'services/store';
+import { setCatalogDrawer } from 'services/store/actions/view';
+import { setHandle } from 'services/store/actions/newOrder';
+import { HandleT } from 'services/store/types/orders/Orders';
 
 const openNotification = (handle: string) => {
  notification.success({
@@ -27,30 +29,27 @@ interface Props {
 const Handles = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- //  const veneer = useSelector(state => state.newOrder.veneerSymbol);
- //  const color = useSelector(state => state.newOrder.color);
+ const newOrder = useSelector((state: AppStateT) => state.newOrder);
+ const { veneerSymbol, color } = newOrder;
+
  const [handles, setHandles] = useState(HANDLES);
 
- useEffect(
-  () => {
-   //   if (veneer || color.toLowerCase().includes('bejca')) {
-   //    const newHandles = handles.filter(
-   //     item => item.name !== 'uk' && item.name !== 'up' && item.name !== 'uc',
-   //    );
-   //    setHandles(newHandles);
-   //   } else {
+ useEffect(() => {
+  if (veneerSymbol || color.toLowerCase().includes('bejca')) {
+   const newHandles = handles.filter(
+    item => item.name !== 'uk' && item.name !== 'up' && item.name !== 'uc',
+   );
+   setHandles(newHandles);
+  } else {
    setHandles(HANDLES);
-   //   }
-  },
-  [],
-  //  [veneer, color]
- );
+  }
+ }, [veneerSymbol, color]);
 
  const handleClick = (name: string) => {
   if (permissionContext !== 'employee') {
-   //    dispatch(addHandle(name));
+   dispatch(setHandle(name as HandleT));
    openNotification(name);
-   //    dispatch(setComponentInModal(null));
+   dispatch(setCatalogDrawer(null));
   }
  };
  return (

@@ -5,8 +5,8 @@ export const theme = {
  tertiary: '#6d8797',
  orderTable: {
   headerRight: '#1f7aea',
-  right: '#7dafed',
+  right: '#b8d2fe',
   headerLeft: '#3cd1ec',
-  left: '#85dfef',
+  left: '#cbedfb',
  },
 };

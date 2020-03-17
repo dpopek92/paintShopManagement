@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { PageHeader, Input, Tabs, notification } from 'antd';
@@ -18,9 +18,15 @@ import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
 import Header from 'components/header';
 import withContext from 'hoc/withContext';
+import { setColor } from 'services/store/actions/newOrder';
+import { setCatalogDrawer } from 'services/store/actions/view';
+import { AppStateT } from 'services/store';
+import { containsOneOf } from 'services/utils/array';
 
 const { Search: CustomMordantInput } = Input;
 const { TabPane } = Tabs;
+
+const veneerExcludedHandles = ['up', 'uc', 'uk'];
 
 const StyledWrapper = styled.div`
  margin-top: 5px;
@@ -51,6 +57,15 @@ interface color {
 }
 
 const Colors: React.FC<Props> = ({ permissionContext }) => {
+ const dispatch = useDispatch();
+ const newOrder = useSelector((state: AppStateT) => state.newOrder);
+ const {
+  millingSymbol,
+  handleSymbol1,
+  handleSymbol2,
+  glassCaseSymbol,
+ } = newOrder;
+
  const [key, setKey] = useState<string>('RAL');
  const [customMordant, setCustomMordant] = useState<string>('');
  const [search, setSearch] = useState<string>('');
@@ -77,19 +92,19 @@ const Colors: React.FC<Props> = ({ permissionContext }) => {
  const handleColor = (name: string, type: string) => {
   if (permissionContext !== 'employee') {
    if (type === 'mordant') {
-    // dispatch(addColor(`bejca ${name}`));
+    dispatch(setColor(`bejca ${name}`));
     openNotification(`bejca ${name}`);
    } else {
-    // dispatch(addColor(name));
+    dispatch(setColor(name));
     openNotification(name);
    }
-   //  dispatch(setComponentInModal(null));
+   dispatch(setCatalogDrawer(null));
   }
  };
  const addCustomMordant = () => {
-  // dispatch(addColor(`bejca ${customMordant}`));
+  dispatch(setColor(`bejca ${customMordant}`));
   openNotification(`bejca ${customMordant}`);
-  // dispatch(setComponentInModal(null));
+  dispatch(setCatalogDrawer(null));
  };
 
  return (
@@ -138,7 +153,15 @@ const Colors: React.FC<Props> = ({ permissionContext }) => {
           ))}
         </FlexTemplate>
        </TabPane>
-       <TabPane tab="Bejca" key="MORDANT">
+       <TabPane
+        tab="Bejca"
+        key="MORDANT"
+        disabled={
+         !!millingSymbol ||
+         containsOneOf(veneerExcludedHandles, [handleSymbol1, handleSymbol2]) ||
+         (!!glassCaseSymbol && glassCaseSymbol !== 'w4')
+        }
+       >
         <>
          {permissionContext !== 'employee' && (
           <StyledWrapper>

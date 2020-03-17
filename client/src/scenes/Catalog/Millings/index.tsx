@@ -8,11 +8,12 @@ import withContext from 'hoc/withContext';
 import { PageHeader, Card, notification, Upload, Button, Icon } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
 import FlexTemplate from 'components/templates/flexTemplate';
-// import { addMilling, addCustomMilling, removeMilling } from 'actions/newOrder';
-// import { setComponentInModal } from 'actions/view';
+
 import MILLINGS from 'assets/data/Millings.json';
 import CardAction from '../components/CardAction';
 import Header from 'components/header';
+import { setMilling } from 'services/store/actions/newOrder';
+import { setCatalogDrawer } from 'services/store/actions/view';
 
 const openNotification = (milling: string) => {
  notification.success({
@@ -35,21 +36,21 @@ const Millings = ({ permissionContext }: Props) => {
   if (permissionContext !== 'employee') {
    openNotification(name);
    setFileList([]);
-   //    dispatch(addMilling(name));
-   //    dispatch(setComponentInModal(null));
+   dispatch(setMilling(name));
+   dispatch(setCatalogDrawer(null));
   }
  };
  const uploadProps = {
   onRemove: () => {
    setFileList([]);
    //    dispatch(removeMilling());
-   //    dispatch(setComponentInModal(null));
+   dispatch(setCatalogDrawer(null));
   },
   beforeUpload: (file: any) => {
    setFileList([file]);
    openNotification('ze zdjęcia');
    //    dispatch(addCustomMilling(file, userId, 'Inny'));
-   //    dispatch(setComponentInModal(null));
+   dispatch(setCatalogDrawer(null));
    return false;
   },
   fileList,
@@ -66,7 +67,7 @@ const Millings = ({ permissionContext }: Props) => {
         <Button
          key="1"
          title="Elementy gładkie z wyfrezowaniem"
-         onClick={() => handleClick('CNC')}
+         onClick={() => handleClick('inny CNC')}
         >
          Inny CNC
         </Button>,
@@ -76,7 +77,7 @@ const Millings = ({ permissionContext }: Props) => {
          {...uploadProps}
          fileList={fileList}
         >
-         <Button>
+         <Button disabled={true}>
           <Icon type="upload" /> Dodaj ze zdjęcia
          </Button>
         </Upload>,

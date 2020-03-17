@@ -8,10 +8,11 @@ import { PageHeader, Card, notification } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
 import FlexTemplate from 'components/templates/flexTemplate';
 import GLASSCASES from 'assets/data/GlassCases.json';
-// import { addGlassCase } from 'actions/newOrder';
-// import { setComponentInModal } from 'actions/view';
 import CardAction from '../components/CardAction';
 import Header from 'components/header';
+import { AppStateT } from 'services/store';
+import { setGlassCase } from 'services/store/actions/newOrder';
+import { setCatalogDrawer } from 'services/store/actions/view';
 
 const openNotification = (glassCase: string) => {
  notification.success({
@@ -27,28 +28,25 @@ interface Props {
 const Veneers = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- //  const veneer = useSelector(state => state.newOrder.veneerSymbol);
- //  const color = useSelector(state => state.newOrder.color);
+ const newOrder = useSelector((state: AppStateT) => state.newOrder);
+ const { veneerSymbol, color } = newOrder;
+
  const [glassCases, setGlassCases] = useState(GLASSCASES);
 
- useEffect(
-  () => {
-   //   if (veneer || color.toLowerCase().includes('bejca')) {
-   //    const newGlassCases = glassCases.filter(item => item.name === 'w4');
-   //    setGlassCases(newGlassCases);
-   //   } else {
+ useEffect(() => {
+  if (veneerSymbol || color.toLowerCase().includes('bejca')) {
+   const newGlassCases = glassCases.filter(item => item.name === 'w4');
+   setGlassCases(newGlassCases);
+  } else {
    setGlassCases(GLASSCASES);
-   //   }
-  },
-  [],
-  //  [veneer, color]
- );
+  }
+ }, [veneerSymbol, color]);
 
  const handleClick = (name: string) => {
   if (permissionContext !== 'employee') {
    openNotification(name);
-   //    dispatch(addGlassCase(name));
-   //    dispatch(setComponentInModal(null));
+   dispatch(setGlassCase(name));
+   dispatch(setCatalogDrawer(null));
   }
  };
  return (

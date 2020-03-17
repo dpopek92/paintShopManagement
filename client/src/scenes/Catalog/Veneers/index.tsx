@@ -7,13 +7,14 @@ import FlexTemplate from 'components/templates/flexTemplate';
 import ALPI from 'assets/data/VeneersAlpi.json';
 import CALIFORNIA from 'assets/data/VeneersCalifornia.json';
 import NATURAL from 'assets/data/VeneersNatural.json';
-// import { addVeneer } from 'actions/newOrder';
-// import { setComponentInModal } from 'actions/view';
 import { containsOneOf } from 'services/utils/array';
 import withContext from 'hoc/withContext';
 import ImageCard from '../components/ImageCard';
 import { validateSearch } from '../utils';
 import Header from 'components/header';
+import { AppStateT } from 'services/store';
+import { setVeneer } from 'services/store/actions/newOrder';
+import { setCatalogDrawer } from 'services/store/actions/view';
 
 const { TabPane } = Tabs;
 const veneersArr: { [key: string]: veneer[] } = { ALPI, CALIFORNIA, NATURAL };
@@ -28,7 +29,7 @@ const openNotification = (type: 'error' | 'success', veneer: string) => {
  });
 };
 
-const excludedHandles = ['UK', 'UP', 'UC'];
+const excludedHandles = ['uk', 'up', 'uc'];
 
 interface Props {
  permissionContext: string;
@@ -46,17 +47,18 @@ interface veneer {
 const Veneers = ({ permissionContext }: Props) => {
  const history = useHistory();
  const dispatch = useDispatch();
- //  const newOrder = useSelector(state => state.newOrder);
+ const newOrder = useSelector((state: AppStateT) => state.newOrder);
+ const {
+  handleSymbol1,
+  handleSymbol2,
+  millingSymbol,
+  glassCaseSymbol,
+ } = newOrder;
+
  const [key, setKey] = useState<string>('ALPI');
  const [search, setSearch] = useState<string>('');
  const [newVeneers, setNewVeneers] = useState<veneer[] | []>([]);
- //  const {
- //   handleSymbol1,
- //   handleSymbol2,
- //   millingSymbol,
- //   glassCaseSymbol,
- //  } = newOrder;
- console.log('veneers');
+
  useEffect(() => {
   const veneers = ALPI.concat(CALIFORNIA, NATURAL).filter(item =>
    validateSearch(search, item.name),
@@ -68,18 +70,19 @@ const Veneers = ({ permissionContext }: Props) => {
  const handleSearch = (e: { target: HTMLInputElement }) =>
   setSearch(e.target.value);
  const handleClick = (name: string) => {
-  // if (
-  //  permissionContext !== 'employee' &&
-  //  !millingSymbol &&
-  //  !containsOneOf(excludedHandles, [handleSymbol1, handleSymbol2]) &&
-  //  ((glassCaseSymbol && glassCaseSymbol === 'W4') || !glassCaseSymbol)
-  // ) {
-  //  dispatch(addVeneer(name));
-  openNotification('success', name);
-  //  dispatch(setComponentInModal(null));
-  // } else {
-  //  openNotification('error', name);
-  // }
+  if (
+   permissionContext !== 'employee' &&
+   !millingSymbol &&
+   !containsOneOf(excludedHandles, [handleSymbol1, handleSymbol2]) &&
+   ((glassCaseSymbol && glassCaseSymbol === 'W4') || !glassCaseSymbol)
+  ) {
+   dispatch(setVeneer(name));
+   openNotification('success', name);
+   dispatch(setCatalogDrawer(null));
+  } else {
+   openNotification('error', name);
+   dispatch(setCatalogDrawer(null));
+  }
  };
 
  type ArrayElem<A> = A extends Array<infer Elem> ? Elem : never;

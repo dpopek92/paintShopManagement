@@ -63,7 +63,7 @@ export interface OrderItemT {
  surfacePL?: number;
  surfacePP?: number;
  milledHandle?: number;
- thickness: number;
+ thickness: OrderItemThicknessT;
  quantity: number;
  comments: string;
  includedToPrice: boolean;
@@ -93,6 +93,20 @@ export interface UpdateHistoryItemT {
  description: string;
 }
 
+export type OrderItemThicknessT =
+ | 3
+ | 6
+ | 8
+ | 10
+ | 12
+ | 16
+ | 18
+ | 19
+ | 22
+ | 25
+ | 28
+ | 30
+ | 38;
 export type OrderItemRightSideEdgeT = 'r1' | 'r2' | '-' | 'gierunek' | HandleT;
 export type OrderItemLeftSideEdgeT =
  | 'r1'
@@ -115,7 +129,7 @@ export type OrderTypeT =
  | 'poprawa'
  | 'materiał klienta'
  | 'domówienie';
-export type HandleT = 'uk' | 'up' | 'up45' | 'uk45' | 'p45' | 'uc';
+export type HandleT = 'uk' | 'up' | 'up45' | 'uk45' | 'p45' | 'uc' | null;
 export type OrderStatusT =
  | 'wysłane'
  | 'surówka'

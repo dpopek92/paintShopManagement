@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button, Select } from 'antd';
 import { firstLetterUppercase } from 'services/utils/string';
+import { HandleT } from 'services/store/types/orders/Orders';
 const { Option } = Select;
 
 const StyledWrapper = styled.div`
@@ -17,14 +18,15 @@ const StyledSelect = styled(Select)`
 
 interface PropsT {
  title: string;
- primaryValue?: string;
- secondaryValue?: string;
+ primaryValue?: HandleT | string;
+ secondaryValue?: HandleT | string;
  button?: boolean;
  handleButton?: () => void;
+ buttonDisabled?: boolean;
  select?: boolean;
  selectItems?: string[];
  selectValue?: string;
- handleSelect?: () => void;
+ handleSelect?: (value: any) => void;
 }
 
 const ElementItem: React.FC<PropsT> = ({
@@ -33,11 +35,13 @@ const ElementItem: React.FC<PropsT> = ({
  secondaryValue,
  button,
  handleButton,
+ buttonDisabled = false,
  select,
  selectItems,
  selectValue,
  handleSelect,
 }) => {
+ console.log(selectValue);
  return (
   <StyledWrapper>
    <StyledFieldWrapper>
@@ -47,16 +51,25 @@ const ElementItem: React.FC<PropsT> = ({
     <div>{primaryValue?.toUpperCase()}</div>
     <div>{secondaryValue?.toUpperCase()}</div>
    </StyledFieldWrapper>
+
+   {/* BUTTON */}
    <StyledFieldWrapper>
     {button && (
-     <Button size="small" type="primary" onClick={handleButton}>
+     <Button
+      size="small"
+      type="primary"
+      onClick={handleButton}
+      disabled={buttonDisabled}
+     >
       {primaryValue ? 'Zmień/Dodaj' : 'Wybierz'}
      </Button>
     )}
    </StyledFieldWrapper>
+
+   {/* SELECT */}
    <StyledFieldWrapper>
     {select && selectItems && (
-     <StyledSelect defaultValue={selectValue} onChange={handleSelect}>
+     <StyledSelect value={selectValue} onChange={handleSelect}>
       {selectItems.map((item: string) => (
        <Option key={item} value={item}>
         {firstLetterUppercase(item)}

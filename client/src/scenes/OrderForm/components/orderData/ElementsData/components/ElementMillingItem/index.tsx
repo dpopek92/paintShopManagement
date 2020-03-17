@@ -21,15 +21,21 @@ const StyledIcon = styled(Icon)`
 
 interface PropsT {
  isNut: boolean;
+ handleNut: (value: boolean) => void;
  isFelc: boolean;
+ handleFelc: (value: boolean) => void;
  isChamfering: boolean;
+ handleChamfering: (value: boolean) => void;
  title: string;
 }
 
 const ElementMillingItem: React.FC<PropsT> = ({
  isNut,
+ handleNut,
  isFelc,
+ handleFelc,
  isChamfering,
+ handleChamfering,
  title,
 }) => {
  return (
@@ -38,13 +44,22 @@ const ElementMillingItem: React.FC<PropsT> = ({
     <strong>{firstLetterUppercase(title)}</strong>
    </StyledFieldWrapper>
    <StyledFieldWrapper>
-    <Checkbox checked={isChamfering}>Gierunek</Checkbox>
+    <Checkbox
+     checked={isChamfering}
+     onChange={e => handleChamfering(e.target.checked)}
+    >
+     Gierunek
+    </Checkbox>
    </StyledFieldWrapper>
    <StyledFieldWrapper>
-    <Checkbox checked={isFelc}>Felc</Checkbox>
+    <Checkbox checked={isFelc} onChange={e => handleFelc(e.target.checked)}>
+     Felc
+    </Checkbox>
    </StyledFieldWrapper>
    <StyledFieldWrapper>
-    <Checkbox checked={isNut}>Nut</Checkbox>
+    <Checkbox checked={isNut} onChange={e => handleNut(e.target.checked)}>
+     Nut
+    </Checkbox>
    </StyledFieldWrapper>
    <StyledIconWrapper>
     <StyledIcon type="question" />
