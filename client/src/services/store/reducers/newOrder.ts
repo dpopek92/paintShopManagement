@@ -1,3 +1,4 @@
+import update from 'immutability-helper';
 import { NewOrderT } from '../types/newOrder/NewOrder';
 import {
  orderFormActionsT,
@@ -14,6 +15,10 @@ import {
  ORDERFORM_SET_CHAMFERING,
  ORDERFORM_SET_NAME,
  ORDERFORM_SET_COMMENTS,
+ ORDERFORM_HANDLE_ITEM_FIELD,
+ ORDERFORM_HANDLE_ITEM_INPUT,
+ ORDERFORM_REMOVE_ITEM,
+ ORDERFORM_REMOVE_HANDLE,
 } from '../types/newOrder/actions';
 import {
  addHandle,
@@ -25,8 +30,9 @@ import {
  setNut,
  setFelc,
  setChamfering,
+ removeHandle,
 } from './utils/newOrder/orderForm';
-import { createOrderItem } from './utils/newOrder/orderItems';
+import { createOrderItem, handleInput } from './utils/newOrder/orderItems';
 
 const initialState: NewOrderT = {
  // to order
@@ -69,6 +75,17 @@ const newOrderReducer = (
    const item = createOrderItem(state);
    return { ...state, items: [...state.items, item] };
   }
+  case ORDERFORM_REMOVE_ITEM: {
+   return update(state, { items: { $splice: [[action.index, 1]] } });
+  }
+  case ORDERFORM_HANDLE_ITEM_FIELD: {
+   return update(state, {
+    items: { [action.index]: { [action.field]: { $set: action.value } } },
+   });
+  }
+  case ORDERFORM_HANDLE_ITEM_INPUT: {
+   return handleInput(state, action.index, action.field, action.value);
+  }
 
   // orderForm
   case ORDERFORM_SET_COMMENTS: {
@@ -106,6 +123,9 @@ const newOrderReducer = (
   }
   case ORDERFORM_SET_CHAMFERING: {
    return setChamfering(state, action.isChamfering);
+  }
+  case ORDERFORM_REMOVE_HANDLE: {
+   return removeHandle(state, action.field);
   }
   default:
    return state;

@@ -27,6 +27,7 @@ interface PropsT {
  isChamfering: boolean;
  handleChamfering: (value: boolean) => void;
  title: string;
+ handleBackMillingModal: () => void;
 }
 
 const ElementMillingItem: React.FC<PropsT> = ({
@@ -37,6 +38,7 @@ const ElementMillingItem: React.FC<PropsT> = ({
  isChamfering,
  handleChamfering,
  title,
+ handleBackMillingModal,
 }) => {
  return (
   <StyledWrapper>
@@ -62,7 +64,7 @@ const ElementMillingItem: React.FC<PropsT> = ({
     </Checkbox>
    </StyledFieldWrapper>
    <StyledIconWrapper>
-    <StyledIcon type="question" />
+    <StyledIcon type="question" onClick={handleBackMillingModal} />
    </StyledIconWrapper>
   </StyledWrapper>
  );

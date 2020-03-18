@@ -41,7 +41,6 @@ const ElementItem: React.FC<PropsT> = ({
  selectValue,
  handleSelect,
 }) => {
- console.log(selectValue);
  return (
   <StyledWrapper>
    <StyledFieldWrapper>

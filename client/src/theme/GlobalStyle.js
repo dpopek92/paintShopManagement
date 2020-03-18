@@ -24,9 +24,15 @@ const GlobalStyle = createGlobalStyle`
   .tableRow__clicable{
     cursor:pointer;
   }
+  hr{
+    border: .5px solid #ebebeb
+  }
   .ant-form-item{
     margin-bottom:5px;
   }
+  .ant-select-selection:focus {
+  background-color: #a9e4fc;
+}
 `;
 
 export default GlobalStyle;

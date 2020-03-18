@@ -1,6 +1,12 @@
 import { OrderPaintTypeT, OrderPaintStyleT, HandleT } from '../orders/Orders';
 
+// orderItems
 export const ORDERFORM_ADD_ITEM = 'ORDERFORM_ADD_ITEM';
+export const ORDERFORM_REMOVE_ITEM = 'ORDERFORM_REMOVE_ITEM';
+export const ORDERFORM_HANDLE_ITEM_FIELD = 'ORDERFORM_HANDLE_ITEM_FIELD';
+export const ORDERFORM_HANDLE_ITEM_INPUT = 'ORDERFORM_HANDLE_ITEM_INPUT';
+
+// orderForm
 export const ORDERFORM_SET_FINISH_DATE = 'ORDERFORM_SET_FINISH_DATE';
 export const ORDERFORM_SET_COLOR = 'ORDERFORM_SET_COLOR';
 export const ORDERFORM_SET_HANDLE = 'ORDERFORM_SET_HANDLE';
@@ -14,13 +20,34 @@ export const ORDERFORM_SET_FELC = 'ORDERFORM_SET_FELC';
 export const ORDERFORM_SET_CHAMFERING = 'ORDERFORM_SET_CHAMFERING';
 export const ORDERFORM_SET_NAME = 'ORDERFORM_SET_NAME';
 export const ORDERFORM_SET_COMMENTS = 'ORDERFORM_SET_COMMENTS';
+export const ORDERFORM_REMOVE_HANDLE = 'ORDERFORM_REMOVE_HANDLE';
 
 // orderItems
 export interface orderFormAddItemT {
  type: typeof ORDERFORM_ADD_ITEM;
 }
+export interface orderFormRemoveItemT {
+ type: typeof ORDERFORM_REMOVE_ITEM;
+ index: number;
+}
+export interface orderFormHandleItemFieldT {
+ type: typeof ORDERFORM_HANDLE_ITEM_FIELD;
+ index: number;
+ field: string;
+ value: any;
+}
+export interface orderFormHandleItemInputT {
+ type: typeof ORDERFORM_HANDLE_ITEM_INPUT;
+ index: number;
+ field: string;
+ value: any;
+}
 
 // orderForm
+export interface orderFormRemoveHandleT {
+ type: typeof ORDERFORM_REMOVE_HANDLE;
+ field: 'handleSymbol1' | 'handleSymbol2';
+}
 export interface orderFormSetCommentsT {
  type: typeof ORDERFORM_SET_COMMENTS;
  comment: string;
@@ -75,6 +102,10 @@ export interface orderFormSetFinishDateT {
 }
 
 export type orderFormActionsT =
+ | orderFormRemoveHandleT
+ | orderFormRemoveItemT
+ | orderFormHandleItemInputT
+ | orderFormHandleItemFieldT
  | orderFormSetNameT
  | orderFormSetCommentsT
  | orderFormSetChamferingT

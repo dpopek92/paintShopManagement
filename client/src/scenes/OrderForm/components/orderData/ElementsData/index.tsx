@@ -23,16 +23,21 @@ const StyledWrapper = styled.div`
  justify-content: space-around;
  @media (max-width: 768px) {
   flex-direction: column;
+  & > div {
+   margin-bottom: 20px;
+  }
  }
 `;
 
 interface PropsT {
  newOrder: NewOrderT;
  handleCatalog: (type: CatalogDrawerTypesT) => void;
+ handleBackMillingModal: () => void;
 }
 
 const ElementsData: React.FC<PropsT> = ({
  handleCatalog,
+ handleBackMillingModal,
  newOrder: {
   color,
   paintType,
@@ -108,6 +113,7 @@ const ElementsData: React.FC<PropsT> = ({
     isChamfering={isChamfering}
     handleChamfering={value => dispatch(setChamfering(value))}
     title="Obróbka elementów"
+    handleBackMillingModal={handleBackMillingModal}
    />
   </StyledWrapper>
  );

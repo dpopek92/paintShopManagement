@@ -8,13 +8,31 @@ const { Option } = Select;
 
 interface PropsT {
  value: OrderItemLeftSideEdgeT;
+ handleChange: (value: OrderItemLeftSideEdgeT) => void;
+ handleFocus: () => void;
+ handleBlur: () => void;
+ fastWrite: boolean;
 }
 
-const LeftEdgeCell: React.FC<PropsT> = ({ value }) => {
+const LeftEdgeCell: React.FC<PropsT> = ({
+ value,
+ handleChange,
+ handleFocus,
+ handleBlur,
+ fastWrite,
+}) => {
  const newOrder = useSelector((state: AppStateT) => state.newOrder);
  const { isFelc, isNut, isChamfering } = newOrder;
  return (
-  <Select value={value} dropdownMatchSelectWidth={false}>
+  <Select
+   value={value}
+   onChange={(value: OrderItemLeftSideEdgeT) => handleChange(value)}
+   onFocus={handleFocus}
+   onBlur={handleBlur}
+   dropdownMatchSelectWidth={false}
+   style={{ maxWidth: 60 }}
+   tabIndex={fastWrite ? -1 : 0}
+  >
    <Option value="-">-</Option>
    <Option value="r1">R1</Option>
    <Option value="r2">R2</Option>

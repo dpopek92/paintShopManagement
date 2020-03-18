@@ -25,6 +25,14 @@ import {
  ORDERFORM_SET_NAME,
  orderFormSetCommentsT,
  ORDERFORM_SET_COMMENTS,
+ orderFormHandleItemFieldT,
+ ORDERFORM_HANDLE_ITEM_FIELD,
+ orderFormHandleItemInputT,
+ ORDERFORM_HANDLE_ITEM_INPUT,
+ orderFormRemoveItemT,
+ ORDERFORM_REMOVE_ITEM,
+ orderFormRemoveHandleT,
+ ORDERFORM_REMOVE_HANDLE,
 } from '../types/newOrder/actions';
 import {
  OrderPaintTypeT,
@@ -36,8 +44,38 @@ import {
 export const addOrderItem = (): orderFormAddItemT => ({
  type: ORDERFORM_ADD_ITEM,
 });
+export const removeOrderItem = (index: number): orderFormRemoveItemT => ({
+ type: ORDERFORM_REMOVE_ITEM,
+ index,
+});
+export const handleItemField = (
+ index: number,
+ field: string,
+ value: any,
+): orderFormHandleItemFieldT => ({
+ type: ORDERFORM_HANDLE_ITEM_FIELD,
+ index,
+ field,
+ value,
+});
+export const handleItemInput = (
+ index: number,
+ field: string,
+ value: any,
+): orderFormHandleItemInputT => ({
+ type: ORDERFORM_HANDLE_ITEM_INPUT,
+ index,
+ field,
+ value,
+});
 
 // orderForm
+export const removeHandle = (
+ field: 'handleSymbol1' | 'handleSymbol2',
+): orderFormRemoveHandleT => ({
+ type: ORDERFORM_REMOVE_HANDLE,
+ field,
+});
 export const setComment = (comment: string): orderFormSetCommentsT => ({
  type: ORDERFORM_SET_COMMENTS,
  comment,

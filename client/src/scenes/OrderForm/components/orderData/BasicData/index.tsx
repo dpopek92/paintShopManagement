@@ -12,6 +12,12 @@ const StyledWrapper = styled.div`
  justify-content: space-around;
  @media (max-width: 768px) {
   flex-direction: column;
+  & > div {
+   margin-bottom: 20px;
+   & > div {
+    margin-bottom: 0;
+   }
+  }
  }
 `;
 

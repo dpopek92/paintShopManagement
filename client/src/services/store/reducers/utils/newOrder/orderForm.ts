@@ -9,6 +9,24 @@ import {
 import { containsOneOf } from 'services/utils/array';
 
 // orderForm
+export const removeHandle = (
+ state: NewOrderT,
+ field: 'handleSymbol1' | 'handleSymbol2',
+) => {
+ const { items, paintType } = state;
+ const edge = paintType === 'połysk' ? 'r2' : 'r1';
+
+ const newItems = (items as OrderItemT[]).map((item: any) => {
+  if (item.h1P === state[field]) item.h1P = edge;
+  if (item.h2P === state[field]) item.h2P = edge;
+  if (item.w1P === state[field]) item.w1P = edge;
+  if (item.w2P === state[field]) item.w2P = edge;
+  return item;
+ });
+
+ return { ...state, [field]: '', items: newItems };
+};
+
 export const addHandle = (state: NewOrderT, handle: HandleT) => {
  const { color, veneerSymbol, handleSymbol1 } = state;
 
@@ -25,20 +43,35 @@ export const addHandle = (state: NewOrderT, handle: HandleT) => {
 };
 
 export const addMilling = (state: NewOrderT, milling: string) => {
- const { veneerSymbol, color } = state;
+ const { veneerSymbol, color, items } = state;
 
  if (veneerSymbol || color.toLocaleLowerCase().includes('bejca'))
   return { ...state };
+
+ if (milling === '') {
+  const newItems = (items as OrderItemT[]).map((item: any) => {
+   if (item.type === 'frez') item.type = 'gładki';
+   return item;
+  });
+  return { ...state, millingSymbol: milling, items: newItems };
+ }
 
  return { ...state, millingSymbol: milling };
 };
 
 export const addGlassCase = (state: NewOrderT, glassCase: string) => {
- const { veneerSymbol, color } = state;
-
+ const { veneerSymbol, color, items } = state;
  if (veneerSymbol || color.toLocaleLowerCase().includes('bejca')) {
   if (glassCase === 'w4') return { ...state, glassCaseSymbol: glassCase };
   else return { ...state };
+ }
+
+ if (glassCase === '') {
+  const newItems = (items as OrderItemT[]).map((item: any) => {
+   if (item.type === 'witryna') item.type = 'gładki';
+   return item;
+  });
+  return { ...state, glassCaseSymbol: glassCase, items: newItems };
  }
 
  return { ...state, glassCaseSymbol: glassCase };
@@ -137,13 +170,14 @@ export const setFelc = (state: NewOrderT, isFelc: boolean) => {
 };
 
 export const setChamfering = (state: NewOrderT, isChamfering: boolean) => {
- let { items } = state;
+ let { items, paintType } = state;
+ const rightEdge = paintType === 'połysk' ? 'r2' : 'r1';
  if (!isChamfering) {
   items = (items as OrderItemT[]).map((item: any) => {
-   if (item.h1P === 'gierunek') item.h1P = '-';
-   if (item.h2P === 'gierunek') item.h2P = '-';
-   if (item.w1P === 'gierunek') item.w1P = '-';
-   if (item.w2P === 'gierunek') item.w2P = '-';
+   if (item.h1P === 'gierunek') item.h1P = rightEdge;
+   if (item.h2P === 'gierunek') item.h2P = rightEdge;
+   if (item.w1P === 'gierunek') item.w1P = rightEdge;
+   if (item.w2P === 'gierunek') item.w2P = rightEdge;
    if (item.h1L === 'gierunek') item.h1L = '-';
    if (item.h2L === 'gierunek') item.h2L = '-';
    if (item.w1L === 'gierunek') item.w1L = '-';

@@ -30,3 +30,18 @@ export const createOrderItem = (state: NewOrderT) => {
 
  return item;
 };
+
+export const handleInput = (
+ state: NewOrderT,
+ index: number,
+ field: string,
+ value: any,
+) => {
+ const numbers = /^(\s*|\d+)$/;
+
+ if (!value.match(numbers)) return { ...state };
+ if (!value) value = 0;
+ return update(state, {
+  items: { [index]: { [field]: { $set: parseInt(value, 10) } } },
+ });
+};

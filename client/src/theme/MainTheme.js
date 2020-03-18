@@ -8,5 +8,6 @@ export const theme = {
   right: '#b8d2fe',
   headerLeft: '#3cd1ec',
   left: '#cbedfb',
+  focus: '#e8f8ff',
  },
 };
