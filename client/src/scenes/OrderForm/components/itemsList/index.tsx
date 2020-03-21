@@ -56,6 +56,8 @@ interface PropsT {
  items: OrderItemT[];
  handleItem: (index: number, field: string, value: any) => void;
  handleRemoveItem: (index: number) => void;
+ handleAddItemImage: (index: number, file: File) => void;
+ handleRemoveItemImage: (index: number) => void;
  isFastWrite: boolean;
 }
 
@@ -63,6 +65,8 @@ const ItemsList: React.FC<PropsT> = ({
  items,
  handleItem,
  handleRemoveItem,
+ handleAddItemImage,
+ handleRemoveItemImage,
  isFastWrite,
 }) => {
  return (
@@ -143,6 +147,8 @@ const ItemsList: React.FC<PropsT> = ({
           index={index}
           handleItem={handleItem}
           handleRemoveItem={handleRemoveItem}
+          handleAddItemImage={handleAddItemImage}
+          handleRemoveItemImage={handleRemoveItemImage}
           fastWrite={isFastWrite}
          />
         ))

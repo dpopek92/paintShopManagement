@@ -44,32 +44,93 @@ const CustomerProfileSchema = new mongoose.Schema({
     ]
   },
   discounts: {
-    manHour: {
-      type: Number,
-      default: 0
-    },
-    gloss: {
-      oneSide: {
-        type: Number,
-        default: 0
+    companyMaterial: {
+      gloss: {
+        oneSide: {
+          type: Number,
+          default: 0
+        },
+        bothSides: {
+          type: Number,
+          default: 0
+        },
+        oneGlossSecondSemigloss: {
+          type: Number,
+          default: 0
+        }
       },
-      bothSides: {
-        type: Number,
-        default: 0
+      semiGloss: {
+        oneSide: {
+          type: Number,
+          default: 0
+        },
+        bothSides: {
+          type: Number,
+          default: 0
+        },
+        milledElement: {
+          type: Number,
+          default: 0
+        },
+        milledElementBothSides: {
+          type: Number,
+          default: 0
+        }
       },
-      oneGlossSecondSemigloss: {
-        type: Number,
-        default: 0
-      }
-    },
-    semiGloss: {
-      oneSide: {
-        type: Number,
-        default: 0
-      },
-      bothSides: {
-        type: Number,
-        default: 0
+      board: {
+        3: {
+          type: Number,
+          default: 0
+        },
+        6: {
+          type: Number,
+          default: 0
+        },
+        8: {
+          type: Number,
+          default: 0
+        },
+        10: {
+          type: Number,
+          default: 0
+        },
+        12: {
+          type: Number,
+          default: 0
+        },
+        16: {
+          type: Number,
+          default: 0
+        },
+        18: {
+          type: Number,
+          default: 0
+        },
+        19: {
+          type: Number,
+          default: 0
+        },
+        22: {
+          type: Number,
+          default: 0
+        },
+        25: {
+          type: Number,
+          default: 0
+        },
+        28: {
+          type: Number,
+          default: 0
+        },
+        30: {
+          type: Number,
+          default: 0
+        },
+
+        38: {
+          type: Number,
+          default: 0
+        }
       }
     },
     customerMaterial: {
@@ -103,108 +164,51 @@ const CustomerProfileSchema = new mongoose.Schema({
         veneerColorless: {
           type: Number,
           default: 0
+        },
+        milledElement: {
+          type: Number,
+          default: 0
+        },
+        milledElementBothSides: {
+          type: Number,
+          default: 0
         }
       },
-      milledElement: {
-        type: Number,
-        default: 0
-      },
-      milledElementBothSides: {
+      paintHandle: {
         type: Number,
         default: 0
       }
     },
-    chamfering: {
-      type: Number,
-      default: 0
-    },
-    backMilling: {
-      type: Number,
-      default: 0
-    },
-    millingHandle: {
-      type: Number,
-      default: 0
-    },
-    paintHandle: {
-      type: Number,
-      default: 0
-    },
-    milledHandle: {
-      type: Number,
-      default: 0
-    },
-    milledPartHandle: {
-      type: Number,
-      default: 0
-    },
-    zobalHandle: {
-      type: Number,
-      default: 0
-    },
-    hingeHole: {
-      type: Number,
-      default: 0
-    },
-    milledElement: {
-      type: Number,
-      default: 0
-    },
-    milledElementBothSides: {
-      type: Number,
-      default: 0
-    },
-    board: {
-      3: {
+    services: {
+      manHour: {
         type: Number,
         default: 0
       },
-      6: {
+      chamfering: {
         type: Number,
         default: 0
       },
-      8: {
+      backMilling: {
         type: Number,
         default: 0
       },
-      10: {
+      millingHandle: {
         type: Number,
         default: 0
       },
-      12: {
+      milledHandle: {
         type: Number,
         default: 0
       },
-      16: {
+      milledPartHandle: {
         type: Number,
         default: 0
       },
-      18: {
+      zobalHandle: {
         type: Number,
         default: 0
       },
-      19: {
-        type: Number,
-        default: 0
-      },
-      22: {
-        type: Number,
-        default: 0
-      },
-      25: {
-        type: Number,
-        default: 0
-      },
-      28: {
-        type: Number,
-        default: 0
-      },
-      30: {
-        type: Number,
-        default: 0
-      },
-
-      38: {
+      hingeHole: {
         type: Number,
         default: 0
       }

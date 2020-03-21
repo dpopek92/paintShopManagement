@@ -45,3 +45,23 @@ export const handleInput = (
   items: { [index]: { [field]: { $set: parseInt(value, 10) } } },
  });
 };
+
+export const handleEdges = (
+ right: boolean,
+ left: boolean,
+ item: any,
+ callback: (value: string, edge: string) => void,
+) => {
+ const rightEdges = ['h1P', 'h2P', 'w1P', 'w2P'];
+ const leftEdges = ['h1L', 'h2L', 'w1L', 'w2L'];
+
+ if (right)
+  rightEdges.forEach((edge: string) => {
+   callback(item[edge], edge);
+  });
+
+ if (left)
+  leftEdges.forEach((edge: string) => {
+   callback(item[edge], edge);
+  });
+};

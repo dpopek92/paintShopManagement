@@ -3,6 +3,8 @@ import { OrderPaintTypeT, OrderPaintStyleT, HandleT } from '../orders/Orders';
 // orderItems
 export const ORDERFORM_ADD_ITEM = 'ORDERFORM_ADD_ITEM';
 export const ORDERFORM_REMOVE_ITEM = 'ORDERFORM_REMOVE_ITEM';
+export const ORDERFORM_ADD_ITEM_IMAGE = 'ORDERFORM_ADD_ITEM_IMAGE';
+export const ORDERFORM_REMOVE_ITEM_IMAGE = 'ORDERFORM_REMOVE_ITEM_IMAGE';
 export const ORDERFORM_HANDLE_ITEM_FIELD = 'ORDERFORM_HANDLE_ITEM_FIELD';
 export const ORDERFORM_HANDLE_ITEM_INPUT = 'ORDERFORM_HANDLE_ITEM_INPUT';
 
@@ -11,6 +13,7 @@ export const ORDERFORM_SET_FINISH_DATE = 'ORDERFORM_SET_FINISH_DATE';
 export const ORDERFORM_SET_COLOR = 'ORDERFORM_SET_COLOR';
 export const ORDERFORM_SET_HANDLE = 'ORDERFORM_SET_HANDLE';
 export const ORDERFORM_SET_MILLING = 'ORDERFORM_SET_MILLING';
+export const ORDERFORM_SET_CUSTOM_MILLING = 'ORDERFORM_SET_CUSTOM_MILLING';
 export const ORDERFORM_SET_GLASSCASE = 'ORDERFORM_SET_GLASSCASE';
 export const ORDERFORM_SET_VENEER = 'ORDERFORM_SET_VENEER';
 export const ORDERFORM_SET_PAINTTYPE = 'ORDERFORM_SET_PAINTTYPE';
@@ -21,6 +24,7 @@ export const ORDERFORM_SET_CHAMFERING = 'ORDERFORM_SET_CHAMFERING';
 export const ORDERFORM_SET_NAME = 'ORDERFORM_SET_NAME';
 export const ORDERFORM_SET_COMMENTS = 'ORDERFORM_SET_COMMENTS';
 export const ORDERFORM_REMOVE_HANDLE = 'ORDERFORM_REMOVE_HANDLE';
+export const ORDERFORM_CALCULATE_SURFACES = 'ORDERFORM_CALCULATE_SURFACES';
 
 // orderItems
 export interface orderFormAddItemT {
@@ -28,6 +32,15 @@ export interface orderFormAddItemT {
 }
 export interface orderFormRemoveItemT {
  type: typeof ORDERFORM_REMOVE_ITEM;
+ index: number;
+}
+export interface orderFormAddItemImageT {
+ type: typeof ORDERFORM_ADD_ITEM_IMAGE;
+ index: number;
+ file: File;
+}
+export interface orderFormRemoveItemImageT {
+ type: typeof ORDERFORM_REMOVE_ITEM_IMAGE;
  index: number;
 }
 export interface orderFormHandleItemFieldT {
@@ -44,6 +57,9 @@ export interface orderFormHandleItemInputT {
 }
 
 // orderForm
+export interface orderFormCalculateSurfacesT {
+ type: typeof ORDERFORM_CALCULATE_SURFACES;
+}
 export interface orderFormRemoveHandleT {
  type: typeof ORDERFORM_REMOVE_HANDLE;
  field: 'handleSymbol1' | 'handleSymbol2';
@@ -88,6 +104,10 @@ export interface orderFormSetMillingT {
  type: typeof ORDERFORM_SET_MILLING;
  milling: string;
 }
+export interface orderFormSetCustomMillingT {
+ type: typeof ORDERFORM_SET_CUSTOM_MILLING;
+ file: File;
+}
 export interface orderFormSetGlassCaseT {
  type: typeof ORDERFORM_SET_GLASSCASE;
  glassCase: string;
@@ -98,10 +118,14 @@ export interface orderFormSetVeneerT {
 }
 export interface orderFormSetFinishDateT {
  type: typeof ORDERFORM_SET_FINISH_DATE;
- term: number;
+ finishDate: Date;
 }
 
 export type orderFormActionsT =
+ | orderFormCalculateSurfacesT
+ | orderFormSetCustomMillingT
+ | orderFormRemoveItemImageT
+ | orderFormAddItemImageT
  | orderFormRemoveHandleT
  | orderFormRemoveItemT
  | orderFormHandleItemInputT

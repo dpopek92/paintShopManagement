@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PricesT } from 'services/store/types/settings/Settings';
 import { Formik } from 'formik';
-import { Form, Button, message } from 'antd';
+import { Form, Button } from 'antd';
 import CompanyMaterial from './components/companyMaterial';
 import CustomerMaterial from './components/customerMaterial';
 import ServicesFields from './components/servicesFields';
-import { useDispatch } from 'react-redux';
-import { setSpinner } from 'services/store/actions/view';
-import { updateGlobalSettings } from 'services/apiRequests/settings/update';
-import { globalSettingsLoaded } from 'services/store/actions/settings';
 
 const StyledContainer = styled.div`
  display: flex;
@@ -34,10 +30,10 @@ const StyledForm = styled(Form)`
 
 interface PropsT {
  data: PricesT | null;
+ handleSubmit: (values: PricesT, actions: any, setIsEdit: any) => void;
 }
 
-const Prices: React.FC<PropsT> = ({ data }) => {
- const dispatch = useDispatch();
+const Prices: React.FC<PropsT> = ({ data, handleSubmit }) => {
  const [isEdit, setIsEdit] = useState(false);
 
  const handleEdit = () => setIsEdit(!isEdit);
@@ -47,23 +43,9 @@ const Prices: React.FC<PropsT> = ({ data }) => {
    {data && (
     <Formik
      //  validationSchema={schema}
-     onSubmit={async (values, actions) => {
-      dispatch(setSpinner(true));
-      await updateGlobalSettings(
-       { prices: values },
-       data => {
-        if (data.prices) actions.setValues(data.prices);
-        dispatch(globalSettingsLoaded(data));
-        setIsEdit(false);
-        dispatch(setSpinner(false));
-        message.success('Dane zostały zaktualizowane');
-       },
-       () => {
-        dispatch(setSpinner(false));
-        message.error('Błąd serwera');
-       },
-      );
-     }}
+     onSubmit={async (values, actions) =>
+      handleSubmit(values, actions, setIsEdit)
+     }
      initialValues={data}
      render={props => {
       const { values, handleSubmit } = props;

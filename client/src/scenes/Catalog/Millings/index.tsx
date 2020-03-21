@@ -12,7 +12,7 @@ import FlexTemplate from 'components/templates/flexTemplate';
 import MILLINGS from 'assets/data/Millings.json';
 import CardAction from '../components/CardAction';
 import Header from 'components/header';
-import { setMilling } from 'services/store/actions/newOrder';
+import { setMilling, setCustomMilling } from 'services/store/actions/newOrder';
 import { setCatalogDrawer } from 'services/store/actions/view';
 
 const openNotification = (milling: string) => {
@@ -43,13 +43,13 @@ const Millings = ({ permissionContext }: Props) => {
  const uploadProps = {
   onRemove: () => {
    setFileList([]);
-   //    dispatch(removeMilling());
+   dispatch(setMilling(''));
    dispatch(setCatalogDrawer(null));
   },
   beforeUpload: (file: any) => {
    setFileList([file]);
    openNotification('ze zdjęcia');
-   //    dispatch(addCustomMilling(file, userId, 'Inny'));
+   dispatch(setCustomMilling(file));
    dispatch(setCatalogDrawer(null));
    return false;
   },
@@ -77,7 +77,7 @@ const Millings = ({ permissionContext }: Props) => {
          {...uploadProps}
          fileList={fileList}
         >
-         <Button disabled={true}>
+         <Button>
           <Icon type="upload" /> Dodaj ze zdjęcia
          </Button>
         </Upload>,

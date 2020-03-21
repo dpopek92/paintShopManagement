@@ -25,6 +25,18 @@ const StyledInputNumber = styled(InputNumber)`
   background-color: #a9e4fc;
  }
 `;
+const StyledInputFile = styled.input`
+ width: 0.1px;
+ height: 0.1px;
+ opacity: 0;
+ overflow: hidden;
+ position: absolute;
+ z-index: -1;
+`;
+const StyledLabelFile = styled.label`
+ cursor: pointer;
+ margin: 0;
+`;
 const StyledRow = styled.tr`
  &.focused {
   background-color: #ededed;
@@ -36,6 +48,8 @@ interface PropsT {
  index: number;
  handleItem: (index: number, field: string, value: any) => void;
  handleRemoveItem: (index: number) => void;
+ handleAddItemImage: (index: number, file: File) => void;
+ handleRemoveItemImage: (index: number) => void;
  fastWrite: boolean;
 }
 
@@ -44,6 +58,8 @@ const ItemsListRow: React.FC<PropsT> = ({
  index,
  handleItem,
  handleRemoveItem,
+ handleAddItemImage,
+ handleRemoveItemImage,
  fastWrite,
 }) => {
  const [rowClassName, setRowClassName] = useState('');
@@ -197,7 +213,29 @@ const ItemsListRow: React.FC<PropsT> = ({
     />
    </td>
    <StyledIcon>
-    <Icon type="file" tabIndex={fastWrite ? -1 : 0} />
+    {!item.image ? (
+     <>
+      <StyledInputFile
+       tabIndex={fastWrite ? -1 : 0}
+       type="file"
+       accept="image/*,application/pdf"
+       id={`file${index}`}
+       onChange={e => {
+        if (e.target.files) handleAddItemImage(index, e.target.files[0]);
+       }}
+      />
+      <StyledLabelFile htmlFor={`file${index}`}>
+       <Icon type="file" tabIndex={fastWrite ? -1 : 0} />
+      </StyledLabelFile>
+     </>
+    ) : (
+     <Icon
+      type="delete"
+      style={{ color: 'red' }}
+      tabIndex={fastWrite ? -1 : 0}
+      onClick={() => handleRemoveItemImage(index)}
+     />
+    )}
    </StyledIcon>
    <td>
     <StyledInput

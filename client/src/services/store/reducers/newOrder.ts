@@ -19,6 +19,11 @@ import {
  ORDERFORM_HANDLE_ITEM_INPUT,
  ORDERFORM_REMOVE_ITEM,
  ORDERFORM_REMOVE_HANDLE,
+ ORDERFORM_SET_FINISH_DATE,
+ ORDERFORM_ADD_ITEM_IMAGE,
+ ORDERFORM_REMOVE_ITEM_IMAGE,
+ ORDERFORM_SET_CUSTOM_MILLING,
+ ORDERFORM_CALCULATE_SURFACES,
 } from '../types/newOrder/actions';
 import {
  addHandle,
@@ -31,8 +36,10 @@ import {
  setFelc,
  setChamfering,
  removeHandle,
+ addCustomMilling,
 } from './utils/newOrder/orderForm';
 import { createOrderItem, handleInput } from './utils/newOrder/orderItems';
+import { calculateSurfaces } from './utils/newOrder/calculateSurfaces';
 
 const initialState: NewOrderT = {
  // to order
@@ -78,6 +85,27 @@ const newOrderReducer = (
   case ORDERFORM_REMOVE_ITEM: {
    return update(state, { items: { $splice: [[action.index, 1]] } });
   }
+  case ORDERFORM_ADD_ITEM_IMAGE: {
+   const image = { path: action.file.name, file: action.file };
+   return update(state, {
+    items: {
+     [action.index]: {
+      image: { $set: image },
+      comments: { $apply: x => x.concat(' rysunek') },
+     },
+    },
+   });
+  }
+  case ORDERFORM_REMOVE_ITEM_IMAGE: {
+   return update(state, {
+    items: {
+     [action.index]: {
+      image: { $set: undefined },
+      comments: { $apply: x => x.replace(' rysunek', '') },
+     },
+    },
+   });
+  }
   case ORDERFORM_HANDLE_ITEM_FIELD: {
    return update(state, {
     items: { [action.index]: { [action.field]: { $set: action.value } } },
@@ -97,11 +125,17 @@ const newOrderReducer = (
   case ORDERFORM_SET_COLOR: {
    return { ...state, color: action.color };
   }
+  case ORDERFORM_SET_FINISH_DATE: {
+   return { ...state, finishDate: action.finishDate };
+  }
   case ORDERFORM_SET_HANDLE: {
    return addHandle(state, action.handle);
   }
   case ORDERFORM_SET_MILLING: {
    return addMilling(state, action.milling);
+  }
+  case ORDERFORM_SET_CUSTOM_MILLING: {
+   return addCustomMilling(state, action.file);
   }
   case ORDERFORM_SET_GLASSCASE: {
    return addGlassCase(state, action.glassCase);
@@ -126,6 +160,9 @@ const newOrderReducer = (
   }
   case ORDERFORM_REMOVE_HANDLE: {
    return removeHandle(state, action.field);
+  }
+  case ORDERFORM_CALCULATE_SURFACES: {
+   return calculateSurfaces(state);
   }
   default:
    return state;

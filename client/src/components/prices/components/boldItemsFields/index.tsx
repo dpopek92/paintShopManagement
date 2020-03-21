@@ -1,14 +1,14 @@
 import React from 'react';
-import { SemiGlossT } from 'services/store/types/settings/Settings';
+import { BoardPricesT } from 'services/store/types/settings/Settings';
 import { InputNumberProps } from 'antd/lib/input-number';
 import FieldNumber from 'components/FormFields/FieldNumber';
 
 interface PropsT extends InputNumberProps {
- values: SemiGlossT | undefined;
+ values: BoardPricesT | undefined;
  nestPath?: string;
 }
 
-const SemiGlossFields: React.FC<PropsT> = props => {
+const BoldItemsFields: React.FC<PropsT> = props => {
  const { values, nestPath } = props;
  return (
   <>
@@ -16,26 +16,32 @@ const SemiGlossFields: React.FC<PropsT> = props => {
     <div>
      <FieldNumber
       {...props}
-      name={`${nestPath}.semiGloss.oneSide`}
-      label="Jednostronny"
+      name={`${nestPath}.board.22`}
+      label="22mm"
       size="large"
      />
      <FieldNumber
       {...props}
-      name={`${nestPath}.semiGloss.bothSides`}
-      label="Dwustronny"
+      name={`${nestPath}.board.25`}
+      label="25mm"
       size="large"
      />
      <FieldNumber
       {...props}
-      name={`${nestPath}.semiGloss.milledElement`}
-      label="CNC (Jednostronny)"
+      name={`${nestPath}.board.28`}
+      label="28mm"
       size="large"
      />
      <FieldNumber
       {...props}
-      name={`${nestPath}.semiGloss.milledElementBothSides`}
-      label="CNC (Dwustronny)"
+      name={`${nestPath}.board.30`}
+      label="30mm"
+      size="large"
+     />
+     <FieldNumber
+      {...props}
+      name={`${nestPath}.board.38`}
+      label="38mm"
       size="large"
      />
     </div>
@@ -44,4 +50,4 @@ const SemiGlossFields: React.FC<PropsT> = props => {
  );
 };
 
-export default SemiGlossFields;
+export default BoldItemsFields;

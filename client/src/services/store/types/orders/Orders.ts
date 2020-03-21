@@ -129,7 +129,7 @@ export type OrderTypeT =
  | 'poprawa'
  | 'materiał klienta'
  | 'domówienie';
-export type HandleT = 'uk' | 'up' | 'up45' | 'uk45' | 'p45' | 'uc' | null;
+export type HandleT = 'uk' | 'up' | 'up45' | 'uk45' | 'p45' | 'uc';
 export type OrderStatusT =
  | 'wysłane'
  | 'surówka'

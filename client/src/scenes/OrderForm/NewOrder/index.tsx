@@ -22,6 +22,9 @@ import {
  handleItemField,
  handleItemInput,
  removeOrderItem,
+ setFinishDate,
+ addItemImage,
+ removeItemImage,
 } from 'services/store/actions/newOrder';
 import ItemsList from '../components/itemsList';
 import CatalogDrawer from '../components/catalogDrawer/indext';
@@ -30,6 +33,8 @@ import { CatalogDrawerTypesT } from 'services/store/types/view/View';
 import BackMillingModal from '../components/backMillingModal';
 import Sidebar from '../components/sidebar';
 import { getGlobalSettings } from 'services/store/actions/settings';
+import { getOrderFinishDate } from '../utils';
+import { useHistory } from 'react-router';
 
 const StyledCard = styled(Card)`
  width: 100%;
@@ -73,25 +78,38 @@ interface PropsT {
 
 const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
  const scrollTo = useRef<null | HTMLDivElement>(null);
+ const history = useHistory();
  const dispatch = useDispatch();
  const newOrder = useSelector((state: AppStateT) => state.newOrder);
  const author = useSelector((state: AppStateT) => state.auth.user);
- const realizationDates = useSelector(
-  (state: AppStateT) => state.settings.realizationDates,
- );
+ const settings = useSelector((state: AppStateT) => state.settings);
  const catalogType = useSelector(
   (state: AppStateT) => state.view.catalogDrawer,
  );
- const { items, color, veneerSymbol } = newOrder;
+ const { realizationDates, prices } = settings;
+ const { items, color, veneerSymbol, millingSymbol, paintType } = newOrder;
 
  const [addItems, setAddItems] = useState(1);
  const [isMillingModal, setIsMillingModal] = useState(false);
  const [isFastWrite, setIsFastWrite] = useState(false);
 
  useEffect(() => {
-  dispatch(addOrderItem());
-  dispatch(getGlobalSettings(() => {}));
+  if (!realizationDates || !prices) dispatch(getGlobalSettings(() => {}));
+  if (!items.length) dispatch(addOrderItem());
  }, []);
+
+ // FINISH DATE
+ useEffect(() => {
+  if (realizationDates) {
+   const finishDate = getOrderFinishDate(
+    realizationDates,
+    paintType,
+    !!veneerSymbol,
+    !!millingSymbol,
+   );
+   dispatch(setFinishDate(finishDate));
+  }
+ }, [realizationDates, color, veneerSymbol, millingSymbol, paintType]);
 
  //  HANDLERS
  const scrollToBottom = () => {
@@ -123,6 +141,10 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
    dispatch(handleItemField(index, field, value));
   }
  };
+ const handleAddItemImage = (index: number, file: File) =>
+  dispatch(addItemImage(index, file));
+ const handleRemoveItemImage = (index: number) =>
+  dispatch(removeItemImage(index));
 
  return (
   <WithSidebar
@@ -145,6 +167,8 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
        ),
       ]}
      />
+
+     {/* ORDER INFO & ELEMENTS */}
      <Header title="Dane zamówienia" type="h2" />
      <StyledCard>
       <BasicData newOrder={newOrder} author={author} />
@@ -159,6 +183,8 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
      <StyledCard>
       <InfoData newOrder={newOrder} />
      </StyledCard>
+
+     {/* ORDER ITEMS */}
      {!color ? (
       <StyledInfo>Wybierz kolor</StyledInfo>
      ) : color.toLowerCase().includes('bejca') && !veneerSymbol ? (
@@ -168,7 +194,7 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
        <StyledRow>
         <Header title="Dane elementów" type="h2" />
         <div>
-         <Button>Importuj z pliku</Button>
+         <Button disabled={true}>Importuj z pliku</Button>
          <Checkbox
           checked={isFastWrite}
           onChange={e => handleFastWrite(e.target.checked)}
@@ -181,11 +207,18 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
         items={items}
         handleItem={handleItem}
         handleRemoveItem={handleRemoveItem}
+        handleAddItemImage={handleAddItemImage}
+        handleRemoveItemImage={handleRemoveItemImage}
         isFastWrite={isFastWrite}
        />
        <StyledBottomWrapper>
-        <Button className="submitBtn" type="primary" size="large">
-         Wyślij
+        <Button
+         className="submitBtn"
+         type="primary"
+         size="large"
+         onClick={() => history.push('/neworder/summary')}
+        >
+         Dalej
         </Button>
         <div>
          <InputNumber

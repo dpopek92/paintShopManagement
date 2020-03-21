@@ -9,9 +9,8 @@ const get = {
       const customers = await getAllCustomers();
 
       return res.json(customers);
-    } catch (error) {
-      console.log(req.originalUrl);
-      console.log(error.message);
+    } catch (err) {
+      console.error("ERROR: ", req.originalUrl, err.message);
       return res.status(500).send("Server error");
     }
   },

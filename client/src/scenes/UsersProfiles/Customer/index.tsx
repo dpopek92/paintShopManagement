@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import FullWidthPageTemplate from 'components/templates/fullWidth';
-import { CustomerT } from 'services/store/types/customers/Customers';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppStateT } from 'services/store';
 import { useParams, useHistory } from 'react-router';
 import { getCustomers } from 'services/store/actions/customer';
 import { setSpinner } from 'services/store/actions/view';
-import Header from 'components/header';
-import { Descriptions, Tag, PageHeader, Button, Icon, message } from 'antd';
-import AccountRemove from '../components/Modals/accountRemove';
+import { getGlobalSettings } from 'services/store/actions/settings';
+import { calculateDiscounts } from './utils';
 import { customerAccountRemove } from 'services/apiRequests/customer/remove';
+import FullWidthPageTemplate from 'components/templates/fullWidth';
+import Prices from 'components/prices';
+import CustomerData from '../components/customerData';
+import AccountRemove from '../components/Modals/accountRemove';
+import { Button, PageHeader, Icon, message } from 'antd';
+import { CustomerT } from 'services/store/types/customers/Customers';
+import { AppStateT } from 'services/store';
+import Header from 'components/header';
+import { PricesT } from 'services/store/types/settings/Settings';
+import { customerDiscountsUpdate } from 'services/apiRequests/customer/update';
 
 const initModal = {
  accountRemove: false,
@@ -17,15 +23,18 @@ const initModal = {
 };
 
 const CustomerProfile = () => {
+ const { id } = useParams();
  const dispatch = useDispatch();
  const history = useHistory();
- const [customer, setCustomer] = useState<CustomerT | null>(null);
  const customers = useSelector((state: AppStateT) => state.customers.list);
- const { id } = useParams();
+ const prices = useSelector((state: AppStateT) => state.settings.prices);
 
+ const [customer, setCustomer] = useState<CustomerT | null>(null);
+ const [customerPrices, setCustomerPrices] = useState<PricesT | null>(null);
  const [loading, setLoading] = useState(false);
  const [modal, setModal] = useState(initModal);
 
+ // GET DATA
  useEffect(() => {
   if (customers.length) {
    const profile = customers.find((customer: CustomerT) => customer._id === id);
@@ -34,7 +43,18 @@ const CustomerProfile = () => {
    dispatch(setSpinner(true));
    dispatch(getCustomers(() => dispatch(setSpinner(false))));
   }
+  if (!prices) {
+   dispatch(getGlobalSettings(() => dispatch(setSpinner(false))));
+  }
  }, [customers]);
+
+ //  CALC DISCOUNTS
+ useEffect(() => {
+  if (prices && customer?.discounts) {
+   const values = calculateDiscounts(prices, customer.discounts);
+   setCustomerPrices(values);
+  }
+ }, [prices, customer?.discounts]);
 
  const handleUserRemove = async () => {
   setLoading(true);
@@ -51,6 +71,30 @@ const CustomerProfile = () => {
      closeModals();
     },
    );
+ };
+
+ const handleDiscountsSubmit = async (
+  values: PricesT,
+  actions: any,
+  setIsEdit: any,
+ ) => {
+  if (id) {
+   dispatch(setSpinner(true));
+   console.log(values);
+   await customerDiscountsUpdate(
+    id,
+    values,
+    () => {
+     setIsEdit(false);
+     dispatch(setSpinner(false));
+     message.success('Dane zostały zaktualizowane');
+    },
+    () => {
+     dispatch(setSpinner(false));
+     message.error('Błąd serwera');
+    },
+   );
+  }
  };
 
  const closeModals = () => setModal(initModal);
@@ -81,38 +125,15 @@ const CustomerProfile = () => {
       </Button>,
      ]}
     />
-    {customer && (
-     <Descriptions
-      title={
-       <>
-        {customer.user.company}{' '}
-        <Tag color={customer.user.isAccepted ? 'green' : 'red'}>
-         {customer.user.isAccepted ? 'Zaakceptowany' : 'Niezaakceptowany'}
-        </Tag>
-       </>
-      }
-      layout="horizontal"
-     >
-      <Descriptions.Item label="Imię i nazwisko">{`${customer.user.firstname} ${customer.user.surname}`}</Descriptions.Item>
-      <Descriptions.Item label="E-mail">
-       {customer.user.email}
-      </Descriptions.Item>
-      <Descriptions.Item label="Nr telefonu">
-       {customer.phone}
-      </Descriptions.Item>
-      <Descriptions.Item label="NIP">{customer.NIP}</Descriptions.Item>
-      <Descriptions.Item label="Kod pocztowy">
-       {customer.postcode}
-      </Descriptions.Item>
-      <Descriptions.Item label="Miejscowość">{customer.city}</Descriptions.Item>
-      <Descriptions.Item label="Ulica">{customer.street}</Descriptions.Item>
-     </Descriptions>
+    {customer && <CustomerData data={customer} />}
+    <hr />
+    <Header title="Cennik indywidualny" type="h1" />
+    {customerPrices && (
+     <Prices data={customerPrices} handleSubmit={handleDiscountsSubmit} />
     )}
     <hr />
-    <Header title="Cennik indywidualny" type="h2" />
-    <hr />
-    <Header title="Zamówienia" type="h2" />
-
+    <Header title="Zamówienia" type="h1" />
+    orders
     {/* MODALS */}
     <AccountRemove
      loading={loading}

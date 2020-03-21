@@ -1,11 +1,11 @@
 import React from 'react';
-import { ServicesT } from 'services/store/types/settings/Settings';
+import { ServicesPricesT } from 'services/store/types/settings/Settings';
 import Header from 'components/header';
 import { InputNumberProps } from 'antd/lib/input-number';
 import FieldNumber from 'components/FormFields/FieldNumber';
 
 interface PropsT extends InputNumberProps {
- values: ServicesT | undefined;
+ values: ServicesPricesT | undefined;
  errors: any;
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;

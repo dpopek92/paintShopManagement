@@ -1,12 +1,12 @@
 import React from 'react';
-import { CustomerMaterialT } from 'services/store/types/settings/Settings';
+import { CustomerMaterialPricesT } from 'services/store/types/settings/Settings';
 import GlossFields from '../glossFields';
 import SemiGlossFields from '../semiGlossFields';
 import Header from 'components/header';
 import { InputNumberProps } from 'antd/lib/input-number';
 
 interface PropsT extends InputNumberProps {
- values: CustomerMaterialT | undefined;
+ values: CustomerMaterialPricesT | undefined;
  errors: any;
  touched: any;
  handleBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;

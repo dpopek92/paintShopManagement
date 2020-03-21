@@ -57,4 +57,19 @@ router.get(
   customersControler.get.customerProfile
 );
 
+/**
+|--------------------------------------------------
+| UPDATE CUSTOMER DISCOUNTS
+|--------------------------------------------------
+*/
+// @route  PUT api/customers/discounts/customerId
+// @desc   Update customer discounts
+// @acces  Admin
+router.put(
+  "/discounts/:customerId",
+  auth,
+  isAdmin,
+  customersControler.update.discounts
+);
+
 module.exports = router;

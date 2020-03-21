@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppStateT } from 'services/store';
 import { getGlobalSettings } from 'services/store/actions/settings';
-import { PageHeader, Tabs, Icon } from 'antd';
-import Header from 'components/header';
+import { setSpinner } from 'services/store/actions/view';
+import { updateGlobalSettings } from 'services/apiRequests/settings/update';
+import { globalSettingsLoaded } from 'services/store/actions/settings';
+import { PageHeader, Tabs, Icon, message } from 'antd';
 import FullWidthPageTemplate from 'components/templates/fullWidth';
-import PaintsProducers from './components/paintsProducers';
+import Header from 'components/header';
 import RealizationDates from './components/realizationDates';
+import PaintsProducers from './components/paintsProducers';
+import Prices from 'components/prices';
 import Contact from './components/contact';
-import Prices from './components/prices';
+import { AppStateT } from 'services/store';
+import { PricesT } from 'services/store/types/settings/Settings';
 const { TabPane } = Tabs;
 
 const GlobalSettings = () => {
@@ -19,6 +23,28 @@ const GlobalSettings = () => {
  useEffect(() => {
   dispatch(getGlobalSettings(() => {}));
  }, []);
+
+ const handlePricesSubmit = async (
+  values: PricesT,
+  actions: any,
+  setIsEdit: any,
+ ) => {
+  dispatch(setSpinner(true));
+  await updateGlobalSettings(
+   { prices: values },
+   data => {
+    if (data.prices) actions.setValues(data.prices);
+    dispatch(globalSettingsLoaded(data));
+    setIsEdit(false);
+    dispatch(setSpinner(false));
+    message.success('Dane zostały zaktualizowane');
+   },
+   () => {
+    dispatch(setSpinner(false));
+    message.error('Błąd serwera');
+   },
+  );
+ };
 
  return (
   <FullWidthPageTemplate>
@@ -48,7 +74,7 @@ const GlobalSettings = () => {
       }
       key="2"
      >
-      <Prices data={prices} />
+      <Prices data={prices} handleSubmit={handlePricesSubmit} />
      </TabPane>
      <TabPane
       tab={

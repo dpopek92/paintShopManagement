@@ -33,6 +33,16 @@ import {
  ORDERFORM_REMOVE_ITEM,
  orderFormRemoveHandleT,
  ORDERFORM_REMOVE_HANDLE,
+ orderFormSetFinishDateT,
+ ORDERFORM_SET_FINISH_DATE,
+ orderFormAddItemImageT,
+ ORDERFORM_ADD_ITEM_IMAGE,
+ orderFormRemoveItemImageT,
+ ORDERFORM_REMOVE_ITEM_IMAGE,
+ orderFormSetCustomMillingT,
+ ORDERFORM_SET_CUSTOM_MILLING,
+ orderFormCalculateSurfacesT,
+ ORDERFORM_CALCULATE_SURFACES,
 } from '../types/newOrder/actions';
 import {
  OrderPaintTypeT,
@@ -46,6 +56,18 @@ export const addOrderItem = (): orderFormAddItemT => ({
 });
 export const removeOrderItem = (index: number): orderFormRemoveItemT => ({
  type: ORDERFORM_REMOVE_ITEM,
+ index,
+});
+export const addItemImage = (
+ index: number,
+ file: File,
+): orderFormAddItemImageT => ({
+ type: ORDERFORM_ADD_ITEM_IMAGE,
+ index,
+ file,
+});
+export const removeItemImage = (index: number): orderFormRemoveItemImageT => ({
+ type: ORDERFORM_REMOVE_ITEM_IMAGE,
  index,
 });
 export const handleItemField = (
@@ -70,6 +92,9 @@ export const handleItemInput = (
 });
 
 // orderForm
+export const calculateSurfaces = (): orderFormCalculateSurfacesT => ({
+ type: ORDERFORM_CALCULATE_SURFACES,
+});
 export const removeHandle = (
  field: 'handleSymbol1' | 'handleSymbol2',
 ): orderFormRemoveHandleT => ({
@@ -110,6 +135,10 @@ export const setMilling = (milling: string): orderFormSetMillingT => ({
  type: ORDERFORM_SET_MILLING,
  milling,
 });
+export const setCustomMilling = (file: File): orderFormSetCustomMillingT => ({
+ type: ORDERFORM_SET_CUSTOM_MILLING,
+ file,
+});
 export const setHandle = (handle: HandleT): orderFormSetHandleT => ({
  type: ORDERFORM_SET_HANDLE,
  handle,
@@ -124,3 +153,7 @@ export const setPaintType = (
 export const setPaintStyle = (
  paintStyle: OrderPaintStyleT,
 ): orderFormSetPaintStyleT => ({ type: ORDERFORM_SET_PAINTSTYLE, paintStyle });
+export const setFinishDate = (finishDate: Date): orderFormSetFinishDateT => ({
+ type: ORDERFORM_SET_FINISH_DATE,
+ finishDate,
+});

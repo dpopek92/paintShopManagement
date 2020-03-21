@@ -7,6 +7,7 @@ import {
  OrderPaintStyleT,
 } from 'services/store/types/orders/Orders';
 import { containsOneOf } from 'services/utils/array';
+import { handleEdges } from './orderItems';
 
 // orderForm
 export const removeHandle = (
@@ -14,13 +15,13 @@ export const removeHandle = (
  field: 'handleSymbol1' | 'handleSymbol2',
 ) => {
  const { items, paintType } = state;
- const edge = paintType === 'połysk' ? 'r2' : 'r1';
+ const itemEdge = paintType === 'połysk' ? 'r2' : 'r1';
 
  const newItems = (items as OrderItemT[]).map((item: any) => {
-  if (item.h1P === state[field]) item.h1P = edge;
-  if (item.h2P === state[field]) item.h2P = edge;
-  if (item.w1P === state[field]) item.w1P = edge;
-  if (item.w2P === state[field]) item.w2P = edge;
+  handleEdges(true, false, item, (value, edge) => {
+   if (value === state[field]) item[edge] = itemEdge;
+  });
+
   return item;
  });
 
@@ -30,7 +31,7 @@ export const removeHandle = (
 export const addHandle = (state: NewOrderT, handle: HandleT) => {
  const { color, veneerSymbol, handleSymbol1 } = state;
 
- if (veneerSymbol || color.toLocaleLowerCase().includes('bejca')) {
+ if (veneerSymbol || color.toLowerCase().includes('bejca')) {
   if (handle === 'uk45' || handle === 'up45' || handle === 'p45') {
    if (handleSymbol1) return { ...state, handleSymbol2: handle };
    return { ...state, handleSymbol1: handle };
@@ -45,23 +46,39 @@ export const addHandle = (state: NewOrderT, handle: HandleT) => {
 export const addMilling = (state: NewOrderT, milling: string) => {
  const { veneerSymbol, color, items } = state;
 
- if (veneerSymbol || color.toLocaleLowerCase().includes('bejca'))
-  return { ...state };
+ if (veneerSymbol || color.toLowerCase().includes('bejca')) return { ...state };
 
  if (milling === '') {
   const newItems = (items as OrderItemT[]).map((item: any) => {
    if (item.type === 'frez') item.type = 'gładki';
    return item;
   });
-  return { ...state, millingSymbol: milling, items: newItems };
+  return {
+   ...state,
+   customMilling: undefined,
+   millingSymbol: milling,
+   items: newItems,
+  };
  }
 
  return { ...state, millingSymbol: milling };
 };
 
+export const addCustomMilling = (state: NewOrderT, file: File) => {
+ const { veneerSymbol, color } = state;
+
+ if (veneerSymbol || color.toLowerCase().includes('bejca')) return { ...state };
+
+ const customMilling = { file, path: file.name };
+ return update(state, {
+  customMilling: { $set: customMilling },
+  millingSymbol: { $set: 'inny' },
+ });
+};
+
 export const addGlassCase = (state: NewOrderT, glassCase: string) => {
  const { veneerSymbol, color, items } = state;
- if (veneerSymbol || color.toLocaleLowerCase().includes('bejca')) {
+ if (veneerSymbol || color.toLowerCase().includes('bejca')) {
   if (glassCase === 'w4') return { ...state, glassCaseSymbol: glassCase };
   else return { ...state };
  }
@@ -89,10 +106,9 @@ export const addVeneer = (state: NewOrderT, veneer: string) => {
 
  const newItems = (items as OrderItemT[]).map((item: any) => {
   const edges = ['r1', 'r2'];
-  if (edges.includes(item.h1P)) item.h1P = '-';
-  if (edges.includes(item.h2P)) item.h2P = '-';
-  if (edges.includes(item.w1P)) item.w1P = '-';
-  if (edges.includes(item.w2P)) item.w2P = '-';
+  handleEdges(true, false, item, (value, edge) => {
+   if (edges.includes(value)) item[edge] = '-';
+  });
   return item;
  });
 
@@ -108,10 +124,10 @@ export const addPaintType = (state: NewOrderT, paintType: OrderPaintTypeT) => {
   paintStyle = 'dwustronne';
 
  items = (items as OrderItemT[]).map((item: any) => {
-  if (edges.includes(item.h1P)) item.h1P = radius;
-  if (edges.includes(item.h2P)) item.h2P = radius;
-  if (edges.includes(item.w1P)) item.w1P = radius;
-  if (edges.includes(item.w2P)) item.w2P = radius;
+  handleEdges(true, false, item, (value, edge) => {
+   if (edges.includes(value)) item[edge] = radius;
+  });
+
   return item;
  });
 
@@ -128,10 +144,10 @@ export const addPaintStyle = (
  if (paintStyle === 'p. połysk/l. półmat') {
   paintType = 'połysk';
   items = (items as OrderItemT[]).map((item: any) => {
-   if (edges.includes(item.h1P)) item.h1P = 'r2';
-   if (edges.includes(item.h2P)) item.h2P = 'r2';
-   if (edges.includes(item.w1P)) item.w1P = 'r2';
-   if (edges.includes(item.w2P)) item.w2P = 'r2';
+   handleEdges(true, false, item, (value, edge) => {
+    if (edges.includes(value)) item[edge] = 'r2';
+   });
+
    return item;
   });
  }
@@ -143,10 +159,9 @@ export const setNut = (state: NewOrderT, isNut: boolean) => {
  let { items } = state;
  if (!isNut) {
   items = (items as OrderItemT[]).map((item: any) => {
-   if (item.h1L === 'nut') item.h1L = '-';
-   if (item.h2L === 'nut') item.h2L = '-';
-   if (item.w1L === 'nut') item.w1L = '-';
-   if (item.w2L === 'nut') item.w2L = '-';
+   handleEdges(false, true, item, (value, edge) => {
+    if (value === 'nut') item[edge] = '-';
+   });
 
    return item;
   });
@@ -158,10 +173,9 @@ export const setFelc = (state: NewOrderT, isFelc: boolean) => {
  let { items } = state;
  if (!isFelc) {
   items = (items as OrderItemT[]).map((item: any) => {
-   if (item.h1L === 'felc') item.h1L = '-';
-   if (item.h2L === 'felc') item.h2L = '-';
-   if (item.w1L === 'felc') item.w1L = '-';
-   if (item.w2L === 'felc') item.w2L = '-';
+   handleEdges(false, true, item, (value, edge) => {
+    if (value === 'felc') item[edge] = '-';
+   });
 
    return item;
   });
@@ -174,14 +188,12 @@ export const setChamfering = (state: NewOrderT, isChamfering: boolean) => {
  const rightEdge = paintType === 'połysk' ? 'r2' : 'r1';
  if (!isChamfering) {
   items = (items as OrderItemT[]).map((item: any) => {
-   if (item.h1P === 'gierunek') item.h1P = rightEdge;
-   if (item.h2P === 'gierunek') item.h2P = rightEdge;
-   if (item.w1P === 'gierunek') item.w1P = rightEdge;
-   if (item.w2P === 'gierunek') item.w2P = rightEdge;
-   if (item.h1L === 'gierunek') item.h1L = '-';
-   if (item.h2L === 'gierunek') item.h2L = '-';
-   if (item.w1L === 'gierunek') item.w1L = '-';
-   if (item.w2L === 'gierunek') item.w2L = '-';
+   handleEdges(true, false, item, (value, edge) => {
+    if (value === 'gierunek') item[edge] = rightEdge;
+   });
+   handleEdges(false, true, item, (value, edge) => {
+    if (value === 'gierunek') item[edge] = '-';
+   });
 
    return item;
   });

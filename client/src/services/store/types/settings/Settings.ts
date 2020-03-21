@@ -21,33 +21,36 @@ export interface PaintsProducersT {
 // PRICES
 export interface PricesT {
  companyMaterial: CompanyMaterialPricesT;
- customerMaterial: CustomerMaterialT;
- services: ServicesT;
+ customerMaterial: CustomerMaterialPricesT;
+ services: ServicesPricesT;
 }
 export interface CompanyMaterialPricesT {
- gloss: GlossT;
- semiGloss: SemiGlossT;
- board: BoardT;
+ gloss: GlossPricesT;
+ semiGloss: SemiGlossPricesT;
+ board: BoardPricesT;
 }
-export interface CustomerMaterialT {
- gloss: GlossT;
- semiGloss: SemiGlossT;
+export interface CustomerMaterialPricesT {
+ gloss: GlossPricesT;
+ semiGloss: CustomerMaterialSemiGlossT;
  paintHandle: number;
 }
-export interface GlossT {
+export interface GlossPricesT {
  oneSide: number;
  bothSides: number;
  oneGlossSecondSemigloss: number;
 }
-export interface SemiGlossT {
+export interface SemiGlossPricesT {
  oneSide: number;
  bothSides: number;
- mordant?: number;
- veneerColorless?: number;
  milledElement: number;
  milledElementBothSides: number;
 }
-export interface BoardT {
+export interface CustomerMaterialSemiGlossT extends SemiGlossPricesT {
+ mordant: number;
+ veneerColorless: number;
+}
+
+export interface BoardPricesT {
  3: number;
  6: number;
  8: number;
@@ -62,7 +65,7 @@ export interface BoardT {
  30: number;
  38: number;
 }
-export interface ServicesT {
+export interface ServicesPricesT {
  manHour: number;
  chamfering: number;
  backMilling: number;

@@ -33,7 +33,7 @@ import GlobalSettings from 'scenes/Settings/Global';
 // import Order from 'views/Order/Order';
 import NewOrderForm from 'scenes/OrderForm/NewOrder';
 // import EditOrderForm from 'views/OrderForm/EditOrderForm';
-// import OrderSummary from 'views/OrderForm/OrderSummary';
+import OrderFormSummary from 'scenes/OrderForm/Summary';
 // import Production from 'views/Production/Production';
 // import PaintsOrder from 'views/Paints/PaintsOrder';
 import HomePage from 'scenes/Home';
@@ -110,6 +110,11 @@ const App = () => {
          path="/neworder"
          component={NewOrderForm}
         />
+        <PrivateRoute
+         permissions={['admin', 'user']}
+         path="/neworder/summary"
+         component={OrderFormSummary}
+        />
         {/* <Route path="/passwordremind" component={PasswordRemind} />
         <Route path="/recover/:userId" component={AccountRecover} />
         <Route path="/regulations" component={Regulations} />
@@ -121,11 +126,7 @@ const App = () => {
          component={EditOrderForm}
         />
        
-        <PrivateRoute
-         permissions={['admin', 'user']}
-         path="/orderform/summary"
-         component={OrderSummary}
-        />
+       
         <PrivateRoute
          permissions={['admin']}
          exact
