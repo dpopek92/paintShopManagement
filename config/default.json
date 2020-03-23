@@ -1,3 +1,3 @@
 {
-  "mongoURI": "mongodb://localhost:27017/paintShopDB"
+  "mongoURI": "mongodb+srv://admin:passworD@paintshop-lgnuf.mongodb.net/test?retryWrites=true&w=majority"
 }
