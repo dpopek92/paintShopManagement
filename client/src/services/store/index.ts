@@ -7,6 +7,7 @@ import { customersReducer } from './reducers/customers';
 import { authReducer } from './reducers/auth';
 import { settingsReducer } from './reducers/settings';
 import { newOrderReducer } from './reducers/newOrder';
+import { ordersReducer } from './reducers/orders';
 
 const rootReducer = combineReducers({
  view: viewReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
  auth: authReducer,
  settings: settingsReducer,
  newOrder: newOrderReducer,
+ orders: ordersReducer,
 });
 export type AppStateT = ReturnType<typeof rootReducer>;
 

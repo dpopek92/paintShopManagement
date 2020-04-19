@@ -8,6 +8,7 @@ import {
 } from 'services/store/types/orders/Orders';
 import { containsOneOf } from 'services/utils/array';
 import { handleEdges } from './orderItems';
+import { getFileExtension } from 'services/utils/file';
 
 // orderForm
 export const removeHandle = (
@@ -69,7 +70,8 @@ export const addCustomMilling = (state: NewOrderT, file: File) => {
 
  if (veneerSymbol || color.toLowerCase().includes('bejca')) return { ...state };
 
- const customMilling = { file, path: file.name };
+ const fileName = `wzorfrezowania.${getFileExtension(file.name)}`;
+ const customMilling = { file, path: fileName };
  return update(state, {
   customMilling: { $set: customMilling },
   millingSymbol: { $set: 'inny' },

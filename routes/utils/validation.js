@@ -10,7 +10,7 @@ const validateEmail = [
   check("email")
     .trim()
     .isEmail()
-    .withMessage("Invalid e-mail address")
+    .withMessage("Invalid e-mail address"),
 ];
 
 const validateLogin = [
@@ -28,7 +28,7 @@ const validateLogin = [
     .not()
     .isEmpty()
     .withMessage("Password is required."),
-  sanitizeBody("*").escape()
+  sanitizeBody("*").escape(),
 ];
 
 const validateRegister = [
@@ -60,7 +60,7 @@ const validateRegister = [
     .trim()
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters long."),
-  sanitizeBody("*").escape()
+  sanitizeBody("*").escape(),
 ];
 
 const validateUpdateEmployee = [
@@ -73,7 +73,7 @@ const validateUpdateEmployee = [
     .trim()
     .isEmail()
     .withMessage("Invalid e-mail address"),
-  sanitizeBody("*").escape()
+  sanitizeBody("*").escape(),
 ];
 
 const validateAddEmployee = [
@@ -105,7 +105,40 @@ const validateAddEmployee = [
     .trim()
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters long."),
-  sanitizeBody("*").escape()
+  sanitizeBody("*").escape(),
+];
+
+const validateNewOrder = [
+  check("type")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Order type is required"),
+  // check("user")
+  //   .trim()
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Order user is required"),
+  check("finishDate")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Order finishDate is required"),
+  check("elements")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Order elements is required"),
+  check("items")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Order items is required"),
+  check("color")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Order color is required"),
 ];
 
 const checkValidation = (req, res, next) => {
@@ -114,7 +147,7 @@ const checkValidation = (req, res, next) => {
     return res.status(422).json({
       success: false,
       data: req.body,
-      errors: errors.mapped()
+      errors: errors.mapped(),
     });
   }
   next();
@@ -126,5 +159,6 @@ module.exports = {
   validateLogin,
   validateRegister,
   validateUpdateEmployee,
-  checkValidation
+  validateNewOrder,
+  checkValidation,
 };

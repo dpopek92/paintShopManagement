@@ -40,6 +40,7 @@ import {
 } from './utils/newOrder/orderForm';
 import { createOrderItem, handleInput } from './utils/newOrder/orderItems';
 import { calculateSurfaces } from './utils/newOrder/calculateSurfaces';
+import { getFileExtension } from 'services/utils/file';
 
 const initialState: NewOrderT = {
  // to order
@@ -86,7 +87,10 @@ const newOrderReducer = (
    return update(state, { items: { $splice: [[action.index, 1]] } });
   }
   case ORDERFORM_ADD_ITEM_IMAGE: {
-   const image = { path: action.file.name, file: action.file };
+   const fileName = `rysunek_poz(${action.index + 1}).${getFileExtension(
+    action.file.name,
+   )}`;
+   const image = { path: fileName, file: action.file };
    return update(state, {
     items: {
      [action.index]: {

@@ -7,6 +7,7 @@ import {
  InputNumber,
  Checkbox,
  Icon,
+ Modal,
 } from 'antd';
 import Header from 'components/header';
 import WithSidebar from 'components/templates/withSidebar';
@@ -33,7 +34,7 @@ import { CatalogDrawerTypesT } from 'services/store/types/view/View';
 import BackMillingModal from '../components/backMillingModal';
 import Sidebar from '../components/sidebar';
 import { getGlobalSettings } from 'services/store/actions/settings';
-import { getOrderFinishDate } from '../utils';
+import { getOrderFinishDate, validateItems } from '../utils';
 import { useHistory } from 'react-router';
 
 const StyledCard = styled(Card)`
@@ -72,6 +73,10 @@ const StyledInfo = styled.p`
  color: orange;
 `;
 
+const initModals = {
+ backMilling: false,
+};
+
 interface PropsT {
  permissionContext: string;
 }
@@ -90,7 +95,7 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
  const { items, color, veneerSymbol, millingSymbol, paintType } = newOrder;
 
  const [addItems, setAddItems] = useState(1);
- const [isMillingModal, setIsMillingModal] = useState(false);
+ const [modals, setModal] = useState(initModals);
  const [isFastWrite, setIsFastWrite] = useState(false);
 
  useEffect(() => {
@@ -122,7 +127,8 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
  const hadnleCatalog = (type: CatalogDrawerTypesT) =>
   dispatch(setCatalogDrawer(type));
 
- const handleBackMillingModal = () => setIsMillingModal(true);
+ const handleModal = (type: string) => setModal({ ...modals, [type]: true });
+ const handleCloseModals = () => setModal(initModals);
  const handleFastWrite = (value: boolean) => setIsFastWrite(value);
 
  const handleAddOrderItem = () => {
@@ -145,6 +151,19 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
   dispatch(addItemImage(index, file));
  const handleRemoveItemImage = (index: number) =>
   dispatch(removeItemImage(index));
+
+ const handleGoToSummary = () => {
+  const errors = validateItems(items);
+  if (!errors.length) return history.push('/neworder/summary');
+  return Modal.error({
+   title: 'Uzupełnij te pola',
+   content: errors.map((error: any) => (
+    <div key={`${error.index}_${error.type}`}>
+     Pozycja {error.index + 1}: <strong>{error.type}</strong>
+    </div>
+   )),
+  });
+ };
 
  return (
   <WithSidebar
@@ -177,7 +196,7 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
       <ElementsData
        newOrder={newOrder}
        handleCatalog={hadnleCatalog}
-       handleBackMillingModal={handleBackMillingModal}
+       handleBackMillingModal={() => handleModal('backMilling')}
       />
      </StyledCard>
      <StyledCard>
@@ -216,7 +235,8 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
          className="submitBtn"
          type="primary"
          size="large"
-         onClick={() => history.push('/neworder/summary')}
+         onClick={handleGoToSummary}
+         disabled={!items.length}
         >
          Dalej
         </Button>
@@ -238,8 +258,8 @@ const NewOrderForm: React.FC<PropsT> = ({ permissionContext }) => {
     {/* MODAL */}
     {
      <BackMillingModal
-      isModal={isMillingModal}
-      closeModal={() => setIsMillingModal(false)}
+      isModal={modals.backMilling}
+      closeModal={handleCloseModals}
      />
     }
    </>

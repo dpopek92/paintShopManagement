@@ -14,7 +14,7 @@ connectDB();
 // init middleware
 app.use(
   express.json({
-    extended: false
+    extended: false,
   })
 );
 
@@ -25,8 +25,8 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/customers", require("./routes/api/customers"));
 app.use("/api/settings", require("./routes/api/settings"));
+app.use("/api/orders", require("./routes/api/orders"));
 // app.use("/api/employee", require("./routes/api/employee"));
-// app.use("/api/orders", require("./routes/api/orders"));
 // app.use("/api/prices", require("./routes/api/prices"));
 // app.use("/api/verify", require("./routes/api/verify"));
 // app.use("/api/sheet", require("./routes/api/sheet"));
@@ -35,7 +35,7 @@ app.use("/api/settings", require("./routes/api/settings"));
 // app.use("/api/paints", require("./routes/api/paints"));
 // app.use("/api/timetable", require("./routes/api/timetable"));
 // app.use("/api/script", require("./routes/api/script"));
-// app.use(express.static(__dirname + "/uploads"));
+app.use(express.static(__dirname + "/files"));
 
 // Update data every midnight
 cron.schedule("00 00 00 * * * ", async () => {

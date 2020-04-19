@@ -28,7 +28,7 @@ const BackMillingModal: React.FC<PropsT> = ({ isModal, closeModal }) => {
    onCancel={closeModal}
    width={800}
    footer={[
-    <Button onClick={closeModal} type="primary">
+    <Button onClick={closeModal} type="primary" key="1">
      Ok
     </Button>,
    ]}

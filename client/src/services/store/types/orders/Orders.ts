@@ -1,10 +1,12 @@
+import { UserT } from '../auth/Auth';
+
 export interface OrderT {
  type: OrderTypeT;
  date: Date;
  finishDate: Date;
  pickUpDate?: Date;
- user: string;
- author: string;
+ user: any;
+ author: string | object;
  number: string;
  name?: string;
  comments?: string;
@@ -155,10 +157,18 @@ export type ReasonOfComplaintT =
  | 'przetarcie'
  | 'inny';
 
-// export interface ProductionHistoryItemT{
-//     users:
-//     position:
-//     date:
-//     time:
-//     description:
-// }
+export interface OrdersT {
+ orders: OrderT[] | [];
+ order: OrderT | null;
+ sortBy: OrdersSortByT;
+ sortDirection: OrdersSortDirectionT;
+}
+
+export type OrdersSortByT = {
+ new: string;
+ ended: string;
+};
+export type OrdersSortDirectionT = {
+ new: 'ascend' | 'descend';
+ ended: 'ascend' | 'descend';
+};
